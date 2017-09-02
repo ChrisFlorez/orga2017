@@ -196,15 +196,15 @@ int main(int argc, char *argv[]) {
     //se lee el archivo
         char bufferLinea[MAXLINEA];
     	char palabras[MAXLINEA][MAXLINEA];
+    	//lectura anticipada del archivo para q no de mas lecturas
+    	fgets(bufferLinea, MAXLINEA,inputFile);
         while (!feof(inputFile)){
             
-            //se lee una linea del archivo de entrada, se guarda en linea
-            fgets(bufferLinea, MAXLINEA,inputFile);
-            //se deberia usar el memset para limpiar el bufferLinea
-
 
             cargarEnVectorPalabras(bufferLinea, palabras);//carga en la matriz las palabras
-            imprimirPalabrasEnVector(palabras);
+
+            //para ver si guardo las palbras
+            //imprimirPalabrasEnVector(palabras);
 
 
             //char **palabras = limpiarLinea(bufferLinea); //filtra la linea leida del archivo y la guarda en palabras
@@ -213,7 +213,7 @@ int main(int argc, char *argv[]) {
 
             //se le ingresa un vector de caracteres(osea una palabra y lo guarda en el archivo)
             guardarPalabraEnArchivo(palabras[0],outputFile);
-
+            fgets(bufferLinea, MAXLINEA,inputFile);
         }
         fclose(inputFile);
         if(showResultsInStdOut) {
