@@ -38,7 +38,6 @@ bool validFile(FILE *file, char modo, char *argopt) {
 void verificarPalabra(char palabra[30]) {
 
 }
-
 bool isPalindrome() {
     char palabra[20];
     int posInicial, posFinal;
@@ -61,7 +60,61 @@ bool isPalindrome() {
 
     return true; //?? jiji, corregir
 }
+void guardarPalabraEnArchivo(char *palabra,FILE *archivo){
+	if(palabra[0] != '$'){
+		fputs(palabra, archivo);
+		fputs("\n", archivo);
+	}
+}
+void imprimirPalabrasEnVector(char palabras[][260]){
+	int contadorPalabra = 0;
+	while(palabras[contadorPalabra][0]!='$'){
+		printf("%s\n",palabras[contadorPalabra]);
+		contadorPalabra++;
+	}
+}
+bool caracterValido(char caracter){
+	int numeroAscii = (int)caracter;
+	if((numeroAscii<=57)  && (numeroAscii>=48)){
+		return true;
+	}
+	if((numeroAscii<=90)  && (numeroAscii>=65)){
+		return true;
+	}
+	if((numeroAscii<=122)  && (numeroAscii>=97)){
+		return true;
+	}
+	if(numeroAscii == 45){
+		return true;
+	}
+	if(numeroAscii == 95){
+		return true;
+	}
+	return false;
+}
 
+void cargarEnVectorPalabras(char *linea,char palabras[][260]){
+	bool salir = false;
+	int contador = 0;
+	int contDePalabrasGuardadas = 0;
+	int contDeCaracteresGuardados = 0;
+	while(salir==false){
+		if(caracterValido(linea[contador])){
+			palabras[contDePalabrasGuardadas][contDeCaracteresGuardados]=linea[contador];
+			contDeCaracteresGuardados++;
+		}
+		else if(contDeCaracteresGuardados != 0){
+			palabras[contDePalabrasGuardadas][contDeCaracteresGuardados] = '\0';
+			contDeCaracteresGuardados = 0;
+			contDePalabrasGuardadas++;
+		}
+		if((linea[contador]=='\n') || (linea[contador]=='\0')){
+			salir = true;
+		}
+		contador ++;
+	}
+	palabras[contDePalabrasGuardadas][0] = '$';
+}
 
 int main(int argc, char *argv[]) {
 
@@ -123,7 +176,7 @@ int main(int argc, char *argv[]) {
 
     if (outputFile == NULL) {
         printf("Se mostrará el resultado en pantalla. \n");
-        outputFile = fopen(auxOutputFile,"w+")
+        outputFile = fopen(auxOutputFile,"w+");
         showResultsInStdOut = true;
     }
 
@@ -140,25 +193,33 @@ int main(int argc, char *argv[]) {
 
     // aca es donde tenemos que leer del archivo que ingresaron o que generamos y escupir las palabras
 
-    /*//se lee el archivo  
-        char bufferLinea [MAXLINEA];
+    //se lee el archivo
+        char bufferLinea[MAXLINEA];
+    	char palabras[MAXLINEA][MAXLINEA];
         while (!feof(inputFile)){
             
             //se lee una linea del archivo de entrada, se guarda en linea
-            fgets(linea, MAXLINEA,inputFile);
+            fgets(bufferLinea, MAXLINEA,inputFile);
             //se deberia usar el memset para limpiar el bufferLinea
-            char **palabras = limpiarLinea(bufferLinea); //filtra la linea leida del archivo y la guarda en palabras
-            buscarPalindromos(palabras,outputfile);
+
+
+            cargarEnVectorPalabras(bufferLinea, palabras);//carga en la matriz las palabras
+            imprimirPalabrasEnVector(palabras);
+
+
+            //char **palabras = limpiarLinea(bufferLinea); //filtra la linea leida del archivo y la guarda en palabras
+            //buscarPalindromos(palabras,outputfile);
+
+
+            //se le ingresa un vector de caracteres(osea una palabra y lo guarda en el archivo)
+            guardarPalabraEnArchivo(palabras[0],outputFile);
+
         }
         fclose(inputFile);
-        
         if(showResultsInStdOut) {
-            mostrarPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
+            //mostrarPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
         }
         fclose(outputFile);
-    }*/
-
-
 
     return 0;
 }
