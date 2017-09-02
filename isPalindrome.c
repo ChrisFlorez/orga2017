@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+#define MAXLINEA 260
 // Verifica que el archivo no esté vacío
 bool empty(FILE *file) {
     long savedOffset = ftell(file);
@@ -78,6 +79,7 @@ int main(int argc, char *argv[]) {
     bool showResultsInStdOut = false;
     char inputByStd[300];
     char *auxFileName = "auxFile.txt";
+    char *auxOutputFile = "auxOutput.txt";
 
     if (argc == 1) {
         printf("Debe ingresar algún argumento, para mas información ingrese -h \n");
@@ -121,6 +123,7 @@ int main(int argc, char *argv[]) {
 
     if (outputFile == NULL) {
         printf("Se mostrará el resultado en pantalla. \n");
+        outputFile = fopen(auxOutputFile,"w+")
         showResultsInStdOut = true;
     }
 
@@ -130,12 +133,32 @@ int main(int argc, char *argv[]) {
         printf("Usted ingresó: %s \n", inputByStd);
         inputFile = fopen(auxFileName, "w+");
         fputs(inputByStd, inputFile);
-        fclose(inputFile);
+        //fclose(inputFile);//conviene cerrarlo despues
         //printf("Borrando el archivo");
         //remove(auxFileName);
     }
 
     // aca es donde tenemos que leer del archivo que ingresaron o que generamos y escupir las palabras
+
+    /*//se lee el archivo  
+        char bufferLinea [MAXLINEA];
+        while (!feof(inputFile)){
+            
+            //se lee una linea del archivo de entrada, se guarda en linea
+            fgets(linea, MAXLINEA,inputFile);
+            //se deberia usar el memset para limpiar el bufferLinea
+            char **palabras = limpiarLinea(bufferLinea); //filtra la linea leida del archivo y la guarda en palabras
+            buscarPalindromos(palabras,outputfile);
+        }
+        fclose(inputFile);
+        
+        if(showResultsInStdOut) {
+            mostrarPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
+        }
+        fclose(outputFile);
+    }*/
+
+
 
     return 0;
 }
