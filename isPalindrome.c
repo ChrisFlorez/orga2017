@@ -137,6 +137,26 @@ void cargarEnVectorPalabras(char *linea,char palabras[][260]){
 	palabras[contDePalabrasGuardadas][0] = '$';
 }
 
+void procesarTexto( FILE *inputFile, FILE *outputFile, bool showResultsInStdOut){
+    //se lee el archivo
+    char bufferLinea[MAXLINEA];
+    char palabras[MAXLINEA][MAXLINEA];
+    rewind(inputFile);// para reposicionar el puntero del archivo a la primera linea
+    //lectura anticipada del archivo para q no de mas lecturas
+    do {
+        fgets(bufferLinea, MAXLINEA,inputFile);
+        cargarEnVectorPalabras(bufferLinea, palabras);//carga en la matriz las palabras
+        buscarPalindromos(palabras,outputFile);
+    } while (!feof(inputFile));
+
+    fclose(inputFile);
+    if(showResultsInStdOut) {
+        printPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
+    }
+    fclose(outputFile);
+}
+
+
 int main(int argc, char *argv[]) {
 
     int option = 0;
@@ -213,22 +233,7 @@ int main(int argc, char *argv[]) {
     }
 
     // aca es donde tenemos que leer del archivo que ingresaron o que generamos y escupir las palabras
-
-    //se lee el archivo
-        char bufferLinea[MAXLINEA];
-    	char palabras[MAXLINEA][MAXLINEA];
-    	//lectura anticipada del archivo para q no de mas lecturas
-    	fgets(bufferLinea, MAXLINEA,inputFile);
-        while (!feof(inputFile)){
-            cargarEnVectorPalabras(bufferLinea, palabras);//carga en la matriz las palabras
-            buscarPalindromos(palabras,outputFile);
-            fgets(bufferLinea, MAXLINEA,inputFile);
-        }
-        fclose(inputFile);
-        if(showResultsInStdOut) {
-            printPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
-        }
-        fclose(outputFile);
+    procesarTexto(inputFile,outputFile, showResultsInStdOut);
 
     return 0;
 }
