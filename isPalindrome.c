@@ -38,35 +38,56 @@ bool validFile(FILE *file, char modo, char *argopt) {
 void verificarPalabra(char palabra[30]) {
 
 }
-bool isPalindrome() {
-    char palabra[20];
+bool isPalindrome( char *palabra) {
     int posInicial, posFinal;
     int palindromo = 1;
-    printf("Escribe una palabra: ");
-    fflush(stdout);
-    gets(palabra);
     posFinal = strlen(palabra) - 1;
     for (posInicial = 0; posInicial < strlen(palabra) / 2; posInicial++, posFinal--) {
-        printf("Comprobando %c==%c\n", *(palabra + posInicial), *(palabra + posFinal));
         if ((toupper(*(palabra + posInicial))) != (toupper(*(palabra + posFinal)))) {
             palindromo = 0;
             break;
         }
     }
-    if (palindromo)
-        printf("\nEs un palíndrimo.\n");
-    else
-        printf("\nNo es un palíndrimo.\n");
-
-    return true; //?? jiji, corregir
+    if (palindromo) {
+        return true;
+    }
+    
+    return false;; //?? jiji, corregir
 }
-void guardarPalabraEnArchivo(char *palabra,FILE *archivo){
-	if(palabra[0] != '$'){
-		fputs(palabra, archivo);
+void buscarPalindromos(char palabras[][MAXLINEA],FILE *archivo) {
+    int contadorPalabra = 0;
+    while(palabras[contadorPalabra][0] != '$') {
+        if (isPalindrome(palabras[contadorPalabra])) {
+                fputs(palabras[contadorPalabra], archivo);
+                fputs("\n", archivo);
+        }
+        contadorPalabra++;
+    }
+}
+
+void guardarPalabraEnArchivo(char palabras[][MAXLINEA],FILE *archivo) {
+	int contadorPalabra = 0;
+    while(palabras[contadorPalabra][0]!='$'){
+		fputs(palabras[contadorPalabra], archivo);
 		fputs("\n", archivo);
+        contadorPalabra++;
 	}
 }
-void imprimirPalabrasEnVector(char palabras[][260]){
+
+void printPalindromos(FILE *archivo) {
+    char bufferLinea[MAXLINEA];
+    memset(&bufferLinea,0,MAXLINEA);
+    rewind(archivo);
+    fgets(bufferLinea, MAXLINEA,archivo);
+        while (!feof(archivo)){
+            printf("%s\n",bufferLinea);
+            memset(&bufferLinea,0,MAXLINEA);
+            fgets(bufferLinea, MAXLINEA,archivo);
+        }
+
+}
+
+void imprimirPalabrasEnVector(char palabras[][260]) {
 	int contadorPalabra = 0;
 	while(palabras[contadorPalabra][0]!='$'){
 		printf("%s\n",palabras[contadorPalabra]);
@@ -199,25 +220,13 @@ int main(int argc, char *argv[]) {
     	//lectura anticipada del archivo para q no de mas lecturas
     	fgets(bufferLinea, MAXLINEA,inputFile);
         while (!feof(inputFile)){
-            
-
             cargarEnVectorPalabras(bufferLinea, palabras);//carga en la matriz las palabras
-
-            //para ver si guardo las palbras
-            //imprimirPalabrasEnVector(palabras);
-
-
-            //char **palabras = limpiarLinea(bufferLinea); //filtra la linea leida del archivo y la guarda en palabras
-            //buscarPalindromos(palabras,outputfile);
-
-
-            //se le ingresa un vector de caracteres(osea una palabra y lo guarda en el archivo)
-            guardarPalabraEnArchivo(palabras[0],outputFile);
+            buscarPalindromos(palabras,outputFile);
             fgets(bufferLinea, MAXLINEA,inputFile);
         }
         fclose(inputFile);
         if(showResultsInStdOut) {
-            //mostrarPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
+            printPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
         }
         fclose(outputFile);
 
