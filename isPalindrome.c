@@ -48,22 +48,13 @@ bool isPalindrome(char *palabra) {
     return true;
 }
 
-void buscarPalindromos(char palabras[][MAXLINEA], FILE *archivo) {
+void seekPalindromes(char palabras[][MAXLINEA], FILE *archivo) {
     int contadorPalabra = 0;
     while (palabras[contadorPalabra][0] != '$') {
         if (isPalindrome(palabras[contadorPalabra])) {
             fputs(palabras[contadorPalabra], archivo);
             fputs("\n", archivo);
         }
-        contadorPalabra++;
-    }
-}
-
-void guardarPalabraEnArchivo(char palabras[][MAXLINEA], FILE *archivo) {
-    int contadorPalabra = 0;
-    while (palabras[contadorPalabra][0] != '$') {
-        fputs(palabras[contadorPalabra], archivo);
-        fputs("\n", archivo);
         contadorPalabra++;
     }
 }
@@ -81,41 +72,33 @@ void printPalindromes(FILE *archivo) {
     }
 }
 
-void imprimirPalabrasEnVector(char palabras[][260]) {
-    int contadorPalabra = 0;
-    while (palabras[contadorPalabra][0] != '$') {
-        printf("%s\n", palabras[contadorPalabra]);
-        contadorPalabra++;
-    }
-}
-
-bool caracterValido(char caracter) {
-    int numeroAscii = (int) caracter;
-    if ((numeroAscii <= 57) && (numeroAscii >= 48)) {
+bool validCharacter(char character) {
+    int asciiNumber = (int) character;
+    if ((asciiNumber <= 57) && (asciiNumber >= 48)) {
         return true;
     }
-    if ((numeroAscii <= 90) && (numeroAscii >= 65)) {
+    if ((asciiNumber <= 90) && (asciiNumber >= 65)) {
         return true;
     }
-    if ((numeroAscii <= 122) && (numeroAscii >= 97)) {
+    if ((asciiNumber <= 122) && (asciiNumber >= 97)) {
         return true;
     }
-    if (numeroAscii == 45) {
+    if (asciiNumber == 45) {
         return true;
     }
-    if (numeroAscii == 95) {
+    if (asciiNumber == 95) {
         return true;
     }
     return false;
 }
 
-void cargarEnVectorPalabras(char *linea, char palabras[][260]) {
+void parseLine(char *linea, char palabras[][MAXLINEA]) {
     bool salir = false;
     int contador = 0;
     int contDePalabrasGuardadas = 0;
     int contDeCaracteresGuardados = 0;
     while (salir == false) {
-        if (caracterValido(linea[contador])) {
+        if (validCharacter(linea[contador])) {
             palabras[contDePalabrasGuardadas][contDeCaracteresGuardados] = linea[contador];
             contDeCaracteresGuardados++;
         } else if (contDeCaracteresGuardados != 0) {
@@ -131,8 +114,7 @@ void cargarEnVectorPalabras(char *linea, char palabras[][260]) {
     palabras[contDePalabrasGuardadas][0] = '$';
 }
 
-void procesarTexto(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
-    // se lee el archivo
+void processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
     char bufferLinea[MAXLINEA];
     char palabras[MAXLINEA][MAXLINEA];
     // para reposicionar el puntero del archivo a la primera linea
@@ -140,8 +122,8 @@ void procesarTexto(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) 
     rewind(inputFile);
     do {
         fgets(bufferLinea, MAXLINEA, inputFile);
-        cargarEnVectorPalabras(bufferLinea, palabras);  // carga en la matriz las palabras
-        buscarPalindromos(palabras, outputFile);
+        parseLine(bufferLinea, palabras);  // carga en la matriz las palabras
+        seekPalindromes(palabras, outputFile);
     } while (!feof(inputFile));
 
     fclose(inputFile);
@@ -156,7 +138,6 @@ void procesarTexto(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) 
 
 
 int main(int argc, char *argv[]) {
-
     int option = 0;
     const char *short_opt = "i:o:hV";
     struct option long_opt[] = {
@@ -216,9 +197,7 @@ int main(int argc, char *argv[]) {
 
     if (inputFile == NULL) {
         printf("Ingrese el stream a procesar (máximo 300 caracteres): \n");
-        //fgets(inputByStd, MAXCHARS, stdin);
         scanf("%*c%[^\n]",inputByStd);
-        //gets(inputByStd);
         inputFile = fopen(inputFileAux, "w+");
         fputs(inputByStd, inputFile);
         takeStreamFromStdIn = true;
@@ -230,7 +209,7 @@ int main(int argc, char *argv[]) {
         showResultsInStdOut = true;
     }
 
-    procesarTexto(inputFile, outputFile, showResultsInStdOut);
+    processInput(inputFile, outputFile, showResultsInStdOut);
 
     // Borramos los archivos auxiliares utilizados
     if (takeStreamFromStdIn) remove(inputFileAux);
