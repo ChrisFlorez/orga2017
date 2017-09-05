@@ -138,11 +138,12 @@ void procesarTexto(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) 
     // para reposicionar el puntero del archivo a la primera linea
     // lectura anticipada del archivo para q no de mas lecturas
     rewind(inputFile);
-    do {
-        fgets(bufferLinea, MAXLINEA, inputFile);
+    fgets(bufferLinea, MAXLINEA, inputFile);
+    while (!feof(inputFile)) {
         cargarEnVectorPalabras(bufferLinea, palabras);  // carga en la matriz las palabras
         buscarPalindromos(palabras, outputFile);
-    } while (!feof(inputFile));
+        fgets(bufferLinea, MAXLINEA, inputFile);
+    } 
 
     fclose(inputFile);
 
