@@ -1,3 +1,84 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc} % para poder usar tildes en archivos UTF-8
+\usepackage[spanish]{babel} % para que comandos como \today den el resultado en castellano
+\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage[showRevisiones]{caratula}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\begin{document}
+
+\materia{Organización de Computadoras 66.20}
+\tipoapunte{Trabajo Práctico #0}
+
+\fecha{\today}
+
+\autor{Flórez Del Carpio, Christian}{91011}{chris.florez.d.c@gmail.com}
+\autor{Montenegro, Josefina}{94289}{mariajosefina.mont@gmail.com}
+\autor{Quino López, Julián}{94224}{julianquino2@gmail.com}
+
+\revision{05/09/2017}{               }{Primera versión del TP}
+\maketitle
+
+\begin{abstract}
+El siguiente trabajo práctico tiene como finalidad determinar, para un determinado conjunto de palabras, cuáles de ellas son palíndromos, entendiendo como palabras a aquellas compuestas por letras [A-Z], números [0-9], guiones bajos y medios, es decir, cualquier combinación posible de los anteriormente mencionados. 
+\end{abstract}
+
+
+\section{Introducción}
+Pueden haber tres escenarios posibles, el caso en el cual el usuario ingresa archivo de entrada y salida, el caso en el que se ingresa un archivo de entrada solamente y por último el caso donde se recibe el archivo de salida. En caso de no proporcionar un archivo de texto como entrada, se requerirá ingresar el stream por entrada standard, con un máximo de 300 caracteres. Si no se especifica un archivo de salida, se mostrarán los resultados por salida standard. 
+
+
+\section{Desarrollo}
+
+El algoritmo propuesto por el grupo consiste en parsear las palabras ingresadas para luego procesar una por una y decidir si son palíndromos o no, esto se realiza ya sea desde el archivo o utilizando el stream leído por entrada standard. Si se debe leer de la entrada standard, se crea un archivo auxiliar donde se escribe lo previamente ingresado por el usuario, a fines de reutilizar el código desarrollado para el caso donde se ingresa un archivo de texto.
+
+\subsection{Comandos para compilar y ejecutar el programa}
+
+Se puede compilar el programa con el siguiente comando:
+
+\begin{lstlisting}[language=bash]
+  $ gcc isPalindrome.c -o tp0
+\end{lstlisting}
+
+
+Y luego ejecutarlo con el comando:
+
+\begin{lstlisting}[language=bash]
+  $ ./tp0 -i input.txt -o output.txt
+\end{lstlisting}
+
+En caso de sólo querer especificar el archivo de entrada, debe ejecutarse, por ejemplo, de la siguiente manera:
+
+\begin{lstlisting}[language=bash]
+  $ ./tp0 -i input.txt
+\end{lstlisting}
+
+Análogamente si se quiere ingresar un archivo de salida:
+
+\begin{lstlisting}[language=bash]
+  $ ./tp0 -o output.txt
+\end{lstlisting}
+
+\subsection{Otros comandos}
+
+Pueden utilizarse comandos tales como help y version, de la siguiente forma:
+
+\begin{lstlisting}[language=bash]
+  $ ./tp0 -h
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+  $ ./tp0 -V
+\end{lstlisting}
+
+\subsection{Código fuente}
+\begin{lstlisting}[language=C]
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -120,12 +201,12 @@ void processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
     // para reposicionar el puntero del archivo a la primera linea
     // lectura anticipada del archivo para q no de mas lecturas
     rewind(inputFile);
-    fgets(bufferLinea, MAXLINEA, inputFile);
-    while (!feof(inputFile)) {
-        cargarEnVectorPalabras(bufferLinea, palabras);  // carga en la matriz las palabras
-        buscarPalindromos(palabras, outputFile);
+    do {
         fgets(bufferLinea, MAXLINEA, inputFile);
-    } 
+        parseLine(bufferLinea, palabras);  // carga en la matriz las palabras
+        seekPalindromes(palabras, outputFile);
+    } while (!feof(inputFile));
+
     fclose(inputFile);
 
     printf("Se procesó el archivo de entrada \n");
@@ -217,3 +298,39 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+\end{lstlisting}
+
+\section{Este es el Título de Otra Sección}
+
+Texto de la otra sección. En la figura~\ref{fig001} se muestra un ejemplo de cómo presentar las ilustraciones del informe.
+
+\begin{figure}[!htp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{fig001.eps}
+\caption{Facultad de Ingeniería $-$ Universidad de Buenos Aires.} \label{fig001}
+\end{center}
+\end{figure}
+
+
+\subsection{Este es el Título de Otra Subsección}
+
+Texto de la otra subsección...
+
+
+\section{Conclusiones}
+
+Se presentó un modelo para que los alumnos puedan tomar como referencia en la redacción de sus informes de trabajos prácticos.
+
+
+\begin{thebibliography}{99}
+
+\bibitem{INT06} Intel Technology \& Research, ``Hyper-Threading Technology,'' 2006, http://www.intel.com/technology/hyperthread/.
+
+\bibitem{HEN00} J. L. Hennessy and D. A. Patterson, ``Computer Architecture. A Quantitative
+Approach,'' 3ra Edición, Morgan Kaufmann Publishers, 2000.
+
+\bibitem{LAR92} J. Larus and T. Ball, ``Rewriting Executable Files to Mesure Program Behavior,'' Tech. Report 1083, Univ. of Wisconsin, 1992.
+
+\end{thebibliography}
+
+\end{document}
