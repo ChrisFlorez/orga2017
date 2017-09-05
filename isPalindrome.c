@@ -200,6 +200,7 @@ int main(int argc, char *argv[]) {
         scanf("%*c%[^\n]",inputByStd);
         inputFile = fopen(inputFileAux, "w+");
         fputs(inputByStd, inputFile);
+        fputs("\n", inputFile);
         takeStreamFromStdIn = true;
     }
 
