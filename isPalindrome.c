@@ -146,6 +146,8 @@ void procesarTexto(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) 
 
     fclose(inputFile);
 
+    printf("Se procesó el archivo de entrada \n");
+
     if (showResultsInStdOut) {
         printPalindromes(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
         fclose(outputFile);
@@ -214,8 +216,7 @@ int main(int argc, char *argv[]) {
 
     if (inputFile == NULL) {
         printf("Ingrese el stream a procesar (máximo 300 caracteres): \n");
-        gets(inputByStd);
-        printf("Usted ingresó: %s \n", inputByStd);
+        fgets(inputByStd, MAXCHARS, stdin);
         inputFile = fopen(inputFileAux, "w+");
         fputs(inputByStd, inputFile);
         takeStreamFromStdIn = true;
