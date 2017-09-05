@@ -68,13 +68,14 @@ void guardarPalabraEnArchivo(char palabras[][MAXLINEA], FILE *archivo) {
     }
 }
 
-void printPalindromos(FILE *archivo) {
+void printPalindromes(FILE *archivo) {
     char bufferLinea[MAXLINEA];
     memset(&bufferLinea, 0, MAXLINEA);
     rewind(archivo);
     fgets(bufferLinea, MAXLINEA, archivo);
+    printf("Las palabras palíndromas detectadas son: \n");
     while (!feof(archivo)) {
-        printf("%s\n", bufferLinea);
+        printf("%s", bufferLinea);
         memset(&bufferLinea, 0, MAXLINEA);
         fgets(bufferLinea, MAXLINEA, archivo);
     }
@@ -144,10 +145,11 @@ void procesarTexto(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) 
     } while (!feof(inputFile));
 
     fclose(inputFile);
+
     if (showResultsInStdOut) {
-        printPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
+        printPalindromes(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
+        fclose(outputFile);
     }
-    fclose(outputFile);
 }
 
 
@@ -224,7 +226,6 @@ int main(int argc, char *argv[]) {
         outputFile = fopen(outputFileAux, "w+");
         showResultsInStdOut = true;
     }
-
 
     procesarTexto(inputFile, outputFile, showResultsInStdOut);
 
