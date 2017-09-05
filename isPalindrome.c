@@ -215,7 +215,7 @@ int main(int argc, char *argv[]) {
     processInput(inputFile, outputFile, showResultsInStdOut);
 
     // Borramos los archivos auxiliares utilizados
-    //if (takeStreamFromStdIn) remove(inputFileAux);
+    if (takeStreamFromStdIn) remove(inputFileAux);
     if (showResultsInStdOut) remove(outputFileAux);
 
     return 0;
