@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 #define MAXLINEA 260
-
+#define MAXCHARS 300
 
 // Verifica que el archivo no esté vacío
 bool empty(FILE *file) {
@@ -78,7 +78,6 @@ void printPalindromos(FILE *archivo) {
         memset(&bufferLinea, 0, MAXLINEA);
         fgets(bufferLinea, MAXLINEA, archivo);
     }
-
 }
 
 void imprimirPalabrasEnVector(char palabras[][260]) {
@@ -132,21 +131,21 @@ void cargarEnVectorPalabras(char *linea, char palabras[][260]) {
 }
 
 void procesarTexto(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
-    //se lee el archivo
+    // se lee el archivo
     char bufferLinea[MAXLINEA];
     char palabras[MAXLINEA][MAXLINEA];
-    rewind(inputFile);// para reposicionar el puntero del archivo a la primera linea
-    //lectura anticipada del archivo para q no de mas lecturas
+    // para reposicionar el puntero del archivo a la primera linea
+    // lectura anticipada del archivo para q no de mas lecturas
+    rewind(inputFile);
     do {
         fgets(bufferLinea, MAXLINEA, inputFile);
-        cargarEnVectorPalabras(bufferLinea, palabras);//carga en la matriz las palabras
+        cargarEnVectorPalabras(bufferLinea, palabras);  // carga en la matriz las palabras
         buscarPalindromos(palabras, outputFile);
     } while (!feof(inputFile));
 
     fclose(inputFile);
     if (showResultsInStdOut) {
-        printPalindromos(
-                outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
+        printPalindromos(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
     }
     fclose(outputFile);
 }
@@ -165,10 +164,11 @@ int main(int argc, char *argv[]) {
     };
     FILE *inputFile = NULL;
     FILE *outputFile = NULL;
+    bool takeStreamFromStdIn = false;
     bool showResultsInStdOut = false;
-    char inputByStd[300];
-    char *auxFileName = "auxFile.txt";
-    char *auxOutputFile = "auxOutput.txt";
+    char inputByStd[MAXCHARS];
+    char *inputFileAux = "inputFileAux.txt";
+    char *outputFileAux = "outputFileAux.txt";
 
     if (argc == 1) {
         printf("Debe ingresar algún argumento, para mas información ingrese -h \n");
@@ -210,25 +210,27 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    if (inputFile == NULL) {
+        printf("Ingrese el stream a procesar (máximo 300 caracteres): \n");
+        gets(inputByStd);
+        printf("Usted ingresó: %s \n", inputByStd);
+        inputFile = fopen(inputFileAux, "w+");
+        fputs(inputByStd, inputFile);
+        takeStreamFromStdIn = true;
+    }
+
     if (outputFile == NULL) {
         printf("Se mostrará el resultado en pantalla. \n");
-        outputFile = fopen(auxOutputFile, "w+");
+        outputFile = fopen(outputFileAux, "w+");
         showResultsInStdOut = true;
     }
 
-    if (inputFile == NULL) {
-        printf("Ingrese el stream deseado (máximo 300 caracteres): \n");
-        gets(inputByStd);
-        printf("Usted ingresó: %s \n", inputByStd);
-        inputFile = fopen(auxFileName, "w+");
-        fputs(inputByStd, inputFile);
-        //fclose(inputFile);//conviene cerrarlo despues
-        //printf("Borrando el archivo");
-        //remove(auxFileName);
-    }
 
-    // aca es donde tenemos que leer del archivo que ingresaron o que generamos y escupir las palabras
     procesarTexto(inputFile, outputFile, showResultsInStdOut);
+
+    // Borramos los archivos auxiliares utilizados
+    if (takeStreamFromStdIn) remove(inputFileAux);
+    if (showResultsInStdOut) remove(outputFileAux);
 
     return 0;
 }
