@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.21)  4 SEP 2017 23:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.21)  5 SEP 2017 00:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -986,8 +986,8 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.249                 printf("	Flórez 
-                                       Del Carpio Christian\n	Montenegro Jos...
+l.249                 printf("    Flórez 
+                                          Del Carpio Christian\n   Montenegr...
 
 ? 
 
@@ -998,33 +998,33 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.249                 printf("	Flórez 
-                                       Del Carpio Christian\n	Montenegro Jos...
+l.249                 printf("    Flórez 
+                                          Del Carpio Christian\n   Montenegr...
 
 ? 
 
-Overfull \hbox (281.01234pt too wide) in paragraph at lines 249--250
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (110.91272pt too wide) in paragraph at lines 249--250
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
 [4]
-Overfull \hbox (54.21281pt too wide) in paragraph at lines 257--258
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 257--258
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 258--259
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (54.21281pt too wide) in paragraph at lines 258--259
-[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (60.51282pt too wide) in paragraph at lines 259--260
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (85.71275pt too wide) in paragraph at lines 259--260
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (79.41277pt too wide) in paragraph at lines 260--261
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (54.21283pt too wide) in paragraph at lines 260--261
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
@@ -1195,36 +1195,64 @@ l.309 ...graphics[width=0.5\textwidth]{fig001.eps}
                                                   
 ? 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 327--328
-[]\OT1/cmr/m/n/10 Intel Tech-no-logy & Re-search, ``Hyper-Threading Tech-no-log
-y,'' 2006,
+! Missing $ inserted.
+<inserted text> 
+                $
+l.327 ...://www.gnu.org/software/libc/manual/html_
+                                                  node/Example-of-Getopt.html
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.328 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.328 
+      
+? 
+
+Underfull \hbox (badness 1874) in paragraph at lines 327--328
+[]\OT1/cmr/m/n/10 GetOpt li-brary, https://www.gnu.org/software/libc/manual/htm
+l$[]\OML/cmm/m/it/10 ode=Example \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 of \OMS/
+cmsy/m/n/10 ^^@
  []
 
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.328 
+      
+? 
 [6] (./informe-trabajo-practico.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 5163 strings out of 493029
- 66899 string characters out of 6136234
- 194842 words of memory out of 5000000
- 8638 multiletter control sequences out of 15000+600000
+ 5167 strings out of 493029
+ 66950 string characters out of 6136234
+ 195842 words of memory out of 5000000
+ 8642 multiletter control sequences out of 15000+600000
  7146 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,51p,508b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmtt10.pfb>
-Output written on informe-trabajo-practico.pdf (8 pages, 371538 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmtt10.pfb>
+Output written on informe-trabajo-practico.pdf (8 pages, 388991 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 84 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

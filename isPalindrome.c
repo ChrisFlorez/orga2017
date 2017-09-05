@@ -122,8 +122,8 @@ void processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
     rewind(inputFile);
     fgets(bufferLinea, MAXLINEA, inputFile);
     while (!feof(inputFile)) {
-        cargarEnVectorPalabras(bufferLinea, palabras);  // carga en la matriz las palabras
-        buscarPalindromos(palabras, outputFile);
+        parseLine(bufferLinea, palabras);  // carga en la matriz las palabras
+        seekPalindromes(palabras, outputFile);
         fgets(bufferLinea, MAXLINEA, inputFile);
     } 
     fclose(inputFile);
