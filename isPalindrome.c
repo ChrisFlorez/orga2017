@@ -197,7 +197,9 @@ int main(int argc, char *argv[]) {
 
     if (inputFile == NULL) {
         printf("Ingrese el stream a procesar (máximo 300 caracteres): \n");
-        scanf("%*c%[^\n]",inputByStd);
+        //scanf("%*c%[^\n]",inputByStd);
+        //gets(inputByStd);
+        fgets(inputByStd,MAXCHARS,stdin);
         inputFile = fopen(inputFileAux, "w+");
         fputs(inputByStd, inputFile);
         fputs("\n", inputFile);
@@ -213,7 +215,7 @@ int main(int argc, char *argv[]) {
     processInput(inputFile, outputFile, showResultsInStdOut);
 
     // Borramos los archivos auxiliares utilizados
-    if (takeStreamFromStdIn) remove(inputFileAux);
+    //if (takeStreamFromStdIn) remove(inputFileAux);
     if (showResultsInStdOut) remove(outputFileAux);
 
     return 0;
