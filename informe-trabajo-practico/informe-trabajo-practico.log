@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.21)  5 SEP 2017 00:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.5)  5 SEP 2017 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,6 +451,22 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 (./informe-trabajo-practico.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
 )
 \openout1 = `informe-trabajo-practico.aux'.
 
@@ -468,8 +484,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count100
 \scratchdimen=\dimen110
@@ -591,7 +606,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 // Verifica que el archivo no esté 
+l.94 // Verifica que el archivo no esté 
                                          vacío
 ? 
 
@@ -602,7 +617,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 // Verifica que el archivo no esté 
+l.94 // Verifica que el archivo no esté 
                                          vacío
 ? 
 
@@ -613,7 +628,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 // Verifica que el archivo no esté vacío
+l.94 // Verifica que el archivo no esté vacío
                                                
 ? 
 
@@ -624,7 +639,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 // Verifica que el archivo no esté vacío
+l.94 // Verifica que el archivo no esté vacío
                                                
 ? 
 
@@ -635,7 +650,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.105 ...e valida que el archivo exista, después 
+l.107 ...e valida que el archivo exista, después 
                                                   que no esté vacío en cas...
 
 ? 
@@ -647,7 +662,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.105 ...e valida que el archivo exista, después 
+l.107 ...e valida que el archivo exista, después 
                                                   que no esté vacío en cas...
 
 ? 
@@ -659,7 +674,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.105 ...el archivo exista, después que no esté 
+l.107 ...el archivo exista, después que no esté 
                                                   vacío en caso de ser arch...
 
 ? 
@@ -671,7 +686,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.105 ...el archivo exista, después que no esté 
+l.107 ...el archivo exista, después que no esté 
                                                   vacío en caso de ser arch...
 
 ? 
@@ -683,7 +698,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.105 ...ivo exista, después que no esté vacío 
+l.107 ...ivo exista, después que no esté vacío 
                                                   en caso de ser archivo input
 ? 
 
@@ -694,18 +709,18 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.105 ...ivo exista, después que no esté vacío 
+l.107 ...ivo exista, después que no esté vacío 
                                                   en caso de ser archivo input
 ? 
 
-Overfull \hbox (211.71252pt too wide) in paragraph at lines 105--106
+Overfull \hbox (211.71252pt too wide) in paragraph at lines 107--108
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (161.31262pt too wide) in paragraph at lines 108--109
+Overfull \hbox (161.31262pt too wide) in paragraph at lines 110--111
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -717,7 +732,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.113         printf("El archivo %s está 
+l.115         printf("El archivo %s está 
                                           vacío, por favor ingrese un archi...
 
 ? 
@@ -729,7 +744,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.113         printf("El archivo %s está 
+l.115         printf("El archivo %s está 
                                           vacío, por favor ingrese un archi...
 
 ? 
@@ -741,7 +756,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.113         printf("El archivo %s está vacío,
+l.115         printf("El archivo %s está vacío,
                                                   por favor ingrese un archi...
 
 ? 
@@ -753,7 +768,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.113         printf("El archivo %s está vacío,
+l.115         printf("El archivo %s está vacío,
                                                   por favor ingrese un archi...
 
 ? 
@@ -765,7 +780,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.113 ..., por favor ingrese un archivo no vacío 
+l.115 ..., por favor ingrese un archivo no vacío 
                                                   \n", argopt);
 ? 
 
@@ -776,11 +791,11 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.113 ..., por favor ingrese un archivo no vacío 
+l.115 ..., por favor ingrese un archivo no vacío 
                                                   \n", argopt);
 ? 
 
-Overfull \hbox (180.21259pt too wide) in paragraph at lines 113--114
+Overfull \hbox (180.21259pt too wide) in paragraph at lines 115--116
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
 
  []
@@ -793,7 +808,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.117     printf("Se recibió 
+l.119     printf("Se recibió 
                               el archivo %s \n", argopt);
 ? 
 
@@ -804,16 +819,16 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.117     printf("Se recibió 
+l.119     printf("Se recibió 
                               el archivo %s \n", argopt);
 ? 
 
-Overfull \hbox (117.2127pt too wide) in paragraph at lines 124--125
+Overfull \hbox (117.2127pt too wide) in paragraph at lines 126--127
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (110.91272pt too wide) in paragraph at lines 125--126
+Overfull \hbox (110.91272pt too wide) in paragraph at lines 127--128
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -826,7 +841,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.148     printf("Las palabras palíndromas 
+l.150     printf("Las palabras palíndromas 
                                             detectadas son: \n");
 ? 
 
@@ -837,31 +852,31 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.148     printf("Las palabras palíndromas 
+l.150     printf("Las palabras palíndromas 
                                             detectadas son: \n");
 ? 
 
-Overfull \hbox (148.71265pt too wide) in paragraph at lines 183--184
+Overfull \hbox (148.71265pt too wide) in paragraph at lines 185--186
 [][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (79.41278pt too wide) in paragraph at lines 186--187
+Overfull \hbox (79.41278pt too wide) in paragraph at lines 188--189
 [][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (10.11292pt too wide) in paragraph at lines 190--191
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [3]
-Overfull \hbox (79.41278pt too wide) in paragraph at lines 198--199
+Overfull \hbox (10.11292pt too wide) in paragraph at lines 192--193
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (79.41278pt too wide) in paragraph at lines 200--201
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (60.51282pt too wide) in paragraph at lines 206--207
+Overfull \hbox (60.51282pt too wide) in paragraph at lines 208--209
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][] 
  []
@@ -874,7 +889,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.212     printf("Se procesó 
+l.214     printf("Se procesó 
                               el archivo de entrada \n");
 ? 
 
@@ -885,11 +900,11 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.212     printf("Se procesó 
+l.214     printf("Se procesó 
                               el archivo de entrada \n");
 ? 
 
-Overfull \hbox (394.41217pt too wide) in paragraph at lines 215--216
+Overfull \hbox (394.41217pt too wide) in paragraph at lines 217--218
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
@@ -903,7 +918,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.240         printf("Debe ingresar algún 
+l.242         printf("Debe ingresar algún 
                                            argumento, para mas información ...
 
 ? 
@@ -915,7 +930,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.240         printf("Debe ingresar algún 
+l.242         printf("Debe ingresar algún 
                                            argumento, para mas información ...
 
 ? 
@@ -927,7 +942,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.240 ... algún argumento, para mas información 
+l.242 ... algún argumento, para mas información 
                                                   ingrese -h \n");
 ? 
 
@@ -938,16 +953,16 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.240 ... algún argumento, para mas información 
+l.242 ... algún argumento, para mas información 
                                                   ingrese -h \n");
 ? 
 
-Overfull \hbox (117.2127pt too wide) in paragraph at lines 240--241
+Overfull \hbox (117.2127pt too wide) in paragraph at lines 242--243
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (85.71277pt too wide) in paragraph at lines 244--245
+[4]
+Overfull \hbox (85.71277pt too wide) in paragraph at lines 246--247
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -959,7 +974,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.247 ...rintf("TP #0 de la materia Organización 
+l.249 ...rintf("TP #0 de la materia Organización 
                                                   de Computadoras \n");
 ? 
 
@@ -970,11 +985,11 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.247 ...rintf("TP #0 de la materia Organización 
+l.249 ...rintf("TP #0 de la materia Organización 
                                                   de Computadoras \n");
 ? 
 
-Overfull \hbox (73.1128pt too wide) in paragraph at lines 247--248
+Overfull \hbox (73.1128pt too wide) in paragraph at lines 249--250
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -986,7 +1001,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.249                 printf("    Flórez 
+l.251                 printf("    Flórez 
                                           Del Carpio Christian\n   Montenegr...
 
 ? 
@@ -998,32 +1013,32 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.249                 printf("    Flórez 
+l.251                 printf("    Flórez 
                                           Del Carpio Christian\n   Montenegr...
 
 ? 
 
-Overfull \hbox (110.91272pt too wide) in paragraph at lines 249--250
+Overfull \hbox (110.91272pt too wide) in paragraph at lines 251--252
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
-[4]
-Overfull \hbox (29.01288pt too wide) in paragraph at lines 257--258
+
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 259--260
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (29.01288pt too wide) in paragraph at lines 258--259
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 260--261
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (60.51282pt too wide) in paragraph at lines 259--260
+Overfull \hbox (60.51282pt too wide) in paragraph at lines 261--262
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (54.21283pt too wide) in paragraph at lines 260--261
+Overfull \hbox (54.21283pt too wide) in paragraph at lines 262--263
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -1035,7 +1050,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.275                 printf("Opción 
+l.277                 printf("Opción 
                                       inválida. Para ver más información ...
 
 ? 
@@ -1047,7 +1062,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.275                 printf("Opción 
+l.277                 printf("Opción 
                                       inválida. Para ver más información ...
 
 ? 
@@ -1059,7 +1074,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.275                 printf("Opción inválida.
+l.277                 printf("Opción inválida.
                                                  Para ver más información ...
 
 ? 
@@ -1071,7 +1086,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.275                 printf("Opción inválida.
+l.277                 printf("Opción inválida.
                                                  Para ver más información ...
 
 ? 
@@ -1083,7 +1098,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.275 ...printf("Opción inválida. Para ver más 
+l.277 ...printf("Opción inválida. Para ver más 
                                                   información ingrese -h. \...
 
 ? 
@@ -1095,7 +1110,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.275 ...printf("Opción inválida. Para ver más 
+l.277 ...printf("Opción inválida. Para ver más 
                                                   información ingrese -h. \...
 
 ? 
@@ -1107,7 +1122,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.275 ...�n inválida. Para ver más información 
+l.277 ...�n inválida. Para ver más información 
                                                   ingrese -h. \n");
 ? 
 
@@ -1118,11 +1133,11 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.275 ...�n inválida. Para ver más información 
+l.277 ...�n inválida. Para ver más información 
                                                   ingrese -h. \n");
 ? 
 
-Overfull \hbox (123.5127pt too wide) in paragraph at lines 275--276
+Overfull \hbox (123.5127pt too wide) in paragraph at lines 277--278
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -1134,7 +1149,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.280 ...f("Ingrese el stream a procesar (máximo 
+l.282 ...f("Ingrese el stream a procesar (máximo 
                                                   300 caracteres): \n");
 ? 
 
@@ -1145,11 +1160,11 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.280 ...f("Ingrese el stream a procesar (máximo 
+l.282 ...f("Ingrese el stream a procesar (máximo 
                                                   300 caracteres): \n");
 ? 
 
-Overfull \hbox (54.21283pt too wide) in paragraph at lines 280--281
+Overfull \hbox (54.21283pt too wide) in paragraph at lines 282--283
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -1161,7 +1176,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.288         printf("Se mostrará 
+l.291         printf("Se mostrará 
                                    el resultado en pantalla. \n");
 ? 
 
@@ -1172,49 +1187,197 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.288         printf("Se mostrará 
+l.291         printf("Se mostrará 
                                    el resultado en pantalla. \n");
 ? 
+[5] <prueba1.png, id=42, 644.4075pt x 407.5225pt>
+File: prueba1.png Graphic file (type png)
+ <use prueba1.png>
+Package pdftex.def Info: prueba1.png used on input line 313.
+(pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-LaTeX Warning: File `fig001.eps' not found on input line 309.
+<prueba1SalidaPorPantalla.png, id=44, 692.5875pt x 437.635pt>
+File: prueba1SalidaPorPantalla.png Graphic file (type png)
 
-Package epstopdf Info: Source file: <fig001.eps>
-(epstopdf)             Output file: <fig001-eps-converted-to.pdf>
-(epstopdf)             Command: <repstopdf --outfile=fig001-eps-converted-to.pd
-f fig001.eps>
-(epstopdf)             \includegraphics on input line 309.
-Package epstopdf Info: Output file is already uptodate.
+<use prueba1SalidaPorPantalla.png>
+Package pdftex.def Info: prueba1SalidaPorPantalla.png used on input line 320.
+(pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
 
-! Package pdftex.def Error: File `fig001-eps-converted-to.pdf' not found.
+<prueba2.png, id=45, 644.4075pt x 407.5225pt>
+File: prueba2.png Graphic file (type png)
+ <use prueba2.png>
+Package pdftex.def Info: prueba2.png used on input line 327.
+(pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-See the pdftex.def package documentation for explanation.
+<prueba3.png, id=46, 692.5875pt x 437.635pt>
+File: prueba3.png Graphic file (type png)
+ <use prueba3.png>
+Package pdftex.def Info: prueba3.png used on input line 334.
+(pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
+
+<prueba3salidaPorPantalla.png, id=47, 692.5875pt x 437.635pt>
+File: prueba3salidaPorPantalla.png Graphic file (type png)
+
+<use prueba3salidaPorPantalla.png>
+Package pdftex.def Info: prueba3salidaPorPantalla.png used on input line 341.
+(pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
+
+<pruebaPorTeclado.png, id=48, 692.5875pt x 437.635pt>
+File: pruebaPorTeclado.png Graphic file (type png)
+
+<use pruebaPorTeclado.png>
+Package pdftex.def Info: pruebaPorTeclado.png used on input line 348.
+(pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
+ [6 <./prueba1.png> <./prueba1SalidaPorPantalla.png>] [7 <./prueba2.png> <./pru
+eba3.png> <./prueba3salidaPorPantalla.png>]
+! Misplaced alignment tab character &.
+l.368 Reconocer que 345 soladados&
+                                  civiles murieron por una fruta como el ana...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.369 
+      
+? 
+
+Overfull \hbox (81.46019pt too wide) in paragraph at lines 368--369
+\OT1/cmr/m/n/10 ta-rio que m hi-zo ana el otro dia cuan-do me pi-ca-ba el ojo, 
+[11134111$; : \OML/cmm/m/it/10 esenumeronoloentiendoserapalindromo\OT1/cmr/m/n/
+10 ?\OML/cmm/m/it/10 nolose:$ 
+ []
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+
+! Package Listings Error: Couldn't load requested language.
+
+See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.309 ...graphics[width=0.5\textwidth]{fig001.eps}
+l.376 \begin{lstlisting}[language=Assembler]
+                                            
+? 
+
+! Package Listings Error: language assembler undefined.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
                                                   
+l.376 \begin{lstlisting}[language=Assembler]
+                                            
 ? 
-[5]
+
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 386--387
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[8 <./pruebaPorTeclado.png>]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 434--435
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 438--439
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 448--449
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[9]
+Overfull \hbox (10.11292pt too wide) in paragraph at lines 506--507
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[10] [11]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 585--586
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[12]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 655--656
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 664--665
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[13] [14]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 728--729
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[15]
+Overfull \hbox (10.11292pt too wide) in paragraph at lines 800--801
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[16] [17]
+Overfull \hbox (54.21283pt too wide) in paragraph at lines 912--913
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[18] [19]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1041--1042
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1045--1046
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[20]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1090--1091
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1094--1095
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[21]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1107--1108
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[22] [23] [24] [25]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.327 ...://www.gnu.org/software/libc/manual/html_
-                                                  node/Example-of-Getopt.html
+l.1348 ...//www.gnu.org/software/libc/manual/html_
+                                                  node/Example-of-Getopt.html.
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.328 
-      
+l.1349 
+       
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.328 
-      
+l.1349 
+       
 ? 
 
-Underfull \hbox (badness 1874) in paragraph at lines 327--328
+Underfull \hbox (badness 3942) in paragraph at lines 1348--1349
 []\OT1/cmr/m/n/10 GetOpt li-brary, https://www.gnu.org/software/libc/manual/htm
 l$[]\OML/cmm/m/it/10 ode=Example \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 of \OMS/
 cmsy/m/n/10 ^^@
@@ -1223,36 +1386,45 @@ cmsy/m/n/10 ^^@
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.328 
-      
+l.1349 
+       
 ? 
-[6] (./informe-trabajo-practico.aux
+[26] (./informe-trabajo-practico.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-) ) 
+)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 368 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 5167 strings out of 493029
- 66950 string characters out of 6136234
- 195842 words of memory out of 5000000
- 8642 multiletter control sequences out of 15000+600000
+ 5806 strings out of 493029
+ 74104 string characters out of 6136235
+ 195109 words of memory out of 5000000
+ 9268 multiletter control sequences out of 15000+600000
  7146 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,51p,508b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmtt10.pfb>
-Output written on informe-trabajo-practico.pdf (8 pages, 388991 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmtt10.pfb>
+Output written on informe-trabajo-practico.pdf (28 pages, 589460 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 165 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
