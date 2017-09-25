@@ -4,6 +4,7 @@
 #include <getopt.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #define MAXLINEA 260
 #define MAXCHARS 300
@@ -23,17 +24,11 @@ bool empty(FILE *file) {
 
 // Primero se valida que el archivo exista, después que no esté vacío en caso de ser archivo input
 bool validFile(FILE *file, char modo, char *argopt) {
-    if (file == NULL) {
-        printf("El archivo %s no existe, por favor ingrese un archivo existente \n", argopt);
-        return false;
-    }
-
     if (empty(file) && modo != 'w') {
         printf("El archivo %s está vacío, por favor ingrese un archivo no vacío \n", argopt);
         return false;
     }
 
-    printf("Se recibió el archivo %s \n", argopt);
     return true;
 }
 
@@ -156,7 +151,6 @@ int main(int argc, char *argv[]) {
     char *outputFileAux = "outputFileAux.txt";
 
     if (argc == 1) {
-        printf("Debe ingresar algún argumento, para mas información ingrese -h \n");
         return 0;
     }
 
@@ -180,31 +174,30 @@ int main(int argc, char *argv[]) {
                 return 0;
             case 'i':
                 inputFile = fopen(optarg, "r");
-                if (!validFile(inputFile, 'r', optarg)) {
-                    return 0;
-                }
                 break;
             case 'o':
                 outputFile = fopen(optarg, "w");
-                if (!validFile(outputFile, 'w', optarg)) {
-                    return 0;
-                }
                 break;
             default:
-                printf("Opción inválida. Para ver más información ingrese -h. \n");
+                abort();
         }
     }
 
     if (inputFile == NULL) {
-        printf("Ingrese el stream a procesar (máximo 300 caracteres): \n");
+        printf("fopen failed, errno = %d\n", errno);
         fgets(inputByStd,MAXCHARS,stdin);
         inputFile = fopen(inputFileAux, "w+");
         fputs(inputByStd, inputFile);
         fputs("\n", inputFile);
         takeStreamFromStdIn = true;
+    } else {
+        if (empty(inputFile)) {
+            return 0;
+        }
     }
 
     if (outputFile == NULL) {
+        printf("fopen failed, errno = %d\n", errno);
         printf("Se mostrará el resultado en pantalla. \n");
         outputFile = fopen(outputFileAux, "w+");
         showResultsInStdOut = true;
