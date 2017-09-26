@@ -22,16 +22,18 @@
 \autor{Montenegro, Josefina}{94289}{mariajosefina.mont@gmail.com}
 \autor{Quino López, Julián}{94224}{julianquino2@gmail.com}
 
-\revision{05/09/2017}{               }{Primera versión del TP}
+\revision{05/09/2017}{-}{Entrega primera versión del TP}
+\revision{12/09/2017}{Luciano}{Correcciones varias}
+\revision{26/09/2017}{Luciano}{Entrega del TP con correcciones}
 \maketitle
 
 \begin{abstract}
-El siguiente trabajo práctico tiene como finalidad determinar, para un determinado conjunto de palabras, cuáles de ellas son palíndromos, entendiendo como palabras a aquellas compuestas por letras [A-Z], números [0-9], guiones bajos y medios, es decir, cualquier combinación posible de los anteriormente mencionados. Este programa debe correrse en la arquitectura MIPS32 utilizando las herramientas provistas por la cátedra.
+El siguiente trabajo práctico tiene como objetivo familiarizarse con las herramientas mencionadas en el curso, para lograr tal propósito se debe determinar para un conjunto de palabras cuáles de ellas son palíndromos, entendiendo como palabras a aquellas compuestas por letras [A-Z], números [0-9], guiones bajos y medios, es decir, cualquier combinación posible de los anteriormente mencionados. Este programa debe correrse en la arquitectura MIPS32.
 \end{abstract}
 
 
 \section{Introducción}
-Pueden haber tres escenarios posibles, el caso en el cual el usuario ingresa archivo de entrada y salida, el caso en el que se ingresa un archivo de entrada solamente y por último el caso donde se recibe el archivo de salida. En caso de no proporcionar un archivo de texto como entrada, se requerirá ingresar el stream por entrada standard, con un máximo de 300 caracteres. Si no se especifica un archivo de salida, se mostrarán los resultados por salida standard. 
+Pueden haber tres escenarios posibles, el caso en el cual el usuario ingresa archivo de entrada y salida, el caso en el que se ingresa un archivo de entrada solamente y por último el caso donde se recibe el archivo de salida. En caso de no proporcionar un archivo de texto como entrada, se requerirá ingresar el stream por entrada standard. Si no se especifica un archivo de salida, se mostrarán los resultados por salida standard. 
 
 
 \section{Desarrollo}
@@ -56,16 +58,16 @@ Y luego ejecutarlo con el comando:
 En caso de sólo querer especificar el archivo de entrada, debe ejecutarse, por ejemplo, de la siguiente manera:
 
 \begin{lstlisting}[language=bash]
-  $ ./tp0 -i input.txt
+  $ ./tp0 -i input.txt -o -
 \end{lstlisting}
 
 Análogamente si se quiere ingresar un archivo de salida:
 
 \begin{lstlisting}[language=bash]
-  $ ./tp0 -o output.txt
+  $ ./tp0 -i - -o output.txt
 \end{lstlisting}
 
-Es decir que si no se desea ingresar archivo de entrada o salida, directamente no se debe ingresar el argumento -i o -o según corresponda.
+Es decir que con un guión medio indicamos que no se proporcionará un archivo para entrada/salida, acorde a lo que indica el enunciado.
 
 \subsection{Otros comandos}
 
