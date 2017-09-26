@@ -135,12 +135,6 @@ int processInput(FILE *inputFile, FILE *outputFile) {
     // lectura anticipada del archivo para q no de mas lecturas
     rewind(inputFile);
     bufferLinea = getLinea(&tamanioLinea, inputFile);
-    printf("%c\n",*bufferLinea);
-    printf("%d\n",tamanioLinea);
-    if((bufferLinea == NULL) && (!feof(inputFile))){
-        fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
-        return ERROR;
-    }
     while (!feof(inputFile)) {
         palabras = parseLine(bufferLinea,tamanioLinea,&cantidadPalabras);  // carga en la matriz las palabras
         free (bufferLinea);
@@ -150,10 +144,6 @@ int processInput(FILE *inputFile, FILE *outputFile) {
             return ERROR;
         }
         bufferLinea = getLinea(&tamanioLinea, inputFile);
-        if((bufferLinea == NULL) && (!feof(inputFile))){
-            fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
-            return ERROR;
-        }
     } 
     if(fclose(inputFile)==EOF){
         fprintf(stderr, "Error fclose: %s\n", strerror( errno ));
