@@ -34,6 +34,7 @@ int seekPalindromes(char **palabras, FILE *archivo, int cantidadPalabras) {
             	return ERROR;
             }
         }
+        free(palabras[contadorPalabra]);
         contadorPalabra++;
     }
     return SALIDA_EXITOSA;
@@ -58,6 +59,7 @@ bool validCharacter(char character) {
     }
     return false;
 }
+
 char *agregarCaracterAVector(char caracter, char *vector, int contador){
 	char *cadena = NULL;
 	if(contador == 1){
@@ -70,6 +72,7 @@ char *agregarCaracterAVector(char caracter, char *vector, int contador){
 	}
 	return cadena;
 }
+
 char **agregarPalabraAVector(char *palabra,char **palabras,int contDePalabrasGuardadas){
 	char **auxiPalabras=NULL;
 	if(contDePalabrasGuardadas == 1){
@@ -82,26 +85,28 @@ char **agregarPalabraAVector(char *palabra,char **palabras,int contDePalabrasGua
 	return auxiPalabras;
 }
 
-char* getLinea (int* contador, FILE* archivo) {
-   
+char* getLinea(int* contador, FILE* archivo) {
     int letra;
     int finDeLinea ='\n';
     char* vector = NULL;
-    letra = fgetc(archivo);   
+    letra = fgetc(archivo);
     while (!feof(archivo) && letra != finDeLinea) {
         (*contador)++;
         vector = (char*)realloc(vector,(*contador) *sizeof(char));
         vector[*contador-1]  = (char)letra;
         letra = fgetc(archivo);
     }
-    
+
+    (*contador)++;
+    vector = (char*)realloc(vector,(*contador) *sizeof(char));
+    vector[*contador-1]  = '\0';
+
     return vector;
 }
 
 char** parseLine(char *linea, int tamanioLinea, int *cantidadPalabras){
     char **palabras= NULL;
     char *palabra = NULL;
-    bool salir = false;
     int contador = 0;
     int contDePalabrasGuardadas = 0;
     int contDeCaracteresGuardados = 0;
@@ -146,7 +151,6 @@ int processInput(FILE *inputFile, FILE *outputFile) {
         return ERROR;
     }
 
-    printf("Se procesó el archivo de entrada \n");
     if(outputFile != stdout){
         if(fclose(outputFile)==EOF){
             fprintf(stderr, "Error fclose: %s\n", strerror( errno));
