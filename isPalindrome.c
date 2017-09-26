@@ -4,12 +4,17 @@
 #include <getopt.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+
+#define ERROR -1
+#define SALIDA_EXITOSA 0
 
 #define MAXLINEA 260
 #define MAXCHARS 300
 
 // Verifica que el archivo no esté vacío
-bool empty(FILE *file) {
+/*bool empty(FILE *file) {
     long savedOffset = ftell(file);
     fseek(file, 0, SEEK_END);
 
@@ -19,10 +24,10 @@ bool empty(FILE *file) {
 
     fseek(file, savedOffset, SEEK_SET);
     return false;
-}
+}*/
 
 // Primero se valida que el archivo exista, después que no esté vacío en caso de ser archivo input
-bool validFile(FILE *file, char modo, char *argopt) {
+/*bool validFile(FILE *file, char modo, char *argopt) {
     if (file == NULL) {
         printf("El archivo %s no existe, por favor ingrese un archivo existente \n", argopt);
         return false;
@@ -35,7 +40,7 @@ bool validFile(FILE *file, char modo, char *argopt) {
 
     printf("Se recibió el archivo %s \n", argopt);
     return true;
-}
+}*/
 
 bool isPalindrome(char *palabra) {
     int posInicial, posFinal;
@@ -48,18 +53,25 @@ bool isPalindrome(char *palabra) {
     return true;
 }
 
-void seekPalindromes(char palabras[][MAXLINEA], FILE *archivo) {
+int seekPalindromes(char **palabras, FILE *archivo, int cantidadPalabras) {
     int contadorPalabra = 0;
-    while (palabras[contadorPalabra][0] != '$') {
+    while (contadorPalabra<cantidadPalabras) {
         if (isPalindrome(palabras[contadorPalabra])) {
-            fputs(palabras[contadorPalabra], archivo);
-            fputs("\n", archivo);
+            if(fputs(palabras[contadorPalabra], archivo)==EOF){
+            	fprintf(stderr, "Error fputs: %s\n", strerror( errno ));
+            	return ERROR;
+            }
+            if(fputs("\n", archivo)==EOF){
+            	fprintf(stderr, "Error fputs: %s\n", strerror( errno ));
+            	return ERROR;
+            }
         }
         contadorPalabra++;
     }
+    return SALIDA_EXITOSA;
 }
 
-void printPalindromes(FILE *archivo) {
+/*void printPalindromes(FILE *archivo) {
     char bufferLinea[MAXLINEA];
     memset(&bufferLinea, 0, MAXLINEA);
     rewind(archivo);
@@ -70,7 +82,7 @@ void printPalindromes(FILE *archivo) {
         memset(&bufferLinea, 0, MAXLINEA);
         fgets(bufferLinea, MAXLINEA, archivo);
     }
-}
+}*/
 
 bool validCharacter(char character) {
     int asciiNumber = (int) character;
@@ -91,49 +103,88 @@ bool validCharacter(char character) {
     }
     return false;
 }
+char *agregarCaracterAVector(char caracter, char *vector, int contador){
+	char *cadena = NULL;
+	if(contador == 1){
+		cadena = malloc(contador*sizeof(char));
+		cadena[0] = caracter;
 
-void parseLine(char *linea, char palabras[][MAXLINEA]) {
-    bool salir = false;
-    int contador = 0;
-    int contDePalabrasGuardadas = 0;
-    int contDeCaracteresGuardados = 0;
-    while (salir == false) {
-        if (validCharacter(linea[contador])) {
-            palabras[contDePalabrasGuardadas][contDeCaracteresGuardados] = linea[contador];
-            contDeCaracteresGuardados++;
-        } else if (contDeCaracteresGuardados != 0) {
-            palabras[contDePalabrasGuardadas][contDeCaracteresGuardados] = '\0';
-            contDeCaracteresGuardados = 0;
-            contDePalabrasGuardadas++;
-        }
-        if ((linea[contador] == '\n') || (linea[contador] == '\0')) {
-            salir = true;
-        }
-        contador++;
-    }
-    palabras[contDePalabrasGuardadas][0] = '$';
+	}else{
+		cadena = realloc(vector, contador * sizeof(char));
+		cadena[contador-1]=caracter;
+	}
+	return cadena;
 }
-
-void processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
+char **agregarPalabraAVector(char *palabra,char **palabras,int contDePalabrasGuardadas){
+	char **auxiPalabras=NULL;
+	if(contDePalabrasGuardadas == 1){
+		auxiPalabras = malloc(contDePalabrasGuardadas*sizeof(char*));
+		auxiPalabras[0] = palabra;
+	}else{
+		auxiPalabras = realloc(palabras, contDePalabrasGuardadas * sizeof(char*));
+		auxiPalabras[contDePalabrasGuardadas-1] = palabra;
+	}
+	return auxiPalabras;
+}
+char** parseLine(char *linea, int *cantidadPalabras){
+	char **palabras= NULL;
+	char *palabra = NULL;
+	bool salir = false;
+	int contador = 0;
+	int contDePalabrasGuardadas = 0;
+	int contDeCaracteresGuardados = 0;
+	while (salir == false) {
+		if (validCharacter(linea[contador])) {
+			contDeCaracteresGuardados++;
+			palabra = agregarCaracterAVector(linea[contador], palabra,contDeCaracteresGuardados);
+		}else if (contDeCaracteresGuardados != 0) {
+			contDeCaracteresGuardados++;
+			contDePalabrasGuardadas++;
+			palabra = agregarCaracterAVector('\0', palabra,contDeCaracteresGuardados);
+			palabras = agregarPalabraAVector(palabra,palabras,contDePalabrasGuardadas);
+			contDeCaracteresGuardados=0;
+		}
+		if ((linea[contador] == '\n') || (linea[contador] == '\0')) {
+			salir = true;
+		}
+		contador++;
+	}
+	*cantidadPalabras = contDePalabrasGuardadas;
+	return palabras;
+}
+int processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
     char bufferLinea[MAXLINEA];
-    char palabras[MAXLINEA][MAXLINEA];
+    char **palabras = NULL;
+    int cantidadPalabras=0;
     // para reposicionar el puntero del archivo a la primera linea
     // lectura anticipada del archivo para q no de mas lecturas
     rewind(inputFile);
-    fgets(bufferLinea, MAXLINEA, inputFile);
+    if((fgets(bufferLinea, MAXLINEA, inputFile) == NULL) && (!feof(inputFile))){
+    	fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
+    	return ERROR;
+    }
     while (!feof(inputFile)) {
-        parseLine(bufferLinea, palabras);  // carga en la matriz las palabras
-        seekPalindromes(palabras, outputFile);
-        fgets(bufferLinea, MAXLINEA, inputFile);
+        palabras = parseLine(bufferLinea, &cantidadPalabras);  // carga en la matriz las palabras
+        if(seekPalindromes(palabras, outputFile,cantidadPalabras)==EOF){
+        	return ERROR;
+        }
+        if((fgets(bufferLinea, MAXLINEA, inputFile) == NULL) && (!feof(inputFile))){
+			fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
+			return ERROR;
+		}
     } 
-    fclose(inputFile);
+    if(fclose(inputFile)==EOF){
+    	fprintf(stderr, "Error fclose: %s\n", strerror( errno ));
+    	return ERROR;
+    }
 
     printf("Se procesó el archivo de entrada \n");
-
-    if (showResultsInStdOut) {
-        printPalindromes(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
+    if(outputFile != stdout){
+    	if(fclose(outputFile)==EOF){
+    		fprintf(stderr, "Error fclose: %s\n", strerror( errno));
+    		return ERROR;
+    	}
     }
-    fclose(outputFile);
 }
 
 
@@ -180,14 +231,16 @@ int main(int argc, char *argv[]) {
                 return 0;
             case 'i':
                 inputFile = fopen(optarg, "r");
-                if (!validFile(inputFile, 'r', optarg)) {
-                    return 0;
+                if (inputFile == NULL) {
+                	fprintf(stderr, "Error archivo entrada: %s\n", strerror( errno ));
+                    return ERROR;
                 }
                 break;
             case 'o':
                 outputFile = fopen(optarg, "w");
-                if (!validFile(outputFile, 'w', optarg)) {
-                    return 0;
+                if (outputFile == NULL) {
+                	fprintf(stderr, "Error archivo salida: %s\n", strerror( errno ));
+                    return ERROR;
                 }
                 break;
             default:
@@ -196,6 +249,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (inputFile == NULL) {
+    	//esto faltaria el error
         printf("Ingrese el stream a procesar (máximo 300 caracteres): \n");
         fgets(inputByStd,MAXCHARS,stdin);
         inputFile = fopen(inputFileAux, "w+");
@@ -205,16 +259,18 @@ int main(int argc, char *argv[]) {
     }
 
     if (outputFile == NULL) {
-        printf("Se mostrará el resultado en pantalla. \n");
-        outputFile = fopen(outputFileAux, "w+");
-        showResultsInStdOut = true;
+        //printf("Se mostrará el resultado en pantalla. \n");
+        outputFile = stdout;
+        //showResultsInStdOut = true;
     }
 
-    processInput(inputFile, outputFile, showResultsInStdOut);
+    if(processInput(inputFile, outputFile, showResultsInStdOut)==ERROR){
+    	return ERROR;
+    }
 
     // Borramos los archivos auxiliares utilizados
     if (takeStreamFromStdIn) remove(inputFileAux);
-    if (showResultsInStdOut) remove(outputFileAux);
+    //if (showResultsInStdOut) remove(outputFileAux);
 
-    return 0;
+    return SALIDA_EXITOSA;
 }
