@@ -10,10 +10,6 @@
 #define ERROR -1
 #define SALIDA_EXITOSA 0
 
-#define MAXLINEA 260
-#define MAXCHARS 300
-
-
 bool isPalindrome(char *palabra) {
     int posInicial, posFinal;
     posFinal = strlen(palabra) - 1;
@@ -133,8 +129,8 @@ int processInput(FILE *inputFile, FILE *outputFile) {
     int cantidadPalabras = 0;
     // para reposicionar el puntero del archivo a la primera linea
     // lectura anticipada del archivo para q no de mas lecturas
-    rewind(inputFile);
     bufferLinea = getLinea(&tamanioLinea, inputFile);
+
     while (!feof(inputFile)) {
         palabras = parseLine(bufferLinea,tamanioLinea,&cantidadPalabras);  // carga en la matriz las palabras
         free (bufferLinea);
@@ -171,9 +167,6 @@ int main(int argc, char *argv[]) {
     };
     FILE *inputFile = NULL;
     FILE *outputFile = NULL;
-    bool takeStreamFromStdIn = false;
-    char inputByStd[MAXCHARS];
-    char *inputFileAux = "inputFileAux.txt";
 
     if (argc == 1) {
         return 0;
@@ -219,11 +212,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (inputFile == NULL) {
-        fgets(inputByStd,MAXCHARS,stdin);
-        inputFile = fopen(inputFileAux, "w+");
-        fputs(inputByStd, inputFile);
-        fputs("\n", inputFile);
-        takeStreamFromStdIn = true;
+        inputFile = stdin;
     }
 
     if (outputFile == NULL) {
@@ -233,9 +222,6 @@ int main(int argc, char *argv[]) {
     if (processInput(inputFile, outputFile) == ERROR) {
     	return ERROR;
     }
-
-    // Borramos los archivos auxiliares utilizados
-    if (takeStreamFromStdIn) remove(inputFileAux);
 
     return SALIDA_EXITOSA;
 }
