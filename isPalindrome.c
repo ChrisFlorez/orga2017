@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <string.h>
+#include <unistd.h>
 
 #define ERROR -1
 #define SALIDA_EXITOSA 0
@@ -13,34 +13,6 @@
 #define MAXLINEA 260
 #define MAXCHARS 300
 
-// Verifica que el archivo no esté vacío
-/*bool empty(FILE *file) {
-    long savedOffset = ftell(file);
-    fseek(file, 0, SEEK_END);
-
-    if (ftell(file) == 0) {
-        return true;
-    }
-
-    fseek(file, savedOffset, SEEK_SET);
-    return false;
-}*/
-
-// Primero se valida que el archivo exista, después que no esté vacío en caso de ser archivo input
-/*bool validFile(FILE *file, char modo, char *argopt) {
-    if (file == NULL) {
-        printf("El archivo %s no existe, por favor ingrese un archivo existente \n", argopt);
-        return false;
-    }
-
-    if (empty(file) && modo != 'w') {
-        printf("El archivo %s está vacío, por favor ingrese un archivo no vacío \n", argopt);
-        return false;
-    }
-
-    printf("Se recibió el archivo %s \n", argopt);
-    return true;
-}*/
 
 bool isPalindrome(char *palabra) {
     int posInicial, posFinal;
@@ -70,19 +42,6 @@ int seekPalindromes(char **palabras, FILE *archivo, int cantidadPalabras) {
     }
     return SALIDA_EXITOSA;
 }
-
-/*void printPalindromes(FILE *archivo) {
-    char bufferLinea[MAXLINEA];
-    memset(&bufferLinea, 0, MAXLINEA);
-    rewind(archivo);
-    fgets(bufferLinea, MAXLINEA, archivo);
-    printf("Las palabras palíndromas detectadas son: \n");
-    while (!feof(archivo)) {
-        printf("%s", bufferLinea);
-        memset(&bufferLinea, 0, MAXLINEA);
-        fgets(bufferLinea, MAXLINEA, archivo);
-    }
-}*/
 
 bool validCharacter(char character) {
     int asciiNumber = (int) character;
@@ -178,7 +137,6 @@ int processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
     	return ERROR;
     }
 
-    printf("Se procesó el archivo de entrada \n");
     if(outputFile != stdout){
     	if(fclose(outputFile)==EOF){
     		fprintf(stderr, "Error fclose: %s\n", strerror( errno));
@@ -186,7 +144,6 @@ int processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
     	}
     }
 }
-
 
 int main(int argc, char *argv[]) {
     int option = 0;
@@ -207,7 +164,6 @@ int main(int argc, char *argv[]) {
     char *outputFileAux = "outputFileAux.txt";
 
     if (argc == 1) {
-        printf("Debe ingresar algún argumento, para mas información ingrese -h \n");
         return 0;
     }
 
@@ -232,25 +188,28 @@ int main(int argc, char *argv[]) {
             case 'i':
                 inputFile = fopen(optarg, "r");
                 if (inputFile == NULL) {
-                	fprintf(stderr, "Error archivo entrada: %s\n", strerror( errno ));
-                    return ERROR;
+                	fprintf(stderr, "Error archivo entrada: %s\n", strerror(errno));
                 }
                 break;
             case 'o':
-                outputFile = fopen(optarg, "w");
-                if (outputFile == NULL) {
-                	fprintf(stderr, "Error archivo salida: %s\n", strerror( errno ));
-                    return ERROR;
+                // verifico si existe el archivo
+                if (access(optarg, W_OK) != -1) {
+                    outputFile = fopen(optarg, "w+");
+                    if (outputFile == NULL) {
+                        fprintf(stderr, "Error archivo salida: %s\n", strerror(errno));
+                        return ERROR;
+                    }
                 }
                 break;
             default:
-                printf("Opción inválida. Para ver más información ingrese -h. \n");
+                abort();
         }
     }
 
     if (inputFile == NULL) {
     	//esto faltaria el error
         printf("Ingrese el stream a procesar (máximo 300 caracteres): \n");
+        //printf("fopen failed to read, errno = %d\n", errno);
         fgets(inputByStd,MAXCHARS,stdin);
         inputFile = fopen(inputFileAux, "w+");
         fputs(inputByStd, inputFile);
@@ -259,18 +218,15 @@ int main(int argc, char *argv[]) {
     }
 
     if (outputFile == NULL) {
-        //printf("Se mostrará el resultado en pantalla. \n");
         outputFile = stdout;
-        //showResultsInStdOut = true;
     }
 
-    if(processInput(inputFile, outputFile, showResultsInStdOut)==ERROR){
+    if (processInput(inputFile, outputFile, showResultsInStdOut)==ERROR) {
     	return ERROR;
     }
 
     // Borramos los archivos auxiliares utilizados
     if (takeStreamFromStdIn) remove(inputFileAux);
-    //if (showResultsInStdOut) remove(outputFileAux);
 
     return SALIDA_EXITOSA;
 }
