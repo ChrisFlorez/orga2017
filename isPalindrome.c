@@ -85,63 +85,87 @@ char **agregarPalabraAVector(char *palabra,char **palabras,int contDePalabrasGua
 	}
 	return auxiPalabras;
 }
-char** parseLine(char *linea, int *cantidadPalabras){
-	char **palabras= NULL;
-	char *palabra = NULL;
-	bool salir = false;
-	int contador = 0;
-	int contDePalabrasGuardadas = 0;
-	int contDeCaracteresGuardados = 0;
-	while (salir == false) {
-		if (validCharacter(linea[contador])) {
-			contDeCaracteresGuardados++;
-			palabra = agregarCaracterAVector(linea[contador], palabra,contDeCaracteresGuardados);
-		}else if (contDeCaracteresGuardados != 0) {
-			contDeCaracteresGuardados++;
-			contDePalabrasGuardadas++;
-			palabra = agregarCaracterAVector('\0', palabra,contDeCaracteresGuardados);
-			palabras = agregarPalabraAVector(palabra,palabras,contDePalabrasGuardadas);
-			contDeCaracteresGuardados=0;
-		}
-		if ((linea[contador] == '\n') || (linea[contador] == '\0')) {
-			salir = true;
-		}
-		contador++;
-	}
-	*cantidadPalabras = contDePalabrasGuardadas;
-	return palabras;
+
+char* getLinea (int* contador, FILE* archivo) {
+   
+    int letra;
+    int finDeLinea ='\n';
+    char* vector = NULL;
+    letra = fgetc(archivo);   
+    while (!feof(archivo) && letra != finDeLinea) {
+        (*contador)++;
+        vector = (char*)realloc(vector,(*contador) *sizeof(char));
+        vector[*contador-1]  = (char)letra;
+        letra = fgetc(archivo);
+    }
+    
+    return vector;
 }
+
+char** parseLine(char *linea, int tamanioLinea, int *cantidadPalabras){
+    char **palabras= NULL;
+    char *palabra = NULL;
+    bool salir = false;
+    int contador = 0;
+    int contDePalabrasGuardadas = 0;
+    int contDeCaracteresGuardados = 0;
+    while (contador < tamanioLinea) {
+        if (validCharacter(linea[contador])) {
+            contDeCaracteresGuardados++;
+            palabra = agregarCaracterAVector(linea[contador], palabra,contDeCaracteresGuardados);
+        }else if (contDeCaracteresGuardados != 0) {
+            contDeCaracteresGuardados++;
+            contDePalabrasGuardadas++;
+            palabra = agregarCaracterAVector('\0', palabra,contDeCaracteresGuardados);
+            palabras = agregarPalabraAVector(palabra,palabras,contDePalabrasGuardadas);
+            contDeCaracteresGuardados=0;
+        }
+        contador++;
+    }
+    *cantidadPalabras = contDePalabrasGuardadas;
+    return palabras;
+}
+
 int processInput(FILE *inputFile, FILE *outputFile) {
-    char bufferLinea[MAXLINEA];
+    char* bufferLinea = NULL;
+    int tamanioLinea = 0;
     char **palabras = NULL;
-    int cantidadPalabras=0;
+    int cantidadPalabras = 0;
     // para reposicionar el puntero del archivo a la primera linea
     // lectura anticipada del archivo para q no de mas lecturas
     rewind(inputFile);
-    if ((fgets(bufferLinea, MAXLINEA, inputFile) == NULL) && (!feof(inputFile))) {
-    	fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
-    	return ERROR;
+    bufferLinea = getLinea(&tamanioLinea, inputFile);
+    printf("%c\n",*bufferLinea);
+    printf("%d\n",tamanioLinea);
+    if((bufferLinea == NULL) && (!feof(inputFile))){
+        fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
+        return ERROR;
     }
     while (!feof(inputFile)) {
-        palabras = parseLine(bufferLinea, &cantidadPalabras);  // carga en la matriz las palabras
-        if(seekPalindromes(palabras, outputFile,cantidadPalabras) == EOF){
-        	return ERROR;
+        palabras = parseLine(bufferLinea,tamanioLinea,&cantidadPalabras);  // carga en la matriz las palabras
+        free (bufferLinea);
+        bufferLinea = NULL;
+        tamanioLinea = 0;
+        if(seekPalindromes(palabras, outputFile,cantidadPalabras)==EOF){
+            return ERROR;
         }
-        if((fgets(bufferLinea, MAXLINEA, inputFile) == NULL) && (!feof(inputFile))){
-			fprintf(stderr, "Error fgets: %s\n", strerror(errno));
-			return ERROR;
-		}
+        bufferLinea = getLinea(&tamanioLinea, inputFile);
+        if((bufferLinea == NULL) && (!feof(inputFile))){
+            fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
+            return ERROR;
+        }
     } 
-    if (fclose(inputFile)==EOF) {
-    	fprintf(stderr, "Error fclose: %s\n", strerror(errno));
-    	return ERROR;
+    if(fclose(inputFile)==EOF){
+        fprintf(stderr, "Error fclose: %s\n", strerror( errno ));
+        return ERROR;
     }
 
-    if (outputFile != stdout) {
-    	if (fclose(outputFile) == EOF) {
-    		fprintf(stderr, "Error fclose: %s\n", strerror(errno));
-    		return ERROR;
-    	}
+    printf("Se procesó el archivo de entrada \n");
+    if(outputFile != stdout){
+        if(fclose(outputFile)==EOF){
+            fprintf(stderr, "Error fclose: %s\n", strerror( errno));
+            return ERROR;
+        }
     }
 }
 
