@@ -38,6 +38,7 @@ int seekPalindromes(char **palabras, FILE *archivo, int cantidadPalabras) {
             	return ERROR;
             }
         }
+        free(palabras[contadorPalabra]);
         contadorPalabra++;
     }
     return SALIDA_EXITOSA;
@@ -131,6 +132,7 @@ int processInput(FILE *inputFile, FILE *outputFile) {
 			fprintf(stderr, "Error fgets: %s\n", strerror(errno));
 			return ERROR;
 		}
+        free(palabras);
     } 
     if (fclose(inputFile)==EOF) {
     	fprintf(stderr, "Error fclose: %s\n", strerror(errno));
