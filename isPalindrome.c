@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <unistd.h>
 
 #define MAXLINEA 260
 #define MAXCHARS 300
@@ -20,16 +21,6 @@ bool empty(FILE *file) {
 
     fseek(file, savedOffset, SEEK_SET);
     return false;
-}
-
-// Primero se valida que el archivo exista, después que no esté vacío en caso de ser archivo input
-bool validFile(FILE *file, char modo, char *argopt) {
-    if (empty(file) && modo != 'w') {
-        printf("El archivo %s está vacío, por favor ingrese un archivo no vacío \n", argopt);
-        return false;
-    }
-
-    return true;
 }
 
 bool isPalindrome(char *palabra) {
@@ -59,7 +50,6 @@ void printPalindromes(FILE *archivo) {
     memset(&bufferLinea, 0, MAXLINEA);
     rewind(archivo);
     fgets(bufferLinea, MAXLINEA, archivo);
-    printf("Las palabras palíndromas detectadas son: \n");
     while (!feof(archivo)) {
         printf("%s", bufferLinea);
         memset(&bufferLinea, 0, MAXLINEA);
@@ -123,8 +113,6 @@ void processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
     } 
     fclose(inputFile);
 
-    printf("Se procesó el archivo de entrada \n");
-
     if (showResultsInStdOut) {
         printPalindromes(outputFile);//usamos rewind(outputFile) para llevar el indicador de posicion del archivo a la 1era linea.
     }
@@ -176,15 +164,17 @@ int main(int argc, char *argv[]) {
                 inputFile = fopen(optarg, "r");
                 break;
             case 'o':
-                outputFile = fopen(optarg, "w");
-                break;
+	            if (access(optarg, W_OK) != -1) {
+					outputFile = fopen(optarg, "w+");
+				}
+				break;
             default:
                 abort();
         }
     }
 
     if (inputFile == NULL) {
-        printf("fopen failed, errno = %d\n", errno);
+        //printf("fopen failed to read, errno = %d\n", errno);
         fgets(inputByStd,MAXCHARS,stdin);
         inputFile = fopen(inputFileAux, "w+");
         fputs(inputByStd, inputFile);
@@ -192,13 +182,12 @@ int main(int argc, char *argv[]) {
         takeStreamFromStdIn = true;
     } else {
         if (empty(inputFile)) {
+            printf("archivo vacio \n");
             return 0;
         }
     }
 
     if (outputFile == NULL) {
-        printf("fopen failed, errno = %d\n", errno);
-        printf("Se mostrará el resultado en pantalla. \n");
         outputFile = fopen(outputFileAux, "w+");
         showResultsInStdOut = true;
     }
