@@ -172,7 +172,7 @@ char** parseLine(char *linea, int tamanioLinea, int *cantidadPalabras){
 }
 
 /**
- * Procesa
+ * Procesa el archivo de entrada o el stream ingresado por stdin
  *
  * @param inputFile
  * @param outputFile

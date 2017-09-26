@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.5)  26 SEP 2017 11:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.5)  26 SEP 2017 17:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -606,8 +606,8 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.96 // Verifica que el archivo no esté 
-                                         vacío
+l.101  * @return si la palabra es palíndroma 
+                                              o no
 ? 
 
 ! Package inputenc Error: Keyboard character used is undefined
@@ -617,219 +617,54 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.96 // Verifica que el archivo no esté 
-                                         vacío
+l.101  * @return si la palabra es palíndroma 
+                                              o no
 ? 
 
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.96 // Verifica que el archivo no esté vacío
-                                               
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.96 // Verifica que el archivo no esté vacío
-                                               
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...e valida que el archivo exista, después 
-                                                  que no esté vacío en cas...
-
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...e valida que el archivo exista, después 
-                                                  que no esté vacío en cas...
-
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...el archivo exista, después que no esté 
-                                                  vacío en caso de ser arch...
-
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...el archivo exista, después que no esté 
-                                                  vacío en caso de ser arch...
-
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...ivo exista, después que no esté vacío 
-                                                  en caso de ser archivo input
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...ivo exista, después que no esté vacío 
-                                                  en caso de ser archivo input
-? 
-
-Overfull \hbox (211.71252pt too wide) in paragraph at lines 109--110
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (161.31262pt too wide) in paragraph at lines 112--113
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117         printf("El archivo %s está 
-                                          vacío, por favor ingrese un archi...
-
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117         printf("El archivo %s está 
-                                          vacío, por favor ingrese un archi...
-
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117         printf("El archivo %s está vacío,
-                                                  por favor ingrese un archi...
-
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117         printf("El archivo %s está vacío,
-                                                  por favor ingrese un archi...
-
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117 ..., por favor ingrese un archivo no vacío 
-                                                  \n", argopt);
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.117 ..., por favor ingrese un archivo no vacío 
-                                                  \n", argopt);
-? 
-
-Overfull \hbox (180.21259pt too wide) in paragraph at lines 117--118
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
-
- []
-
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.121     printf("Se recibió 
-                              el archivo %s \n", argopt);
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.121     printf("Se recibió 
-                              el archivo %s \n", argopt);
-? 
-
-Overfull \hbox (117.2127pt too wide) in paragraph at lines 128--129
+Overfull \hbox (117.2127pt too wide) in paragraph at lines 106--107
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (110.91272pt too wide) in paragraph at lines 129--130
+Overfull \hbox (110.91272pt too wide) in paragraph at lines 107--108
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119  * @return un código
+                           
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119  * @return un código
+                           
+? 
+
+Overfull \hbox (47.91284pt too wide) in paragraph at lines 121--122
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 126--127
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 130--131
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [2]
@@ -841,8 +676,8 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.152     printf("Las palabras palíndromas 
-                                            detectadas son: \n");
+l.143  * @return si el caracter es válido
+                                          
 ? 
 
 ! Package inputenc Error: Keyboard character used is undefined
@@ -852,117 +687,154 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.152     printf("Las palabras palíndromas 
-                                            detectadas son: \n");
+l.143  * @return si el caracter es válido
+                                          
 ? 
 
-Overfull \hbox (148.71265pt too wide) in paragraph at lines 187--188
-[][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (79.41278pt too wide) in paragraph at lines 190--191
-[][][][][][][][][][][][][][][][] 
- []
-
-[3]
-Overfull \hbox (10.11292pt too wide) in paragraph at lines 194--195
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (79.41278pt too wide) in paragraph at lines 202--203
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (60.51282pt too wide) in paragraph at lines 210--211
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][] 
- []
-
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.216     printf("Se procesó 
-                              el archivo de entrada \n");
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.216     printf("Se procesó 
-                              el archivo de entrada \n");
-? 
-
-Overfull \hbox (394.41217pt too wide) in paragraph at lines 219--220
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.244         printf("Debe ingresar algún 
-                                           argumento, para mas información ...
-
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.244         printf("Debe ingresar algún 
-                                           argumento, para mas información ...
-
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.244 ... algún argumento, para mas información 
-                                                  ingrese -h \n");
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.244 ... algún argumento, para mas información 
-                                                  ingrese -h \n");
-? 
-
-Overfull \hbox (117.2127pt too wide) in paragraph at lines 244--245
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 172--173
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+
+Overfull \hbox (129.81268pt too wide) in paragraph at lines 192--193
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[3]
+Overfull \hbox (10.11292pt too wide) in paragraph at lines 195--196
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (92.01276pt too wide) in paragraph at lines 198--199
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.208  * @return una línea 
+                            leída del archivo
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.208  * @return una línea 
+                            leída del archivo
+? 
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.208  * @return una línea leída 
+                                   del archivo
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.208  * @return una línea leída 
+                                   del archivo
+? 
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.234  * @return todas las palabras de la línea
+                                                
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.234  * @return todas las palabras de la línea
+                                                
+? 
+
+Overfull \hbox (22.71289pt too wide) in paragraph at lines 236--237
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (186.51257pt too wide) in paragraph at lines 245--246
+[][][][][][][][][][][][][][][][][][] 
+ []
+
 [4]
-Overfull \hbox (85.71277pt too wide) in paragraph at lines 248--249
+Overfull \hbox (117.2127pt too wide) in paragraph at lines 249--250
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (123.5127pt too wide) in paragraph at lines 250--251
+[][][][][][][][][][][][][][][] 
+ []
+
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.264  * @return un código
+                           
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.264  * @return un código
+                           
+? 
+
+Overfull \hbox (47.91284pt too wide) in paragraph at lines 276--277
+[][][][][][][][][][][][][][][][][]
+ []
+
+
+Overfull \hbox (66.8128pt too wide) in paragraph at lines 280--281
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 292--293
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[5]
+Overfull \hbox (85.71277pt too wide) in paragraph at lines 317--318
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -974,7 +846,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.251 ...rintf("TP #0 de la materia Organización 
+l.320 ...rintf("TP #0 de la materia Organización 
                                                   de Computadoras \n");
 ? 
 
@@ -985,11 +857,11 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.251 ...rintf("TP #0 de la materia Organización 
+l.320 ...rintf("TP #0 de la materia Organización 
                                                   de Computadoras \n");
 ? 
 
-Overfull \hbox (73.1128pt too wide) in paragraph at lines 251--252
+Overfull \hbox (73.1128pt too wide) in paragraph at lines 320--321
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -1001,7 +873,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.253                 printf("    Flórez 
+l.322                 printf("    Flórez 
                                           Del Carpio Christian\n   Montenegr...
 
 ? 
@@ -1013,236 +885,97 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.253                 printf("    Flórez 
+l.322                 printf("    Flórez 
                                           Del Carpio Christian\n   Montenegr...
 
 ? 
 
-Overfull \hbox (110.91272pt too wide) in paragraph at lines 253--254
+Overfull \hbox (110.91272pt too wide) in paragraph at lines 322--323
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
 
-Overfull \hbox (29.01288pt too wide) in paragraph at lines 261--262
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 330--331
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (29.01288pt too wide) in paragraph at lines 262--263
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 331--332
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (60.51282pt too wide) in paragraph at lines 263--264
+Overfull \hbox (60.51282pt too wide) in paragraph at lines 332--333
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (54.21283pt too wide) in paragraph at lines 264--265
+Overfull \hbox (54.21283pt too wide) in paragraph at lines 333--334
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279                 printf("Opción 
-                                      inválida. Para ver más información ...
-
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279                 printf("Opción 
-                                      inválida. Para ver más información ...
-
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279                 printf("Opción inválida.
-                                                 Para ver más información ...
-
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279                 printf("Opción inválida.
-                                                 Para ver más información ...
-
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279 ...printf("Opción inválida. Para ver más 
-                                                  información ingrese -h. \...
-
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279 ...printf("Opción inválida. Para ver más 
-                                                  información ingrese -h. \...
-
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279 ...�n inválida. Para ver más información 
-                                                  ingrese -h. \n");
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279 ...�n inválida. Para ver más información 
-                                                  ingrese -h. \n");
-? 
-
-Overfull \hbox (123.5127pt too wide) in paragraph at lines 279--280
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (104.61273pt too wide) in paragraph at lines 338--339
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.284 ...f("Ingrese el stream a procesar (máximo 
-                                                  300 caracteres): \n");
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.284 ...f("Ingrese el stream a procesar (máximo 
-                                                  300 caracteres): \n");
-? 
-
-Overfull \hbox (54.21283pt too wide) in paragraph at lines 284--285
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (123.5127pt too wide) in paragraph at lines 346--347
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.293         printf("Se mostrará 
-                                   el resultado en pantalla. \n");
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.293         printf("Se mostrará 
-                                   el resultado en pantalla. \n");
-? 
-[5] <prueba1.png, id=42, 644.4075pt x 407.5225pt>
+[6] <prueba1.png, id=45, 644.4075pt x 407.5225pt>
 File: prueba1.png Graphic file (type png)
  <use prueba1.png>
-Package pdftex.def Info: prueba1.png used on input line 315.
+Package pdftex.def Info: prueba1.png used on input line 379.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<prueba1SalidaPorPantalla.png, id=44, 692.5875pt x 437.635pt>
+<prueba1SalidaPorPantalla.png, id=47, 692.5875pt x 437.635pt>
 File: prueba1SalidaPorPantalla.png Graphic file (type png)
 
 <use prueba1SalidaPorPantalla.png>
-Package pdftex.def Info: prueba1SalidaPorPantalla.png used on input line 322.
+Package pdftex.def Info: prueba1SalidaPorPantalla.png used on input line 386.
 (pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
 
-<prueba2.png, id=45, 644.4075pt x 407.5225pt>
+<prueba2.png, id=48, 644.4075pt x 407.5225pt>
 File: prueba2.png Graphic file (type png)
  <use prueba2.png>
-Package pdftex.def Info: prueba2.png used on input line 329.
+Package pdftex.def Info: prueba2.png used on input line 393.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
-
-<prueba3.png, id=46, 692.5875pt x 437.635pt>
+ [7 <./prueba1.png> <./prueba1SalidaPorPantalla.png>]
+<prueba3.png, id=54, 692.5875pt x 437.635pt>
 File: prueba3.png Graphic file (type png)
  <use prueba3.png>
-Package pdftex.def Info: prueba3.png used on input line 336.
+Package pdftex.def Info: prueba3.png used on input line 400.
 (pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
 
-<prueba3salidaPorPantalla.png, id=47, 692.5875pt x 437.635pt>
+<prueba3salidaPorPantalla.png, id=55, 692.5875pt x 437.635pt>
 File: prueba3salidaPorPantalla.png Graphic file (type png)
 
 <use prueba3salidaPorPantalla.png>
-Package pdftex.def Info: prueba3salidaPorPantalla.png used on input line 343.
+Package pdftex.def Info: prueba3salidaPorPantalla.png used on input line 407.
 (pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
 
-<pruebaPorTeclado.png, id=48, 692.5875pt x 437.635pt>
+<pruebaPorTeclado.png, id=56, 692.5875pt x 437.635pt>
 File: pruebaPorTeclado.png Graphic file (type png)
 
 <use pruebaPorTeclado.png>
-Package pdftex.def Info: pruebaPorTeclado.png used on input line 350.
+Package pdftex.def Info: pruebaPorTeclado.png used on input line 414.
 (pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
- [6 <./prueba1.png> <./prueba1SalidaPorPantalla.png>] [7 <./prueba2.png> <./pru
-eba3.png> <./prueba3salidaPorPantalla.png>]
+ [8 <./prueba2.png> <./prueba3.png> <./prueba3salidaPorPantalla.png>]
 ! Misplaced alignment tab character &.
-l.370 Reconocer que 345 soladados&
+l.434 Reconocer que 345 soladados&
                                   civiles murieron por una fruta como el ana...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.371 
+l.435 
       
 ? 
 
-Overfull \hbox (81.46019pt too wide) in paragraph at lines 370--371
+Overfull \hbox (81.46019pt too wide) in paragraph at lines 434--435
 \OT1/cmr/m/n/10 ta-rio que m hi-zo ana el otro dia cuan-do me pi-ca-ba el ojo, 
 [11134111$; : \OML/cmm/m/it/10 esenumeronoloentiendoserapalindromo\OT1/cmr/m/n/
 10 ?\OML/cmm/m/it/10 nolose:$ 
@@ -1264,7 +997,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.378 \begin{lstlisting}[language=Assembler]
+l.442 \begin{lstlisting}[language=Assembler]
                                             
 ? 
 
@@ -1274,110 +1007,110 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.378 \begin{lstlisting}[language=Assembler]
+l.442 \begin{lstlisting}[language=Assembler]
                                             
 ? 
 
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 388--389
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 452--453
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[8 <./pruebaPorTeclado.png>]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 436--437
+[9 <./pruebaPorTeclado.png>]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 500--501
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 440--441
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 504--505
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 450--451
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 514--515
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[9]
-Overfull \hbox (10.11292pt too wide) in paragraph at lines 508--509
+[10]
+Overfull \hbox (10.11292pt too wide) in paragraph at lines 572--573
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[10] [11]
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 587--588
+[11] [12]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 651--652
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[12]
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 657--658
+[13]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 721--722
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 666--667
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 730--731
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[13] [14]
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 730--731
+[14] [15]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 794--795
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[15]
-Overfull \hbox (10.11292pt too wide) in paragraph at lines 802--803
+[16]
+Overfull \hbox (10.11292pt too wide) in paragraph at lines 866--867
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[16] [17]
-Overfull \hbox (54.21283pt too wide) in paragraph at lines 914--915
+[17] [18]
+Overfull \hbox (54.21283pt too wide) in paragraph at lines 978--979
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[18] [19]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1043--1044
+[19] [20]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1107--1108
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1047--1048
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[20]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1092--1093
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1096--1097
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1111--1112
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [21]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1109--1110
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1156--1157
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1160--1161
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[22]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1173--1174
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[22] [23] [24] [25]
+[23] [24] [25] [26]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1350 ...//www.gnu.org/software/libc/manual/html_
+l.1414 ...//www.gnu.org/software/libc/manual/html_
                                                   node/Example-of-Getopt.html.
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1351 
+l.1415 
        
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.1351 
+l.1415 
        
 ? 
 
-Underfull \hbox (badness 3942) in paragraph at lines 1350--1351
+Underfull \hbox (badness 3942) in paragraph at lines 1414--1415
 []\OT1/cmr/m/n/10 GetOpt li-brary, https://www.gnu.org/software/libc/manual/htm
 l$[]\OML/cmm/m/it/10 ode=Example \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 of \OMS/
 cmsy/m/n/10 ^^@
@@ -1386,10 +1119,10 @@ cmsy/m/n/10 ^^@
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.1351 
+l.1415 
        
 ? 
-[26] (./informe-trabajo-practico.aux
+[27] (./informe-trabajo-practico.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -1399,13 +1132,13 @@ LaTeX Warning: There were multiply-defined labels.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 370 ({)
+### simple group (level 1) entered at line 434 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 5807 strings out of 493029
- 74112 string characters out of 6136235
- 195381 words of memory out of 5000000
- 9269 multiletter control sequences out of 15000+600000
+ 5836 strings out of 493029
+ 74473 string characters out of 6136235
+ 197381 words of memory out of 5000000
+ 9298 multiletter control sequences out of 15000+600000
  7146 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,51p,503b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1421,10 +1154,10 @@ pe1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmtt10.pfb>
-Output written on informe-trabajo-practico.pdf (28 pages, 589524 bytes).
+Output written on informe-trabajo-practico.pdf (29 pages, 590628 bytes).
 PDF statistics:
- 165 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
+ 168 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
