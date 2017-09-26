@@ -10,6 +10,11 @@
 #define ERROR -1
 #define SALIDA_EXITOSA 0
 
+/**
+ *
+ * @param palabra a analizar
+ * @return si la palabra es palíndroma o no
+ */
 bool isPalindrome(char *palabra) {
     int posInicial, posFinal;
     posFinal = strlen(palabra) - 1;
@@ -21,16 +26,23 @@ bool isPalindrome(char *palabra) {
     return true;
 }
 
+/**
+ *
+ * @param palabras a analizar
+ * @param archivo de salida
+ * @param cantidadPalabras
+ * @return un código
+ */
 int seekPalindromes(char **palabras, FILE *archivo, int cantidadPalabras) {
     int contadorPalabra = 0;
     while (contadorPalabra<cantidadPalabras) {
         if (isPalindrome(palabras[contadorPalabra])) {
-            if(fputs(palabras[contadorPalabra], archivo)==EOF){
-            	fprintf(stderr, "Error fputs: %s\n", strerror( errno ));
+            if (fputs(palabras[contadorPalabra], archivo) == EOF) {
+            	fprintf(stderr, "Error fputs: %s\n", strerror(errno));
             	return ERROR;
             }
-            if(fputs("\n", archivo)==EOF){
-            	fprintf(stderr, "Error fputs: %s\n", strerror( errno ));
+            if (fputs("\n", archivo)==EOF) {
+            	fprintf(stderr, "Error fputs: %s\n", strerror(errno));
             	return ERROR;
             }
         }
@@ -40,6 +52,11 @@ int seekPalindromes(char **palabras, FILE *archivo, int cantidadPalabras) {
     return SALIDA_EXITOSA;
 }
 
+/**
+ *
+ * @param character
+ * @return si el caracter es válido
+ */
 bool validCharacter(char character) {
     int asciiNumber = (int) character;
     if ((asciiNumber <= 57) && (asciiNumber >= 48)) {
@@ -60,6 +77,13 @@ bool validCharacter(char character) {
     return false;
 }
 
+/**
+ *
+ * @param caracter
+ * @param vector
+ * @param contador
+ * @return una palabra parcial
+ */
 char *agregarCaracterAVector(char caracter, char *vector, int contador){
 	char *cadena = NULL;
 	if(contador == 1){
@@ -73,18 +97,31 @@ char *agregarCaracterAVector(char caracter, char *vector, int contador){
 	return cadena;
 }
 
+/**
+ *
+ * @param palabra
+ * @param palabras
+ * @param contDePalabrasGuardadas
+ * @return un vector de palabras
+ */
 char **agregarPalabraAVector(char *palabra,char **palabras,int contDePalabrasGuardadas){
 	char **auxiPalabras=NULL;
-	if(contDePalabrasGuardadas == 1){
+	if (contDePalabrasGuardadas == 1) {
 		auxiPalabras = malloc(contDePalabrasGuardadas*sizeof(char*));
 		auxiPalabras[0] = palabra;
-	}else{
+	} else {
 		auxiPalabras = realloc(palabras, contDePalabrasGuardadas * sizeof(char*));
 		auxiPalabras[contDePalabrasGuardadas-1] = palabra;
 	}
 	return auxiPalabras;
 }
 
+/**
+ *
+ * @param contador
+ * @param archivo
+ * @return una línea leída del archivo
+ */
 char* getLinea(int* contador, FILE* archivo) {
     int letra;
     int finDeLinea ='\n';
@@ -104,6 +141,13 @@ char* getLinea(int* contador, FILE* archivo) {
     return vector;
 }
 
+/**
+ *
+ * @param linea
+ * @param tamanioLinea
+ * @param cantidadPalabras
+ * @return todas las palabras de la línea
+ */
 char** parseLine(char *linea, int tamanioLinea, int *cantidadPalabras){
     char **palabras= NULL;
     char *palabra = NULL;
@@ -127,6 +171,13 @@ char** parseLine(char *linea, int tamanioLinea, int *cantidadPalabras){
     return palabras;
 }
 
+/**
+ * Procesa
+ *
+ * @param inputFile
+ * @param outputFile
+ * @return un código
+ */
 int processInput(FILE *inputFile, FILE *outputFile) {
     char* bufferLinea = NULL;
     int tamanioLinea = 0;
@@ -141,7 +192,7 @@ int processInput(FILE *inputFile, FILE *outputFile) {
         free (bufferLinea);
         bufferLinea = NULL;
         tamanioLinea = 0;
-        if(seekPalindromes(palabras, outputFile,cantidadPalabras)==EOF){
+        if (seekPalindromes(palabras, outputFile,cantidadPalabras) == ERROR) {
             return ERROR;
         }
         bufferLinea = getLinea(&tamanioLinea, inputFile);
@@ -157,6 +208,8 @@ int processInput(FILE *inputFile, FILE *outputFile) {
             return ERROR;
         }
     }
+
+    return SALIDA_EXITOSA;
 }
 
 int main(int argc, char *argv[]) {
