@@ -111,35 +111,35 @@ char** parseLine(char *linea, int *cantidadPalabras){
 	*cantidadPalabras = contDePalabrasGuardadas;
 	return palabras;
 }
-int processInput(FILE *inputFile, FILE *outputFile, bool showResultsInStdOut) {
+int processInput(FILE *inputFile, FILE *outputFile) {
     char bufferLinea[MAXLINEA];
     char **palabras = NULL;
     int cantidadPalabras=0;
     // para reposicionar el puntero del archivo a la primera linea
     // lectura anticipada del archivo para q no de mas lecturas
     rewind(inputFile);
-    if((fgets(bufferLinea, MAXLINEA, inputFile) == NULL) && (!feof(inputFile))){
+    if ((fgets(bufferLinea, MAXLINEA, inputFile) == NULL) && (!feof(inputFile))) {
     	fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
     	return ERROR;
     }
     while (!feof(inputFile)) {
         palabras = parseLine(bufferLinea, &cantidadPalabras);  // carga en la matriz las palabras
-        if(seekPalindromes(palabras, outputFile,cantidadPalabras)==EOF){
+        if(seekPalindromes(palabras, outputFile,cantidadPalabras) == EOF){
         	return ERROR;
         }
         if((fgets(bufferLinea, MAXLINEA, inputFile) == NULL) && (!feof(inputFile))){
-			fprintf(stderr, "Error fgets: %s\n", strerror( errno ));
+			fprintf(stderr, "Error fgets: %s\n", strerror(errno));
 			return ERROR;
 		}
     } 
-    if(fclose(inputFile)==EOF){
-    	fprintf(stderr, "Error fclose: %s\n", strerror( errno ));
+    if (fclose(inputFile)==EOF) {
+    	fprintf(stderr, "Error fclose: %s\n", strerror(errno));
     	return ERROR;
     }
 
-    if(outputFile != stdout){
-    	if(fclose(outputFile)==EOF){
-    		fprintf(stderr, "Error fclose: %s\n", strerror( errno));
+    if (outputFile != stdout) {
+    	if (fclose(outputFile) == EOF) {
+    		fprintf(stderr, "Error fclose: %s\n", strerror(errno));
     		return ERROR;
     	}
     }
@@ -158,10 +158,8 @@ int main(int argc, char *argv[]) {
     FILE *inputFile = NULL;
     FILE *outputFile = NULL;
     bool takeStreamFromStdIn = false;
-    bool showResultsInStdOut = false;
     char inputByStd[MAXCHARS];
     char *inputFileAux = "inputFileAux.txt";
-    char *outputFileAux = "outputFileAux.txt";
 
     if (argc == 1) {
         return 0;
@@ -207,9 +205,6 @@ int main(int argc, char *argv[]) {
     }
 
     if (inputFile == NULL) {
-    	//esto faltaria el error
-        printf("Ingrese el stream a procesar (máximo 300 caracteres): \n");
-        //printf("fopen failed to read, errno = %d\n", errno);
         fgets(inputByStd,MAXCHARS,stdin);
         inputFile = fopen(inputFileAux, "w+");
         fputs(inputByStd, inputFile);
@@ -221,7 +216,7 @@ int main(int argc, char *argv[]) {
         outputFile = stdout;
     }
 
-    if (processInput(inputFile, outputFile, showResultsInStdOut)==ERROR) {
+    if (processInput(inputFile, outputFile) == ERROR) {
     	return ERROR;
     }
 
