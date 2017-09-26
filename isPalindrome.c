@@ -264,6 +264,7 @@ int main(int argc, char *argv[]) {
                 }
                 break;
             default:
+                // así está en el manual de getopt
                 abort();
         }
     }
