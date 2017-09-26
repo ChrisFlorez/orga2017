@@ -63,6 +63,7 @@ bool validCharacter(char character) {
     }
     return false;
 }
+
 char *agregarCaracterAVector(char caracter, char *vector, int contador){
 	char *cadena = NULL;
 	if(contador == 1){
@@ -75,6 +76,7 @@ char *agregarCaracterAVector(char caracter, char *vector, int contador){
 	}
 	return cadena;
 }
+
 char **agregarPalabraAVector(char *palabra,char **palabras,int contDePalabrasGuardadas){
 	char **auxiPalabras=NULL;
 	if(contDePalabrasGuardadas == 1){
@@ -86,6 +88,7 @@ char **agregarPalabraAVector(char *palabra,char **palabras,int contDePalabrasGua
 	}
 	return auxiPalabras;
 }
+
 char** parseLine(char *linea, int *cantidadPalabras){
 	char **palabras= NULL;
 	char *palabra = NULL;
@@ -112,6 +115,7 @@ char** parseLine(char *linea, int *cantidadPalabras){
 	*cantidadPalabras = contDePalabrasGuardadas;
 	return palabras;
 }
+
 int processInput(FILE *inputFile, FILE *outputFile) {
     char bufferLinea[MAXLINEA];
     char **palabras = NULL;
