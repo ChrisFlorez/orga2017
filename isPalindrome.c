@@ -1,284 +1,38 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include <getopt.h>
-#include <stdbool.h>
 #include <stdlib.h>
-#include <errno.h>
-#include <unistd.h>
-
-#define ERROR -1
-#define SALIDA_EXITOSA 0
-
-/**
- *
- * @param palabra a analizar
- * @return si la palabra es palíndroma o no
- */
-bool isPalindrome(char *palabra) {
-    int posInicial, posFinal;
-    posFinal = strlen(palabra) - 1;
-    for (posInicial = 0; posInicial < strlen(palabra) / 2; posInicial++, posFinal--) {
-        if ((toupper(*(palabra + posInicial))) != (toupper(*(palabra + posFinal)))) {
-            return false;
-        }
-    }
-    return true;
-}
-
-/**
- *
- * @param palabras a analizar
- * @param archivo de salida
- * @param cantidadPalabras
- * @return un código
- */
-int seekPalindromes(char **palabras, FILE *archivo, int cantidadPalabras) {
-    int contadorPalabra = 0;
-    while (contadorPalabra<cantidadPalabras) {
-        if (isPalindrome(palabras[contadorPalabra])) {
-            if (fputs(palabras[contadorPalabra], archivo) == EOF) {
-            	fprintf(stderr, "Error fputs: %s\n", strerror(errno));
-            	return ERROR;
-            }
-            if (fputs("\n", archivo)==EOF) {
-            	fprintf(stderr, "Error fputs: %s\n", strerror(errno));
-            	return ERROR;
-            }
-        }
-        free(palabras[contadorPalabra]);
-        contadorPalabra++;
-    }
-    return SALIDA_EXITOSA;
-}
-
-/**
- *
- * @param character
- * @return si el caracter es válido
- */
-bool validCharacter(char character) {
-    int asciiNumber = (int) character;
-    if ((asciiNumber <= 57) && (asciiNumber >= 48)) {
-        return true;
-    }
-    if ((asciiNumber <= 90) && (asciiNumber >= 65)) {
-        return true;
-    }
-    if ((asciiNumber <= 122) && (asciiNumber >= 97)) {
-        return true;
-    }
-    if (asciiNumber == 45) {
-        return true;
-    }
-    if (asciiNumber == 95) {
-        return true;
-    }
-    return false;
-}
-
-/**
- *
- * @param caracter
- * @param vector
- * @param contador
- * @return una palabra parcial
- */
-char *agregarCaracterAVector(char caracter, char *vector, int contador){
-	char *cadena = NULL;
-	if(contador == 1){
-		cadena = malloc(contador*sizeof(char));
-		cadena[0] = caracter;
-
+extern int palindromo(char *palabra);
+int main()
+{
+	char* palabra = "salas";
+	printf("%s\n",palabra);
+	if(palindromo(palabra) == 1){
+		printf("palindroma\n");
 	}else{
-		cadena = realloc(vector, contador * sizeof(char));
-		cadena[contador-1]=caracter;
+		printf("no palindromo\n");
 	}
-	return cadena;
-}
-
-/**
- *
- * @param palabra
- * @param palabras
- * @param contDePalabrasGuardadas
- * @return un vector de palabras
- */
-char **agregarPalabraAVector(char *palabra,char **palabras,int contDePalabrasGuardadas){
-	char **auxiPalabras=NULL;
-	if (contDePalabrasGuardadas == 1) {
-		auxiPalabras = malloc(contDePalabrasGuardadas*sizeof(char*));
-		auxiPalabras[0] = palabra;
-	} else {
-		auxiPalabras = realloc(palabras, contDePalabrasGuardadas * sizeof(char*));
-		auxiPalabras[contDePalabrasGuardadas-1] = palabra;
+	printf("=======================\n");
+	char* palabra1 = "hola";
+	printf("%s\n",palabra1);
+	if(palindromo(palabra1) == 1){
+		printf("palindroma\n");
+	}else{
+		printf("no palindromo\n");
 	}
-	return auxiPalabras;
-}
-
-/**
- *
- * @param contador
- * @param archivo
- * @return una línea leída del archivo
- */
-char* getLinea(int* contador, FILE* archivo) {
-    int letra;
-    int finDeLinea ='\n';
-    char* vector = NULL;
-    letra = fgetc(archivo);
-    while (!feof(archivo) && letra != finDeLinea) {
-        (*contador)++;
-        vector = (char*)realloc(vector,(*contador) *sizeof(char));
-        vector[*contador-1]  = (char)letra;
-        letra = fgetc(archivo);
-    }
-
-    (*contador)++;
-    vector = (char*)realloc(vector,(*contador) *sizeof(char));
-    vector[*contador-1]  = '\0';
-
-    return vector;
-}
-
-/**
- *
- * @param linea
- * @param tamanioLinea
- * @param cantidadPalabras
- * @return todas las palabras de la línea
- */
-char** parseLine(char *linea, int tamanioLinea, int *cantidadPalabras){
-    char **palabras= NULL;
-    char *palabra = NULL;
-    int contador = 0;
-    int contDePalabrasGuardadas = 0;
-    int contDeCaracteresGuardados = 0;
-    while (contador < tamanioLinea) {
-        if (validCharacter(linea[contador])) {
-            contDeCaracteresGuardados++;
-            palabra = agregarCaracterAVector(linea[contador], palabra,contDeCaracteresGuardados);
-        }else if (contDeCaracteresGuardados != 0) {
-            contDeCaracteresGuardados++;
-            contDePalabrasGuardadas++;
-            palabra = agregarCaracterAVector('\0', palabra,contDeCaracteresGuardados);
-            palabras = agregarPalabraAVector(palabra,palabras,contDePalabrasGuardadas);
-            contDeCaracteresGuardados=0;
-        }
-        contador++;
-    }
-    *cantidadPalabras = contDePalabrasGuardadas;
-    return palabras;
-}
-
-/**
- * Procesa el archivo de entrada o el stream ingresado por stdin
- *
- * @param inputFile
- * @param outputFile
- * @return un código
- */
-int processInput(FILE *inputFile, FILE *outputFile) {
-    char* bufferLinea = NULL;
-    int tamanioLinea = 0;
-    char **palabras = NULL;
-    int cantidadPalabras = 0;
-    // para reposicionar el puntero del archivo a la primera linea
-    // lectura anticipada del archivo para q no de mas lecturas
-    bufferLinea = getLinea(&tamanioLinea, inputFile);
-
-    while (!feof(inputFile)) {
-        palabras = parseLine(bufferLinea,tamanioLinea,&cantidadPalabras);  // carga en la matriz las palabras
-        free (bufferLinea);
-        bufferLinea = NULL;
-        tamanioLinea = 0;
-        if (seekPalindromes(palabras, outputFile,cantidadPalabras) == ERROR) {
-            return ERROR;
-        }
-        bufferLinea = getLinea(&tamanioLinea, inputFile);
-    } 
-    if(fclose(inputFile)==EOF){
-        fprintf(stderr, "Error fclose: %s\n", strerror( errno ));
-        return ERROR;
-    }
-
-    if(outputFile != stdout){
-        if(fclose(outputFile)==EOF){
-            fprintf(stderr, "Error fclose: %s\n", strerror( errno));
-            return ERROR;
-        }
-    }
-
-    return SALIDA_EXITOSA;
-}
-
-int main(int argc, char *argv[]) {
-    int option = 0;
-    const char *short_opt = "i:o:hV";
-    struct option long_opt[] = {
-            {"version", no_argument,       NULL, 'V'},
-            {"help",    no_argument,       NULL, 'h'},
-            {"input",   required_argument, NULL, 'i'},
-            {"output",  required_argument, NULL, 'o'},
-            {NULL, 0,                      NULL, 0}
-    };
-    FILE *inputFile = NULL;
-    FILE *outputFile = NULL;
-
-    if (argc == 1) {
-        return 0;
-    }
-
-    while ((option = getopt_long(argc, argv, short_opt, long_opt, NULL)) != -1) {
-        switch (option) {
-            case 'V':
-                printf("TP #0 de la materia Organización de Computadoras \n");
-                printf("Alumnos: \n");
-                printf("	Flórez Del Carpio Christian\n	Montenegro Josefina \n	Quino Lopez Julian \n");
-                return 0;
-            case 'h':
-                printf("Usage: \n");
-                printf("	%s -h \n", argv[0]);
-                printf("	%s -V \n", argv[0]);
-                printf("	%s [options] \n", argv[0]);
-                printf("Options: \n");
-                printf("	-V, --version  Print version and quit. \n");
-                printf("	-h, --help     Print this information. \n");
-                printf("	-o, --output   Location of the output file. \n");
-                printf("	-i, --input    Location of the input file. \n");
-                return 0;
-            case 'i':
-                inputFile = fopen(optarg, "r");
-                if (inputFile == NULL) {
-                	fprintf(stderr, "Error archivo entrada: %s\n", strerror(errno));
-                }
-                break;
-            case 'o':
-                // verifico si existe el archivo
-                if (access(optarg, W_OK) != -1) {
-                    outputFile = fopen(optarg, "w+");
-                    if (outputFile == NULL) {
-                        fprintf(stderr, "Error archivo salida: %s\n", strerror(errno));
-                        return ERROR;
-                    }
-                }
-                break;
-            default:
-                abort();
-        }
-    }
-
-    if (inputFile == NULL) {
-        inputFile = stdin;
-    }
-
-    if (outputFile == NULL) {
-        outputFile = stdout;
-    }
-
-    if (processInput(inputFile, outputFile) == ERROR) {
-    	return ERROR;
-    }
-
-    return SALIDA_EXITOSA;
+	printf("=======================\n");
+	char* palabra2 = "casa";
+	printf("%s\n",palabra2);
+	if(palindromo(palabra2) == 1){
+		printf("palindroma\n");
+	}else{
+		printf("no palindromo\n");
+	}
+	printf("=======================\n");
+	char* palabra3 = "amooma";
+	printf("%s\n",palabra3);
+	if(palindromo(palabra3) == 1){
+		printf("palindroma\n");
+	}else{
+		printf("no palindromo\n");
+	}
+	return 0;
 }
