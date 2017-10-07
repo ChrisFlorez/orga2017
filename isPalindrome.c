@@ -1,38 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
-extern int palindromo(char *palabra);
+#include <unistd.h>
+//extern int lecturaEscritura(int archivo,char *buffer);
+/*extern int llenarBufferEntrada(int archivoIn,int tamanioBufferIn,char* buffer){
+
+	int cantidadCaracteresLeidos = read(archivoIn,buffer,tamanioBufferIn);
+	//primero me fijo si hay error con a3
+	if (cantidadCaracteresLeidos < 0){
+		//retorno error tambien
+	}
+	return cantidadCaracteresLeidos;
+}*/
+/*extern int imprimirBuffer(int archivoOut,int tamanioBufferOut,char* buffer){
+	return cantidadCaracteresEscritos
+}*/
+extern int palindrome(int archivoIn, int tamanioIn,int archivoOut);/*{
+	char *bufferEntrada = malloc(tamanioIn * sizeof(char));
+	//char *bufferSalida = malloc(tamanioOut * sizeof(char));
+	int salir = 1; //1 sigue, 0 sale
+	while(salir == 1){
+		int cantidadCaracteresLeidos = llenarBufferEntrada(archivoIn,tamanioIn,bufferEntrada);
+		if(cantidadCaracteresLeidos  != tamanioIn){
+			salir = 0;
+		}
+
+		//procesoElBuffer(bufferSalida);
+		write(1,bufferEntrada,cantidadCaracteresLeidos);
+		printf("%d\n",cantidadCaracteresLeidos);
+	}
+	return 0;
+}*/
 int main()
 {
-	char* palabra = "salas";
-	printf("%s\n",palabra);
-	if(palindromo(palabra) == 1){
-		printf("palindroma\n");
+	FILE *archivoEntrada = fopen("lInt.txt","r");
+	FILE *archivoSalida = fopen("lout.txt","w");
+	int tamanioIn = 4;
+	if(archivoEntrada == NULL || archivoSalida == NULL){
+		printf("no exite archivo\n");
 	}else{
-		printf("no palindromo\n");
-	}
-	printf("=======================\n");
-	char* palabra1 = "hola";
-	printf("%s\n",palabra1);
-	if(palindromo(palabra1) == 1){
-		printf("palindroma\n");
-	}else{
-		printf("no palindromo\n");
-	}
-	printf("=======================\n");
-	char* palabra2 = "casa";
-	printf("%s\n",palabra2);
-	if(palindromo(palabra2) == 1){
-		printf("palindroma\n");
-	}else{
-		printf("no palindromo\n");
-	}
-	printf("=======================\n");
-	char* palabra3 = "amooma";
-	printf("%s\n",palabra3);
-	if(palindromo(palabra3) == 1){
-		printf("palindroma\n");
-	}else{
-		printf("no palindromo\n");
+		palindrome(fileno(archivoEntrada),tamanioIn,fileno(archivoSalida));
+		printf("salio\n");
 	}
 	return 0;
 }

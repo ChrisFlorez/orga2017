@@ -23,6 +23,135 @@
 
 	.text
 	.align	2
+	.globl	palindrome
+	.ent	palindrome
+palindrome:
+	.frame	$fp,40,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+
+	subu	sp,sp,40
+
+	.cprestore  16
+	sw		$fp,20(sp)
+	move	$fp,sp
+	sw		ra,12($fp)
+	sw		a0, 24($fp) 		#guardo el descriptor del archivo
+	sw		a1,	28($fp)			#guardo el tamanio del buffer
+	sw 		a2,	32($fp)
+
+
+
+	#reservo memoria para el buffer de entrada
+	lw 		a0, 28($fp)
+	jal 	mymalloc
+	sw		v0,0($fp)
+
+	#uso un registro para indicar cuando salir del loop si no surgio ningun error
+	move 	t0,zero
+	addu	t0,t0,1				#1 para indicar q no salga del loop
+	sw		t0,40($fp)			#lo guardo
+
+whilePalindrome:
+	lw 		t0,40($fp)
+	bne		t0,1,salidaPalindrome
+
+
+	#lleno el buffer de entrada con llamada al systema
+	#******************
+	li		v0, SYS_read
+	lw 		a0,	24($fp)
+	lw		a1,	0($fp)
+	lw		a2, 28($fp)
+	syscall
+	#******************
+
+	sw		v0,4($fp)
+	lw 		t1,28($fp)
+	bne 	v0,t1,cambiarValorDeSalida
+
+
+seguir:
+	#aca el almacenado de la palbras, ver si es palindrome etc
+
+
+
+	#llamada al sistema
+	#cuando el buffer de salida este lleno lo paso por el archivo de salida
+	li		v0, SYS_write
+	lw		a0,32($fp)		#se cambia despues por el de la entrada
+	lw		a1,0($fp)
+	lw 		a2,4($fp)
+	#***************************************
+	syscall
+
+
+
+	b whilePalindrome
+
+cambiarValorDeSalida:
+	move 	t0,zero
+	sw		t0,40($fp)
+	b		seguir
+
+salidaPalindrome:
+	lw 		ra,12($fp)
+	lw		$fp, 20(sp)
+	addu	sp, sp, 40
+	j 		ra
+	.end	palindrome
+
+
+
+	.text
+	.align	2
+	.globl	llenarBufferEntrada
+	.ent	llenarBufferEntrada
+llenarBufferEntrada:
+	.frame	$fp,20,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+
+	subu	sp,sp,20
+
+	.cprestore  16
+	sw		$fp,20(sp)
+	move	$fp,sp
+
+	#archivoIn,buffer,tamanioBufferIn
+	sw		ra,12($fp)
+	sw		a0, 0($fp)		#descroptor de archivo
+	sw		a1, 4($fp)		#tamanio de buffer
+	sw		a2,	8($fp)		#direccion de buffer
+
+	lw		t0,	0($fp)
+	li		v0, SYS_read
+	move 	a0,	t0
+	lw		a1,	8($fp)
+	li		a2, 4
+	syscall
+
+	#aca me tengo q fijar si hay error con el a3 falta eso
+	#salir por error o por salida correcta
+
+
+	#devuelce la cantiada leida en v0
+SalirllenarBufferEntrada:
+	lw 		ra,12($fp)
+	lw		$fp, 20(sp)
+	addu	sp, sp, 20
+	j 		ra
+	.end	llenarBufferEntrada
+
+
+
+
+
+
+	.text
+	.align	2
 	.globl	palindromo
 	.ent	palindromo
 palindromo:
