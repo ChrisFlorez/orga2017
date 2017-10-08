@@ -24,16 +24,16 @@ int main(int argc, char *argv[]) {
     }*/
 
     int option = 0;
-    char* ibytes = NULL, * obytes = NULL;
+    char *ibytes = NULL, *obytes = NULL;
     const char *short_opt = "i:o:hVI:O:";
     struct option long_opt[] = {
-            {"version", no_argument,       NULL, 'V'},
-            {"help",    no_argument,       NULL, 'h'},
-            {"input",   required_argument, NULL, 'i'},
-            {"output",  required_argument, NULL, 'o'},
+            {"version",    no_argument,       NULL, 'V'},
+            {"help",       no_argument,       NULL, 'h'},
+            {"input",      required_argument, NULL, 'i'},
+            {"output",     required_argument, NULL, 'o'},
             {"ibuf-bytes", required_argument, NULL, 'I'},
             {"obuf-bytes", required_argument, NULL, 'O'},
-            {NULL, 0,                      NULL, 0}
+            {NULL, 0,                         NULL, 0}
     };
     FILE *inputFile = NULL;
     FILE *outputFile = NULL;
@@ -94,12 +94,8 @@ int main(int argc, char *argv[]) {
 
     if (obytes == NULL) ibytes = "1";
 
-    if (inputFile == NULL || outputFile == NULL) {
-        printf("No existe archivo \n");
-    } else {
-        palindrome(fileno(inputFile), atoi(ibytes), fileno(outputFile));
-        printf("salio\n");
-    }
+    palindrome(fileno(inputFile), atoi(ibytes), fileno(outputFile));
+    printf("Terminó el procesamiento. \n");
 
     return SALIDA_EXITOSA;
 }
