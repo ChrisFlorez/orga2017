@@ -225,10 +225,6 @@ int main(int argc, char *argv[]) {
     FILE *inputFile = NULL;
     FILE *outputFile = NULL;
 
-    if (argc == 1) {
-        return 0;
-    }
-
     while ((option = getopt_long(argc, argv, short_opt, long_opt, NULL)) != -1) {
         switch (option) {
             case 'V':
