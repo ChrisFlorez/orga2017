@@ -24,13 +24,15 @@ int main(int argc, char *argv[]) {
     }*/
 
     int option = 0;
-    char* ibytes;
-    const char *short_opt = "i:o:hV";
+    char* ibytes = NULL, * obytes = NULL;
+    const char *short_opt = "i:o:hVI:O:";
     struct option long_opt[] = {
             {"version", no_argument,       NULL, 'V'},
             {"help",    no_argument,       NULL, 'h'},
             {"input",   required_argument, NULL, 'i'},
             {"output",  required_argument, NULL, 'o'},
+            {"ibuf-bytes", required_argument, NULL, 'I'},
+            {"obuf-bytes", required_argument, NULL, 'O'},
             {NULL, 0,                      NULL, 0}
     };
     FILE *inputFile = NULL;
@@ -49,10 +51,12 @@ int main(int argc, char *argv[]) {
                 printf("	%s -V \n", argv[0]);
                 printf("	%s [options] \n", argv[0]);
                 printf("Options: \n");
-                printf("	-V, --version  Print version and quit. \n");
-                printf("	-h, --help     Print this information. \n");
-                printf("	-o, --output   Location of the output file. \n");
-                printf("	-i, --input    Location of the input file. \n");
+                printf("	-V, --version    Print version and quit. \n");
+                printf("	-h, --help       Print this information. \n");
+                printf("	-o, --output     Location of the output file. \n");
+                printf("	-i, --input      Location of the input file. \n");
+                printf("        -I, --ibuf-bytes Byte-count of the input buffer. \n");
+                printf("        -O, --obuf-bytes Byte-count of the output buffer. \n");
                 return 0;
             case 'i':
                 inputFile = fopen(optarg, "r");
@@ -70,25 +74,29 @@ int main(int argc, char *argv[]) {
                     }
                 }
                 break;
+            case 'I':
+                ibytes = optarg;
+                break;
+            case 'O':
+                obytes = optarg;
+                break;
             default:
                 // así está en el manual de getopt
                 abort();
         }
     }
 
-    if (inputFile == NULL) {
-        inputFile = stdin;
-    }
+    if (inputFile == NULL) inputFile = stdin;
 
-    if (outputFile == NULL) {
-        outputFile = stdout;
-    }
+    if (outputFile == NULL) outputFile = stdout;
+
+    if (ibytes == NULL) ibytes = "1";
+
+    if (obytes == NULL) ibytes = "1";
 
     if (inputFile == NULL || outputFile == NULL) {
         printf("No existe archivo \n");
     } else {
-        printf("Ingrese ibytes \n");
-        scanf("%c", ibytes);
         palindrome(fileno(inputFile), atoi(ibytes), fileno(outputFile));
         printf("salio\n");
     }
