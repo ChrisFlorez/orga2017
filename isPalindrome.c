@@ -13,15 +13,6 @@
 extern int palindrome(int archivoIn, int tamanioIn, int archivoOut);
 
 int main(int argc, char *argv[]) {
-    /*FILE *archivoEntrada = fopen("lInt.txt","r");
-    FILE *archivoSalida = fopen("lout.txt","w");
-    int tamanioIn = 6;
-    if(archivoEntrada == NULL || archivoSalida == NULL){
-        printf("no exite archivo\n");
-    }else{
-        palindrome(fileno(archivoEntrada),tamanioIn,fileno(archivoSalida));
-        printf("salio\n");
-    }*/
 
     int option = 0;
     char *ibytes = NULL, *obytes = NULL;
