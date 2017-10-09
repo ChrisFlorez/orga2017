@@ -40,6 +40,7 @@ palindrome:
 	sw 		a2,	32($fp)			#archivo out
 	sw		a3,	36($fp)			#tamanio buffer out
 
+
 	#reservo memoria para el buffer de entrada
 	lw 		a0, 28($fp)
 	jal 	mymalloc
@@ -60,8 +61,10 @@ palindrome:
 
 	#uso un registro para indicar cuando salir del loop si no surgio ningun error
 	move 	t0,zero
+
 	addu	t0,t0,1				#1 para indicar q no salga del loop
 	sw		t0,8($fp)			#lo guardo
+
 
 whilePalindrome:
 	lw 		t0,40($fp)
@@ -71,9 +74,9 @@ whilePalindrome:
 	#lleno el buffer de entrada con llamada al systema
 	#******************
 	li		v0, SYS_read
-	lw 		a0,	24($fp)
-	lw		a1,	0($fp)
-	lw		a2, 28($fp)
+	lw 		a0,	24($fp)         # cargo en a0 el descriptor del archivo de entrada
+	lw		a1,	0($fp)          # cargo en a1 el resultado de mymalloc
+	lw		a2, 28($fp)         # cargo en a2 el tamanio de la unidad de transferencia
 	syscall
 	#******************
 
