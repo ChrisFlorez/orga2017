@@ -1,8 +1,6 @@
 #include <mips/regdef.h>
 #include <sys/syscall.h>
 
-
-
 #define MYMALLOC_SIGNATURE 0xdeadbeef
 
 #ifndef PROT_READ
@@ -37,21 +35,33 @@ palindrome:
 	sw		$fp,20(sp)
 	move	$fp,sp
 	sw		ra,12($fp)
-	sw		a0, 24($fp) 		#guardo el descriptor del archivo
-	sw		a1,	28($fp)			#guardo el tamanio del buffer
-	sw 		a2,	32($fp)
-
-
+	sw		a0, 24($fp) 		#guardo el descriptor del archivoIn
+	sw		a1,	28($fp)			#guardo el tamanio del buffer in
+	sw 		a2,	32($fp)			#archivo out
+	sw		a3,	36($fp)			#tamanio buffer out
 
 	#reservo memoria para el buffer de entrada
 	lw 		a0, 28($fp)
 	jal 	mymalloc
 	sw		v0,0($fp)
 
+
+	#reservo memoria para el buffer salida
+	lw 		a0, 36($fp)
+	jal 	mymalloc
+	sw		v0,4($fp)
+
+
+	move t0,zero
+	sw		t0,40($fp);
+	sw		t0,44($fp)
+	sw		t0,48($fp)
+
+
 	#uso un registro para indicar cuando salir del loop si no surgio ningun error
 	move 	t0,zero
 	addu	t0,t0,1				#1 para indicar q no salga del loop
-	sw		t0,40($fp)			#lo guardo
+	sw		t0,8($fp)			#lo guardo
 
 whilePalindrome:
 	lw 		t0,40($fp)
@@ -83,9 +93,8 @@ seguir:
 	lw		a0,32($fp)		#se cambia despues por el de la entrada
 	lw		a1,0($fp)
 	lw 		a2,4($fp)
-	#***************************************
 	syscall
-
+	#***************************************
 
 
 	b whilePalindrome
@@ -104,6 +113,177 @@ salidaPalindrome:
 
 
 
+	#int seFormoUnaPalabra(char *cadena,int cantidadCaracteres)
+	.text						#retorna 1 si se formo la palbra
+	.align	2					#retirna 2 se lleno el buffer con un solo caracter invalido
+	.globl	seFormoUnaPalabra	#retorna 0 si no se formo la palabra
+	.ent	seFormoUnaPalabra
+seFormoUnaPalabra:
+	.frame	$fp,20,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+	subu	sp,sp,20
+	.cprestore 16
+	sw		$fp,20(sp)
+	move 	$fp,sp
+	sw		ra,12($fp)
+
+	sw		a0,0($fp)
+	sw		a1,4($fp)
+
+	addu	v0,a1,a0
+	lbu		t0,-1(v0)
+	sll		t0,t0,24
+	sra		t0,t0,24
+	sw		t0,8($fp)
+
+	move	a0,t0
+	jal		validCharacter
+
+	move	t0,zero
+	bne		t0,v0,noseFormoLaPalabra
+	addu	t0,zero,1
+	lw		t1,4($fp)
+	beq		t1,t0,bufferVacio
+	addu	v0,zero,1
+	b		SalirSeFormoUnaPalabra
+bufferVacio:
+	move 	v0,zero
+	addu 	v0,v0,2
+	b		SalirSeFormoUnaPalabra
+noseFormoLaPalabra:
+	move v0,zero
+
+SalirSeFormoUnaPalabra:
+	lw 		ra,12($fp)
+	lw		$fp, 20(sp)
+	addu	sp, sp, 20
+	j 		ra
+	.end	seFormoUnaPalabra
+
+
+
+
+
+
+	#int validCharacter(char character), 1 si es valido y 0 si es invalido
+	.text
+	.align	2
+	.globl	validCharacter
+	.ent	validCharacter
+validCharacter:
+	.frame	$fp,20,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+	subu	sp,sp,20
+	.cprestore 16
+	sw		$fp,20(sp)
+	move 	$fp,sp
+	sw		ra,12($fp)
+
+	sw		a0,0($fp);
+	sll		a0,a0,24
+	sra		a0,a0,24
+
+	#me aca valido los numero
+	li		t0,57
+	ble		a0,	t0,validesDeNumeros
+validesDeNumeros:
+	li		t0,48
+	bge		a0,t0, salidaValida
+
+
+	#valido palabras mayusculas
+	li		t0,90
+	ble		a0,	t0,validesMayusculas
+validesMayusculas:
+	li		t0,65
+	bge		a0,t0, salidaValida
+
+	#valido palabras minusculas
+	li		t0,122
+	ble		a0,	t0,validesMinusculas
+validesMinusculas:
+	li		t0,97
+	bge		a0,t0, salidaValida
+
+	#guin
+	li		t0,45
+	beq		a0,t0,salidaValida
+
+	#guion bajo
+	li		t0,95
+	beq		a0,t0,salidaValida
+
+salidaInvalida:
+	move 	v0,zero
+	b		SalirValidCharacter
+salidaValida:
+	move 	v0,zero
+	addu	v0,v0,1
+
+SalirValidCharacter:
+	lw 		ra,12($fp)
+	lw		$fp, 20(sp)
+	addu	sp, sp, 20
+	j 		ra
+	.end	validCharacter
+
+
+#char* agregarCaracter(char* cadena,char caracterExtradido,int cantCaracteres)
+	.text
+	.align	2
+	.globl	agregarCaracter
+	.ent	agregarCaracter
+agregarCaracter:
+	.frame	$fp,48,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+	subu	sp,sp,48
+	.cprestore 16
+	sw		$fp,48(sp)
+	move 	$fp,sp
+	sw		ra,12($fp)
+
+	sw		s0,24($fp)
+	sw		s1,28($fp)
+	sw		s2,32($fp)
+	sw		s3,36($fp)
+	move	s3,a0
+	move	s1,a2
+	sll		a1,a1,24
+	sra		s2,a1,24
+	move	a0,a2
+	jal		mymalloc
+
+	move	s0,v0
+	beq		s3,zero,incertarCaracter
+
+	move	a0,v0
+	move	a1,s3
+	move	a2,s1
+	jal		strlcpy
+
+incertarCaracter:
+	addu	v0,s0,s1
+	sb		s2,-1(v0)
+	move	v0,s0
+
+	lw		ra,12($fp)
+	lw		s0,24($fp)
+	lw		s1,28($fp)
+	lw		s2,32($fp)
+	lw		s3,36($fp)
+
+	lw		$fp,48($fp)
+	addu	sp,sp,48
+	j	ra
+	.end	agregarCaracter
+
+
 	.text
 	.align	2
 	.globl	llenarBufferEntrada
@@ -120,7 +300,6 @@ llenarBufferEntrada:
 	sw		$fp,20(sp)
 	move	$fp,sp
 
-	#archivoIn,buffer,tamanioBufferIn
 	sw		ra,12($fp)
 	sw		a0, 0($fp)		#descroptor de archivo
 	sw		a1, 4($fp)		#tamanio de buffer
@@ -146,13 +325,10 @@ SalirllenarBufferEntrada:
 	.end	llenarBufferEntrada
 
 
-
-
-
-
+	#int palindromo(char *palabra)
 	.text
-	.align	2
-	.globl	palindromo
+	.align	2					#devulve 1 si es palindrome
+	.globl	palindromo			#devulve 0 si no lo son
 	.ent	palindromo
 palindromo:
 	.frame	$fp,20,ra
@@ -168,6 +344,10 @@ palindromo:
 	sw		ra,12($fp)
 	sw		a0, 0($fp)
 
+	jal		mystrlen
+	addu	t0,zero,1
+	beq		t0,v0,esPalindromo
+
 	lw 		a0,0($fp)
 	jal 	invertirPalabra
 	sw		v0,4($fp)
@@ -178,17 +358,16 @@ palindromo:
 	beq		v0,t0,esPalindromo	#faltaria el tema del error
 	b 		noEsPalindromo
 esPalindromo:
-	addu v0,zero,1
+	addu v0,zero,1				#devulve 1 si es palindromo
 	b 		salirPalindromo
 noEsPalindromo:
-	move v0,zero
+	move v0,zero				#devuelve cero si no es palindromo
 salirPalindromo:
 	lw 		ra,12($fp)
 	lw		$fp, 20(sp)
 	addu	sp, sp, 20
 	j 		ra
 	.end	palindromo
-
 
 
 	.text
