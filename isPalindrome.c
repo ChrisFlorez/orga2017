@@ -6,7 +6,10 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <unistd.h>
-extern int strlcpy(char *destino, char *origen,int caracteresCopia);
+#define ERROR -1
+#define SALIDA_EXITOSA 0
+
+extern int mystrlcpy(char *destino, char *origen,int caracteresCopia);
 extern void *mymalloc(size_t);
 extern void myfree(void *);
 extern int palindromo(char *cadena);
@@ -54,15 +57,17 @@ extern int seFormoUnaPalabra(char *cadena,int cantidadCaracteres);/*{
 int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
 	char *bufferEntrada = mymalloc(tamanioIn);
 	char *bufferSalida = mymalloc(tamanioOut);
-	int	contadorDeBufferSalida = 0;
+	//int	contadorDeBufferSalida = 0;
 	int cantCaracteres = 0;
 	char *cadenaDeCaracteres = NULL;
 	int salir = 1; //1 sigue, 0 sale
 	while(salir == 1){
 		int cantidadCaracteresLeidos = read(archivoIn,bufferEntrada,tamanioIn);
-		if(cantidadCaracteresLeidos  != tamanioIn){
+		if(cantidadCaracteresLeidos  == 0){
 			salir = 0;
+			//printf("salir\n");
 		}
+		//write(archivoOut,bufferEntrada,cantidadCaracteresLeidos);
 		//aca proceso el buffer de entrada copiando byte en byte
 		int contadorDeBufferLeidos = 0;
 		while((contadorDeBufferLeidos < cantidadCaracteresLeidos) && (cantidadCaracteresLeidos>0)){
@@ -70,24 +75,24 @@ int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
 
 			char caracterExtraido = bufferEntrada[contadorDeBufferLeidos];
 			cadenaDeCaracteres = agregarCaracter(cadenaDeCaracteres,caracterExtraido,cantCaracteres);
-
+			//printf("%c\n",caracterExtraido);
 			if(seFormoUnaPalabra(cadenaDeCaracteres,cantCaracteres) == 1){
 				cadenaDeCaracteres[cantCaracteres-1] = '\0';
 				if(palindromo(cadenaDeCaracteres) == 1){
-					int contador = 0;
-					while(contador<(cantCaracteres-1)){
+					printf("%s\n",cadenaDeCaracteres);
+					//int contador = 0;
+					/*while(contador<(cantCaracteres-1)){
 						if(contadorDeBufferSalida==tamanioOut){
-							write(archivoOut,bufferSalida,tamanioOut);
+							//write(archivoOut,bufferSalida,tamanioOut);
 							contadorDeBufferSalida = 0;
 						}else{
 							bufferSalida[contadorDeBufferSalida] = cadenaDeCaracteres[contador];
 							contadorDeBufferSalida++;
 							contador++;
 						}
-
 					}
 					bufferSalida[contadorDeBufferSalida] = '\n';
-					contadorDeBufferSalida++;
+					contadorDeBufferSalida++;*/
 				}
 				myfree(cadenaDeCaracteres);
 				cantCaracteres = 0;
@@ -98,20 +103,14 @@ int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
 				cadenaDeCaracteres = NULL;
 			}
 			contadorDeBufferLeidos++;
-
 		}
 		//write(1,bufferEntrada,cantidadCaracteresLeidos);
 	}
-	write(archivoOut,bufferSalida,contadorDeBufferSalida);
+	//write(archivoOut,bufferSalida,contadorDeBufferSalida);
 	myfree(bufferEntrada);
 	myfree(bufferSalida);
 	return 0;
 }
-
-#define ERROR -1
-#define SALIDA_EXITOSA 0
-
-//extern int palindrome(int archivoIn, int tamanioIn, int archivoOut);
 
 int main(int argc, char *argv[]) {
 
@@ -185,8 +184,9 @@ int main(int argc, char *argv[]) {
     if (ibytes == NULL) ibytes = "1";
 
     if (obytes == NULL) ibytes = "1";
-
-    palindrome(fileno(inputFile), atoi(ibytes), fileno(outputFile));
+    inputFile = fopen("lInt.txt", "r");
+    //fileno(inputFile)
+    palindromes(fileno(inputFile), 1, 1, 1);
     printf("Terminó el procesamiento. \n");
 
     return SALIDA_EXITOSA;

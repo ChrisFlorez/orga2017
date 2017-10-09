@@ -268,7 +268,7 @@ agregarCaracter:
 	move	a0,v0
 	move	a1,s3
 	move	a2,s1
-	jal		strlcpy
+	jal		mystrlcpy
 
 incertarCaracter:
 	addu	v0,s0,s1
@@ -525,9 +525,9 @@ mystrlenSalida:
 
 	.text
 	.align	2
-	.globl	strlcpy
-	.ent	strlcpy
-strlcpy:
+	.globl	mystrlcpy
+	.ent	mystrlcpy
+mystrlcpy:
 	.frame	$fp,24,ra
 	.set	noreorder
 	.cpload	t9
@@ -609,7 +609,7 @@ $Nnot0:
 	lw		$fp,20(sp)
 	addu	sp,sp,24
 	j		ra
-	.end	strlcpy
+	.end	mystrlcpy
 
 
 	.text
