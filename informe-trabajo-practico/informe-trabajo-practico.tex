@@ -38,7 +38,7 @@ Pueden haber tres escenarios posibles, el caso en el cual el usuario ingresa arc
 
 \section{Desarrollo}
 
-El algoritmo propuesto por el grupo consiste en parsear las palabras ingresadas para luego procesar una por una y decidir si son palíndromos o no, esto se realiza ya sea desde el archivo o utilizando el stream leído por entrada standard. Si se debe leer de la entrada standard, se crea un archivo auxiliar donde se escribe lo previamente ingresado por el usuario, a fines de reutilizar el código desarrollado para el caso donde se ingresa un archivo de texto.
+El algoritmo propuesto por el grupo consiste en parsear las palabras ingresadas para luego procesar una por una y decidir si son palíndromos o no, esto se realiza ya sea desde el archivo o utilizando el stream leído por entrada standard. Cabe destacar que tanto los archivos ingresados por el usuario como la entrada (stdin) y salida standard (stdout), respectivamente, son procesados de la misma forma.
 
 \subsection{Comandos para compilar y ejecutar el programa}
 
@@ -68,6 +68,12 @@ Análogamente si se quiere ingresar un archivo de salida:
 \end{lstlisting}
 
 Es decir que con un guión medio indicamos que no se proporcionará un archivo para entrada/salida, acorde a lo que indica el enunciado.
+
+Por otro lado, si no se desea ingresar ningún argumento y se desea trabajar con los streams de entrada y salida standard, debe ejecutarse de la siguiente forma:
+
+\begin{lstlisting}[language=bash]
+  $ ./tp0
+\end{lstlisting}
 
 \subsection{Otros comandos}
 
