@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.21)  9 OCT 2017 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.21)  9 OCT 2017 18:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -963,19 +963,136 @@ File: pruebaPorTeclado.png Graphic file (type png)
 Package pdftex.def Info: pruebaPorTeclado.png used on input line 420.
 (pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
  [8 <./prueba2.png> <./prueba3.png> <./prueba3salidaPorPantalla.png>]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.432 ...llos que no fueran a..z, A..Z, 0..9, -, _
+                                                  , y que tambien detectara ...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 432.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ...@spacefactor \spacefactor }\accent 
+                                                  #1 #2\egroup \spacefactor ...
+l.432 ..., -, _, y que tambien detectara a los nú
+                                                  meros 11 y 22 como palindr...
+
+? 
+! You can't use `\spacefactor' in math mode.
+\add@accent ...}\accent #1 #2\egroup \spacefactor 
+                                                  \accent@spacefactor 
+l.432 ..., -, _, y que tambien detectara a los nú
+                                                  meros 11 y 22 como palindr...
+
+? 
+
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433 \item
+            En esta prueba se quiso probar con un archivo de entrada más la...
+
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433 \item E
+             n esta prueba se quiso probar con un archivo de entrada más la...
+
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433 \item E
+             n esta prueba se quiso probar con un archivo de entrada más la...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 433.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ...@spacefactor \spacefactor }\accent 
+                                                  #1 #2\egroup \spacefactor ...
+l.433 ...uiso probar con un archivo de entrada má
+                                                  s largo y sin especificar ...
+
+? 
+! You can't use `\spacefactor' in math mode.
+\add@accent ...}\accent #1 #2\egroup \spacefactor 
+                                                  \accent@spacefactor 
+l.433 ...uiso probar con un archivo de entrada má
+                                                  s largo y sin especificar ...
+
+? 
+
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434 \item
+            En esta prueba se quiso probar ingresando por entrada estandar y...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.434 \item E
+             n esta prueba se quiso probar ingresando por entrada estandar y...
+
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.434 \item E
+             n esta prueba se quiso probar ingresando por entrada estandar y...
+
+? 
+Missing character: There is no � in font cmex10!
+Missing character: There is no � in font cmex10!
+
+Overfull \hbox (608.90553pt too wide) in paragraph at lines 432--434
+[]\OML/cmm/m/it/10 yquetambiendetectaraalosn[]meros\OT1/cmr/m/n/10 11\OML/cmm/m
+/it/10 y\OT1/cmr/m/n/10 22\OML/cmm/m/it/10 comopalindromos:Enestapruebasequisop
+robarconunarchivodeentradam[]slargoysinespecificarunarchivodesalidaporloqueelpr
+ogramaimprimesatisfactoriamenteporpantallaelresultado:[][]$ 
+ []
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.434 \item E
+             n esta prueba se quiso probar ingresando por entrada estandar y...
+
+? 
+[9 <./pruebaPorTeclado.png>]
 ! Misplaced alignment tab character &.
-l.440 Reconocer que 345 soladados&
+l.452 Reconocer que 345 soladados&
                                   civiles murieron por una fruta como el ana...
 
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.441 
+l.453 
       
 ? 
 
-Overfull \hbox (81.46019pt too wide) in paragraph at lines 440--441
+Overfull \hbox (81.46019pt too wide) in paragraph at lines 452--453
 \OT1/cmr/m/n/10 ta-rio que m hi-zo ana el otro dia cuan-do me pi-ca-ba el ojo, 
 [11134111$; : \OML/cmm/m/it/10 esenumeronoloentiendoserapalindromo\OT1/cmr/m/n/
 10 ?\OML/cmm/m/it/10 nolose:$ 
@@ -997,7 +1114,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.448 \begin{lstlisting}[language=Assembler]
+l.460 \begin{lstlisting}[language=Assembler]
                                             
 ? 
 
@@ -1007,110 +1124,110 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.448 \begin{lstlisting}[language=Assembler]
+l.460 \begin{lstlisting}[language=Assembler]
                                             
 ? 
 
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 458--459
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[9 <./pruebaPorTeclado.png>]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 506--507
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 510--511
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 520--521
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 470--471
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [10]
-Overfull \hbox (10.11292pt too wide) in paragraph at lines 578--579
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 518--519
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 522--523
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 532--533
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[11] [12]
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 657--658
+[11]
+Overfull \hbox (10.11292pt too wide) in paragraph at lines 590--591
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[13]
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 727--728
+[12] [13]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 669--670
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[14]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 739--740
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 736--737
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 748--749
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[14] [15]
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 800--801
+[15]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 812--813
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[16]
-Overfull \hbox (10.11292pt too wide) in paragraph at lines 872--873
+[16] [17]
+Overfull \hbox (10.11292pt too wide) in paragraph at lines 884--885
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[17] [18]
-Overfull \hbox (54.21283pt too wide) in paragraph at lines 984--985
+[18] [19]
+Overfull \hbox (54.21283pt too wide) in paragraph at lines 996--997
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[19] [20]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1113--1114
+[20] [21]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1125--1126
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1117--1118
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[21]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1162--1163
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1166--1167
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1129--1130
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [22]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 1179--1180
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1174--1175
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1178--1179
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 1191--1192
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[23] [24] [25] [26]
+[23] [24] [25] [26] [27]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1420 ...//www.gnu.org/software/libc/manual/html_
+l.1432 ...//www.gnu.org/software/libc/manual/html_
                                                   node/Example-of-Getopt.html.
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1421 
+l.1433 
        
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.1421 
+l.1433 
        
 ? 
 
-Underfull \hbox (badness 3942) in paragraph at lines 1420--1421
+Underfull \hbox (badness 3942) in paragraph at lines 1432--1433
 []\OT1/cmr/m/n/10 GetOpt li-brary, https://www.gnu.org/software/libc/manual/htm
 l$[]\OML/cmm/m/it/10 ode=Example \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 of \OMS/
 cmsy/m/n/10 ^^@
@@ -1119,10 +1236,10 @@ cmsy/m/n/10 ^^@
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.1421 
+l.1433 
        
 ? 
-[27] (./informe-trabajo-practico.aux
+[28] (./informe-trabajo-practico.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -1132,13 +1249,13 @@ LaTeX Warning: There were multiply-defined labels.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 440 ({)
+### simple group (level 1) entered at line 452 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 5836 strings out of 493029
- 74473 string characters out of 6136234
+ 5841 strings out of 493029
+ 74533 string characters out of 6136234
  197484 words of memory out of 5000000
- 9298 multiletter control sequences out of 15000+600000
+ 9303 multiletter control sequences out of 15000+600000
  7146 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,51p,498b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1148,16 +1265,17 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmtt10.pfb>
-Output written on informe-trabajo-practico.pdf (29 pages, 590831 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mtt10.pfb>
+Output written on informe-trabajo-practico.pdf (30 pages, 601043 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
+ 175 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
