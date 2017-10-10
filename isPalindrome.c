@@ -57,7 +57,7 @@ extern int seFormoUnaPalabra(char *cadena,int cantidadCaracteres);/*{
 int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
 	char *bufferEntrada = mymalloc(tamanioIn);
 	char *bufferSalida = mymalloc(tamanioOut);
-	//int	contadorDeBufferSalida = 0;
+	int	contadorDeBufferSalida = 0;
 	int cantCaracteres = 0;
 	char *cadenaDeCaracteres = NULL;
 	int salir = 1; //1 sigue, 0 sale
@@ -79,11 +79,13 @@ int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
 			if(seFormoUnaPalabra(cadenaDeCaracteres,cantCaracteres) == 1){
 				cadenaDeCaracteres[cantCaracteres-1] = '\0';
 				if(palindromo(cadenaDeCaracteres) == 1){
-					printf("%s\n",cadenaDeCaracteres);
-					//int contador = 0;
-					/*while(contador<(cantCaracteres-1)){
+					//printf("%s\n",cadenaDeCaracteres);
+
+
+					int contador = 0;
+					while(contador<(cantCaracteres-1)){
 						if(contadorDeBufferSalida==tamanioOut){
-							//write(archivoOut,bufferSalida,tamanioOut);
+							write(archivoOut,bufferSalida,tamanioOut);
 							contadorDeBufferSalida = 0;
 						}else{
 							bufferSalida[contadorDeBufferSalida] = cadenaDeCaracteres[contador];
@@ -91,8 +93,15 @@ int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
 							contador++;
 						}
 					}
-					bufferSalida[contadorDeBufferSalida] = '\n';
-					contadorDeBufferSalida++;*/
+					if(contadorDeBufferSalida==tamanioOut){
+						write(archivoOut,bufferSalida,tamanioOut);
+						contadorDeBufferSalida = 0;
+						bufferSalida[contadorDeBufferSalida] = '\n';
+						contadorDeBufferSalida++;
+					}else{
+						bufferSalida[contadorDeBufferSalida] = '\n';
+						contadorDeBufferSalida++;
+					}
 				}
 				myfree(cadenaDeCaracteres);
 				cantCaracteres = 0;
@@ -104,9 +113,8 @@ int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
 			}
 			contadorDeBufferLeidos++;
 		}
-		//write(1,bufferEntrada,cantidadCaracteresLeidos);
 	}
-	//write(archivoOut,bufferSalida,contadorDeBufferSalida);
+	write(archivoOut,bufferSalida,contadorDeBufferSalida);
 	myfree(bufferEntrada);
 	myfree(bufferSalida);
 	return 0;
@@ -185,8 +193,9 @@ int main(int argc, char *argv[]) {
 
     if (obytes == NULL) ibytes = "1";
     inputFile = fopen("lInt.txt", "r");
+    outputFile = fopen("lOut.txt", "w");
     //fileno(inputFile)
-    palindromes(fileno(inputFile), 1, 1, 1);
+    palindromes(fileno(inputFile), 5, fileno(outputFile),5);
     printf("Terminó el procesamiento. \n");
 
     return SALIDA_EXITOSA;
