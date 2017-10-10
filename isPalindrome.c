@@ -9,117 +9,9 @@
 #define ERROR -1
 #define SALIDA_EXITOSA 0
 
-extern int mystrlcpy(char *destino, char *origen,int caracteresCopia);
-extern void *mymalloc(size_t);
-extern void myfree(void *);
-extern int palindromo(char *cadena);
-extern int mystrlen(char *cadena);
 
+extern int palindrome(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut);
 
-extern char* agregarCaracter(char* cadena,char caracterExtradido,int cantCaracteres);/*{
-	char* cadenaAuxi = mymalloc(cantCaracteres);
-	if(cadena != NULL){
-		strlcpy ( cadenaAuxi , cadena , cantCaracteres);
-	}
-	cadenaAuxi[cantCaracteres-1] = caracterExtradido;
-	return cadenaAuxi;
-}*/
-extern int validCharacter(char character);/* {
-    int asciiNumber = (int) character;
-    if ((asciiNumber <= 57) && (asciiNumber >= 48)) {
-        return 1;
-    }
-    if ((asciiNumber <= 90) && (asciiNumber >= 65)) {
-        return 1;
-    }
-    if ((asciiNumber <= 122) && (asciiNumber >= 97)) {
-        return 1;
-    }
-    if (asciiNumber == 45) {
-        return 1;
-    }
-    if (asciiNumber == 95) {
-        return 1;
-    }
-    return 0;
-}*/
-extern int seFormoUnaPalabra(char *cadena,int cantidadCaracteres);/*{
-	int posicionDelUltimoCaracter = cantidadCaracteres-1;
-	int caracter =(int)cadena[posicionDelUltimoCaracter];
-	if(validCharacter(caracter) == 0){
-		if(cantidadCaracteres==1){
-			return 2;
-		}
-		return 1;
-	}
-	return 0;
-}*/
-extern int palindrome(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut);/*{
-	char *bufferEntrada = mymalloc(tamanioIn);
-	char *bufferSalida = mymalloc(tamanioOut);
-	int	contadorDeBufferSalida = 0;
-	int cantCaracteres = 0;
-	char *cadenaDeCaracteres = NULL;
-	int salir = 1; //1 sigue, 0 sale
-	while(salir == 1){
-		int cantidadCaracteresLeidos = read(archivoIn,bufferEntrada,tamanioIn);
-		if(cantidadCaracteresLeidos  == 0){
-			salir = 0;
-			//printf("salir\n");
-		}
-		//write(archivoOut,bufferEntrada,cantidadCaracteresLeidos);
-		//aca proceso el buffer de entrada copiando byte en byte
-		int contadorDeBufferLeidos = 0;
-		while((contadorDeBufferLeidos < cantidadCaracteresLeidos) && (cantidadCaracteresLeidos>0)){
-			cantCaracteres++;
-
-			char caracterExtraido = bufferEntrada[contadorDeBufferLeidos];
-			cadenaDeCaracteres = agregarCaracter(cadenaDeCaracteres,caracterExtraido,cantCaracteres);
-			//printf("%c\n",caracterExtraido);
-			if(seFormoUnaPalabra(cadenaDeCaracteres,cantCaracteres) == 1){
-				cadenaDeCaracteres[cantCaracteres-1] = '\0';
-				if(palindromo(cadenaDeCaracteres) == 1){
-					//printf("%s\n",cadenaDeCaracteres);
-
-
-					int contador = 0;
-					while(contador<(cantCaracteres-1)){
-						if(contadorDeBufferSalida==tamanioOut){
-							write(archivoOut,bufferSalida,tamanioOut);
-							contadorDeBufferSalida = 0;
-						}else{
-							bufferSalida[contadorDeBufferSalida] = cadenaDeCaracteres[contador];
-							contadorDeBufferSalida++;
-							contador++;
-						}
-					}
-					if(contadorDeBufferSalida==tamanioOut){
-						write(archivoOut,bufferSalida,tamanioOut);
-						contadorDeBufferSalida = 0;
-						bufferSalida[contadorDeBufferSalida] = '\n';
-						contadorDeBufferSalida++;
-					}else{
-						bufferSalida[contadorDeBufferSalida] = '\n';
-						contadorDeBufferSalida++;
-					}
-				}
-				myfree(cadenaDeCaracteres);
-				cantCaracteres = 0;
-				cadenaDeCaracteres = NULL;
-			}else if(seFormoUnaPalabra(cadenaDeCaracteres,cantCaracteres) == 2){
-				myfree(cadenaDeCaracteres);
-				cantCaracteres = 0;
-				cadenaDeCaracteres = NULL;
-			}
-			contadorDeBufferLeidos++;
-		}
-	}
-	write(archivoOut,bufferSalida,contadorDeBufferSalida);
-	myfree(bufferEntrada);
-	myfree(bufferSalida);
-	return 0;
-}
-*/
 int main(int argc, char *argv[]) {
 
     int option = 0;
@@ -195,9 +87,8 @@ int main(int argc, char *argv[]) {
     inputFile = fopen("lInt.txt", "r");
     outputFile = fopen("lOut.txt", "w");
     //fileno(inputFile)
-    palindrome(fileno(inputFile), 5, fileno(outputFile),5);
+    palindrome(fileno(inputFile), 5,fileno(outputFile),5);
     printf("Terminó el procesamiento. \n");
 
     return SALIDA_EXITOSA;
-
 }

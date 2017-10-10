@@ -197,12 +197,12 @@ incertarCaracter:
 	.globl	palindromo			#devulve 0 si no lo son
 	.ent	palindromo
 palindromo:
-	.frame	$fp,20,ra
+	.frame	$fp,24,ra
 	.set	noreorder
 	.cpload	t9
 	.set	reorder
 
-	subu	sp,sp,20
+	subu	sp,sp,24
 
 	.cprestore  16
 	sw		$fp,20(sp)
@@ -214,10 +214,14 @@ palindromo:
 	addu	t0,zero,1
 	beq		t0,v0,esPalindromo
 
-	lw 		a0,0($fp)
+	lw		a0,0($fp)
+	jal		transformarMinuscula
+	sw		v0,24($fp)
+
+	lw 		a0,24($fp)
 	jal 	invertirPalabra
 	sw		v0,4($fp)
-	lw 		a0, 0($fp)
+	lw 		a0, 24($fp)
 	lw 		a1, 4($fp)
 	jal		palabrasIguales
 	addu	t0,zero,1
@@ -231,9 +235,74 @@ noEsPalindromo:
 salirPalindromo:
 	lw 		ra,12($fp)
 	lw		$fp, 20(sp)
-	addu	sp, sp, 20
+	addu	sp, sp, 24
 	j 		ra
 	.end	palindromo
+
+
+	#char* transformarMinuscula(char* cadena)
+	.text
+	.align	2
+	.globl	transformarMinuscula
+	.ent	transformarMinuscula
+transformarMinuscula:
+	.frame	$fp,40,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+
+	subu	sp,sp,40
+
+	.cprestore  16
+	sw		$fp,20(sp)
+	move	$fp,sp
+	sw		ra,12($fp)
+	sw		a0, 24($fp)
+
+	lw 		a0, 24($fp)
+	jal		mystrlen
+	sw 		v0, 0($fp) 		#guardo la cantidad de palabras
+	beq 	v0,zero,palabraVacia
+	move 	a0,v0
+	addu 	a0,a0,1 		#sumo uno para el valor de \0
+	jal 	mymalloc 		#cada ver el valor de retorno para poder salir si hay error
+	sw 		v0,28($fp) 		#guardo el puntero de la nueva palabra
+	lw 		t1,24($fp)		#cargo la primera palabra para invetir
+looptransformarMinuscula:
+	lbu 	t2,0(t1)
+	sll		t2,t2,24
+	sra		t2,t2,24
+	beq 	t2,zero,agregarfinDeVector
+
+	#verificar si es mayucula
+	li		t0,90
+	ble		t2,	t0,verificarMayusculas
+	b		cargarCaracter
+verificarMayusculas:
+	li		t0,65
+	bge		t2,t0, esMayucula
+esMayucula:
+	addu	t2,t2,32
+cargarCaracter:
+	sb 		t2,0(v0)
+	addu 	t1,t1,1 			#sumo en uno la posicion de la primera palabra
+	addu 	v0,v0,1 			#resto uno a la posicion de la segunda palabra
+	b 		looptransformarMinuscula
+agregarfinDeVector:
+	lw 		v0,28($fp)		#obntengo de nuevo la dereccion inicial
+	lw 		t0,0($fp)
+	addu 	v0,v0,t0		#me muevo a la ultima posicion del vector
+	sb 		zero,0(v0)		#copio el nulo en la ultima posicion
+	lw 		v0,28($fp)
+	b 		salirtransformarMinuscula
+palabraVacia:
+	move 	v0,zero
+salirtransformarMinuscula:
+	lw 		ra,12($fp)
+	lw		$fp, 20(sp)
+	addu	sp, sp, 40
+	j 		ra
+	.end	transformarMinuscula
 
 
 	.text
@@ -510,16 +579,12 @@ comprobarSalidaDelLoopPrincipal: #l7
 	move	a1,s6
 	beq		v0,t0,llenarBufferEntrada
 
-	lw	a0,72($fp)
+	#ultimo llamado para que puede liberar los datos q se podrian quedar
+	lw		a0,72($fp)
 	move	a2,s7
-	la	t9,write
-	jal	ra,t9
-	move	a0,s5
-	la	t9,myfree
-	jal	ra,t9
-	move	a0,s6
-	la	t9,myfree
-	jal	ra,t9
+	li		v0,SYS_write
+	syscall
+
 	move	v0,zero
 	lw	ra,12($fp)
 
