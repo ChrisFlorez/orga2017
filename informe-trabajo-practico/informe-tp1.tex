@@ -79,7 +79,7 @@ Pueden utilizarse comandos tales como help y version, de la siguiente forma:
   $ ./tp0 -V
 \end{lstlisting}
 
-\subsection{Código fuente}
+\subsection{Código fuente C}
 \begin{lstlisting}[language=C]
 
 #include <stdio.h>
@@ -183,78 +183,8 @@ int main(int argc, char *argv[]) {
 
 \end{lstlisting}
 
-\section{Casos de prueba}
-
-A continuación se muestran unos casos de prueba desde la consola del GXEmul, los textos utilizados se detallarán al final.
-
-
-\begin{figure}[!htp]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba0.png}
-\caption{Prueba utilizando entrada y salida standard, y el tamaño en bytes por defecto del buffer de entrada y salida.} \label{fig001}
-\end{center}
-\end{figure}
-
-\begin{figure}[!htp]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png}
-\caption{Prueba utilizando archivo de entrada y salida standard, y el tamaño en bytes por defecto del buffer de entrada y salida.} \label{fig001}
-\end{center}
-\end{figure}
-
-\begin{figure}[!htp]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba2_entrada_4.png}
-\caption{Prueba utilizando archivo de entrada especificando el tamaño del buffer de entrada y salida standard con tamaño de buffer de salida por defecto.} \label{fig001}
-\end{center}
-\end{figure}
-
-\begin{figure}[!htp]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png}
-\caption{Prueba utilizando otro archivo de entrada, especificando el tamaño de buffer de entrada, archivo de salida y tamaño de buffer de salida por defecto.} \label{fig001}
-\end{center}
-\end{figure}
-
-\begin{figure}[!htp]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png}
-\caption{Prueba utilizando archivo de entrada y salida, y especificando el tamaño del buffer de entrada y salida.} \label{fig001}
-\end{center}
-\end{figure}
-
-\begin{figure}[!htp]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png}
-\caption{Prueba utilizando entrada standard y tamaño del buffer de entrada por defecto, archivo de salida y especificando tamaño de buffer de salida.} \label{fig001}
-\end{center}
-\end{figure}
-
-\pagebreak
-\subsection{Textos utilizados}
-
-\paragraph{Prueba 1:}
-
-Somos los primeros en completar el TP 0.
-
-Ojo que La fecha de entrega del TP0 es el martes 12 de septiembre.
-
-\paragraph{Prueba 2:}
-
-M
-
-\paragraph{Prueba 3:} 
-
-Reconocer que 345 soladados&civiles murieron por una fruta como el anana en san luis me resulta extranio, ya que aca en neuquen sobran de a montones,..., pero bueno es solo un comentario que m hizo ana el otro dia cuando me picaba el ojo, [{11134111\$;: ese numero no lo entiendo sera palindromo? no lo se.
-
-salas es un jugador chileno? creo que sis :[11]22.
-
-
-\section{Código MIPS generado} 
-
 \subsection{Código fuente Assembly}
 \begin{lstlisting}[language=Assembler]
-
 #include <mips/regdef.h>
 #include <sys/syscall.h>
 
@@ -1158,13 +1088,86 @@ myfree_return:
 	j	ra
 	.end	myfree
 	.rdata
+    
+\end{lstlisting}
 
+\section{Casos de prueba}
+
+A continuación se muestran unos casos de prueba desde la consola del GXEmul, los textos utilizados se detallarán al final.
+
+
+\begin{figure}[!htp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba0.png}
+\caption{Prueba utilizando entrada y salida standard, y el tamaño en bytes por defecto del buffer de entrada y salida.} \label{fig001}
+\end{center}
+\end{figure}
+
+\begin{figure}[!htp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png}
+\caption{Prueba utilizando archivo de entrada y salida standard, y el tamaño en bytes por defecto del buffer de entrada y salida.} \label{fig001}
+\end{center}
+\end{figure}
+
+\begin{figure}[!htp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba2_entrada_4.png}
+\caption{Prueba utilizando archivo de entrada especificando el tamaño del buffer de entrada y salida standard con tamaño de buffer de salida por defecto.} \label{fig001}
+\end{center}
+\end{figure}
+
+\begin{figure}[!htp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png}
+\caption{Prueba utilizando otro archivo de entrada, especificando el tamaño de buffer de entrada, archivo de salida y tamaño de buffer de salida por defecto.} \label{fig001}
+\end{center}
+\end{figure}
+
+\begin{figure}[!htp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png}
+\caption{Prueba utilizando archivo de entrada y salida, y especificando el tamaño del buffer de entrada y salida.} \label{fig001}
+\end{center}
+\end{figure}
+
+\begin{figure}[!htp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png}
+\caption{Prueba utilizando entrada standard y tamaño del buffer de entrada por defecto, archivo de salida y especificando tamaño de buffer de salida.} \label{fig001}
+\end{center}
+\end{figure}
+
+\pagebreak
+\subsection{Textos utilizados}
+
+\paragraph{Prueba 1:}
+
+Somos los primeros en completar el TP 0.
+
+Ojo que La fecha de entrega del TP0 es el martes 12 de septiembre.
+
+\paragraph{Prueba 2:}
+
+M
+
+\paragraph{Prueba 3:} 
+
+Reconocer que 345 soladados&civiles murieron por una fruta como el anana en san luis me resulta extranio, ya que aca en neuquen sobran de a montones,..., pero bueno es solo un comentario que m hizo ana el otro dia cuando me picaba el ojo, [{11134111\$;: ese numero no lo entiendo sera palindromo? no lo se.
+
+salas es un jugador chileno? creo que sis :[11]22.
+
+
+\section{Código MIPS generado} 
+
+\subsection{Código fuente Assembly}
+\begin{lstlisting}[language=Assembler]
+    
 \end{lstlisting}
 
 
 \section{Conclusiones}
 
-El trabajo práctico nos resultó interesante, no por el programa a desarrollar en sí, sino por lo que representó trabajar con el emulador GXEmul, emular la arquitectura MIPS, crear el túnel de comunicación entre el host OS (Linux, distribución Ubuntu) y el guest OS (NetBSD). Aprendimos como transferir archivos entre ambos sistemas y también ciertas cuestiones del lenguaje C con el cual no estábamos toalmente familiarizados.
 
 \begin{thebibliography}{1}
 
