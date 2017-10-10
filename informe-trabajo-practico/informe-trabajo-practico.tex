@@ -449,14 +449,14 @@ A continuación se muestran unos casos de prueba desde la consola del GXEmul, lo
 
 \pagebreak
 
-\subsection{Cobertura de los casos de prueba}
+\subsection{Cobertura de los casos de prueba mencionados anteriormente}
 \begin{enumerate}
-\item En esta prueba se quiso probar que el programa no discriminara entre mayusculas o miniscula, el cual lo hace bien ya que la palabra "Ojo" es dectectada como un palindromo, y tambien se prueba que se guardara correctamente en el archivo de salida.
-\item En esta prueba se uso solo el archivo de entrada, el cual el programa lo procesa correctamente  y al no especificar un archivo de salida se usa la salida estandar de forma correcta. 
-\item En esta prueba se quiso probar que el programa detectara como palindromo a una palabra compuesta por un solo caracter.
-\item En esta prueba se quiso probar ingresando un archivo de entrada y salida, y que el programa detectara como caracteres separadores a todos aquellos que no fueran todas las letras del alfabeto en mayúscula y minúscula, números del 0 al 9, guión medio y guión bajo y que tambien detectara a los números 11 y 22 como palindromos.
-\item En esta prueba se quiso probar con un archivo de entrada más largo y sin especificar un archivo de salida por lo que el programa imprime satisfactoriamente por pantalla el resultado.
-\item En esta prueba se quiso probar ingresando por entrada estandar y especificando un archivo de salida, por lo cual el programa procesa correctamente los datos en el archivo de salida.
+\item En este caso se quiso probar que el programa no es case sensitive, lo cual lo hace bien ya que la palabra "Ojo" es dectectada como un palíndromo, y también se prueba que se guarda correctamente en el archivo de salida.
+\item En este caso se proporciona sólo un archivo de entrada, el cual el programa procesa correctamente y al no especificar un archivo de salida se usa la salida standard de forma correcta para mostrar los resultados. 
+\item En este caso se prueba que el programa detecta como palíndromo a una palabra compuesta por un solo caracter.
+\item En este caso se prueba ingresando un archivo de entrada y salida que el programa detecta como caracteres separadores a todos aquellos que no fueran todas las letras del alfabeto (mayúsculas y minúsculas), números del 0 al 9, guión medio y guión bajo y que tambien detecta a los números 11 y 22 como palíndromos.
+\item En este caso se prueba con un archivo de entrada más largo y sin especificar un archivo de salida, por lo que el programa imprime satisfactoriamente por pantalla el resultado.
+\item En este caso se prueba que al ingresar un texto por entrada standard y especificando un archivo de salida, el programa procesa correctamente los datos y los escribe en el archivo de salida.
 \end{enumerate}
 
 \subsection{Textos utilizados}
@@ -483,131 +483,11 @@ salas es un jugador chileno? creo que sis :[11]22.
 
 \subsection{Código fuente Assembly}
 \begin{lstlisting}[language=Assembler]
-    .file   1 "isPalindrome.c"
+        .file   1 "isPalindrome.c"
     .section .mdebug.abi32
     .previous
     .abicalls
     .text
-    .align  2
-    .globl  empty
-    .ent    empty
-empty:
-    .frame  $fp,48,$ra      # vars= 8, regs= 3/0, args= 16, extra= 8
-    .mask   0xd0000000,-8
-    .fmask  0x00000000,0
-    .set    noreorder
-    .cpload $t9
-    .set    reorder
-    subu    $sp,$sp,48
-    .cprestore 16
-    sw  $ra,40($sp)
-    sw  $fp,36($sp)
-    sw  $gp,32($sp)
-    move    $fp,$sp
-    sw  $a0,48($fp)
-    lw  $a0,48($fp)
-    la  $t9,ftell
-    jal $ra,$t9
-    sw  $v0,24($fp)
-    lw  $a0,48($fp)
-    move    $a1,$zero
-    li  $a2,2           # 0x2
-    la  $t9,fseek
-    jal $ra,$t9
-    lw  $a0,48($fp)
-    la  $t9,ftell
-    jal $ra,$t9
-    bne $v0,$zero,$L18
-    li  $v0,1           # 0x1
-    sw  $v0,28($fp)
-    b   $L17
-$L18:
-    lw  $a0,48($fp)
-    lw  $a1,24($fp)
-    move    $a2,$zero
-    la  $t9,fseek
-    jal $ra,$t9
-    sw  $zero,28($fp)
-$L17:
-    lw  $v0,28($fp)
-    move    $sp,$fp
-    lw  $ra,40($sp)
-    lw  $fp,36($sp)
-    addu    $sp,$sp,48
-    j   $ra
-    .end    empty
-    .size   empty, .-empty
-    .rdata
-    .align  2
-$LC0:
-    .ascii  "El archivo %s no existe, por favor ingrese un archivo ex"
-    .ascii  "istente \n\000"
-    .align  2
-$LC1:
-    .ascii  "El archivo %s est\303\241 vac\303\255o, por favor ingres"
-    .ascii  "e un archivo no vac\303\255o \n\000"
-    .align  2
-$LC2:
-    .ascii  "Se recibi\303\263 el archivo %s \n\000"
-    .text
-    .align  2
-    .globl  validFile
-    .ent    validFile
-validFile:
-    .frame  $fp,48,$ra      # vars= 8, regs= 3/0, args= 16, extra= 8
-    .mask   0xd0000000,-8
-    .fmask  0x00000000,0
-    .set    noreorder
-    .cpload $t9
-    .set    reorder
-    subu    $sp,$sp,48
-    .cprestore 16
-    sw  $ra,40($sp)
-    sw  $fp,36($sp)
-    sw  $gp,32($sp)
-    move    $fp,$sp
-    sw  $a0,48($fp)
-    move    $v0,$a1
-    sw  $a2,56($fp)
-    sb  $v0,24($fp)
-    lw  $v0,48($fp)
-    bne $v0,$zero,$L20
-    la  $a0,$LC0
-    lw  $a1,56($fp)
-    la  $t9,printf
-    jal $ra,$t9
-    sw  $zero,28($fp)
-    b   $L19
-$L20:
-    lw  $a0,48($fp)
-    la  $t9,empty
-    jal $ra,$t9
-    beq $v0,$zero,$L21
-    lb  $v1,24($fp)
-    li  $v0,119         # 0x77
-    beq $v1,$v0,$L21
-    la  $a0,$LC1
-    lw  $a1,56($fp)
-    la  $t9,printf
-    jal $ra,$t9
-    sw  $zero,28($fp)
-    b   $L19
-$L21:
-    la  $a0,$LC2
-    lw  $a1,56($fp)
-    la  $t9,printf
-    jal $ra,$t9
-    li  $v0,1           # 0x1
-    sw  $v0,28($fp)
-$L19:
-    lw  $v0,28($fp)
-    move    $sp,$fp
-    lw  $ra,40($sp)
-    lw  $fp,36($sp)
-    addu    $sp,$sp,48
-    j   $ra
-    .end    validFile
-    .size   validFile, .-validFile
     .align  2
     .globl  isPalindrome
     .ent    isPalindrome
@@ -631,16 +511,16 @@ isPalindrome:
     addu    $v0,$v0,-1
     sw  $v0,28($fp)
     sw  $zero,24($fp)
-$L23:
+$L18:
     lw  $a0,56($fp)
     la  $t9,strlen
     jal $ra,$t9
     srl $v1,$v0,1
     lw  $v0,24($fp)
     sltu    $v0,$v0,$v1
-    bne $v0,$zero,$L26
-    b   $L24
-$L26:
+    bne $v0,$zero,$L21
+    b   $L19
+$L21:
     lw  $v1,56($fp)
     lw  $v0,24($fp)
     addu    $v0,$v1,$v0
@@ -659,21 +539,21 @@ $L26:
     addu    $v0,$v0,2
     lh  $v1,0($a0)
     lh  $v0,0($v0)
-    beq $v1,$v0,$L25
+    beq $v1,$v0,$L20
     sw  $zero,32($fp)
-    b   $L22
-$L25:
+    b   $L17
+$L20:
     lw  $v0,24($fp)
     addu    $v0,$v0,1
     sw  $v0,24($fp)
     lw  $v0,28($fp)
     addu    $v0,$v0,-1
     sw  $v0,28($fp)
-    b   $L23
-$L24:
+    b   $L18
+$L19:
     li  $v0,1           # 0x1
     sw  $v0,32($fp)
-$L22:
+$L17:
     lw  $v0,32($fp)
     move    $sp,$fp
     lw  $ra,48($sp)
@@ -684,7 +564,10 @@ $L22:
     .size   isPalindrome, .-isPalindrome
     .rdata
     .align  2
-$LC3:
+$LC0:
+    .ascii  "Error fputs: %s\n\000"
+    .align  2
+$LC1:
     .ascii  "\n\000"
     .text
     .align  2
@@ -705,52 +588,84 @@ seekPalindromes:
     move    $fp,$sp
     sw  $a0,48($fp)
     sw  $a1,52($fp)
+    sw  $a2,56($fp)
     sw  $zero,24($fp)
-$L29:
-    lw  $v1,24($fp)
-    move    $v0,$v1
-    sll $v0,$v0,6
-    addu    $v0,$v0,$v1
+$L24:
+    lw  $v0,24($fp)
+    lw  $v1,56($fp)
+    slt $v0,$v0,$v1
+    bne $v0,$zero,$L26
+    b   $L25
+$L26:
+    lw  $v0,24($fp)
     sll $v1,$v0,2
     lw  $v0,48($fp)
     addu    $v0,$v1,$v0
-    lb  $v1,0($v0)
-    li  $v0,36          # 0x24
-    bne $v1,$v0,$L31
-    b   $L28
-$L31:
-    lw  $v1,24($fp)
-    move    $v0,$v1
-    sll $v0,$v0,6
-    addu    $v0,$v0,$v1
-    sll $v1,$v0,2
-    lw  $v0,48($fp)
-    addu    $v0,$v1,$v0
-    move    $a0,$v0
+    lw  $a0,0($v0)
     la  $t9,isPalindrome
     jal $ra,$t9
-    beq $v0,$zero,$L32
-    lw  $v1,24($fp)
-    move    $v0,$v1
-    sll $v0,$v0,6
-    addu    $v0,$v0,$v1
+    beq $v0,$zero,$L27
+    lw  $v0,24($fp)
     sll $v1,$v0,2
     lw  $v0,48($fp)
     addu    $v0,$v1,$v0
-    move    $a0,$v0
+    lw  $a0,0($v0)
     lw  $a1,52($fp)
     la  $t9,fputs
     jal $ra,$t9
-    la  $a0,$LC3
+    move    $v1,$v0
+    li  $v0,-1          # 0xffffffffffffffff
+    bne $v1,$v0,$L28
+    la  $t9,__errno
+    jal $ra,$t9
+    lw  $a0,0($v0)
+    la  $t9,strerror
+    jal $ra,$t9
+    la  $a0,__sF+176
+    la  $a1,$LC0
+    move    $a2,$v0
+    la  $t9,fprintf
+    jal $ra,$t9
+    li  $v0,-1          # 0xffffffffffffffff
+    sw  $v0,28($fp)
+    b   $L23
+$L28:
+    la  $a0,$LC1
     lw  $a1,52($fp)
     la  $t9,fputs
     jal $ra,$t9
-$L32:
+    move    $v1,$v0
+    li  $v0,-1          # 0xffffffffffffffff
+    bne $v1,$v0,$L27
+    la  $t9,__errno
+    jal $ra,$t9
+    lw  $a0,0($v0)
+    la  $t9,strerror
+    jal $ra,$t9
+    la  $a0,__sF+176
+    la  $a1,$LC0
+    move    $a2,$v0
+    la  $t9,fprintf
+    jal $ra,$t9
+    li  $v0,-1          # 0xffffffffffffffff
+    sw  $v0,28($fp)
+    b   $L23
+$L27:
+    lw  $v0,24($fp)
+    sll $v1,$v0,2
+    lw  $v0,48($fp)
+    addu    $v0,$v1,$v0
+    lw  $a0,0($v0)
+    la  $t9,free
+    jal $ra,$t9
     lw  $v0,24($fp)
     addu    $v0,$v0,1
     sw  $v0,24($fp)
-    b   $L29
-$L28:
+    b   $L24
+$L25:
+    sw  $zero,28($fp)
+$L23:
+    lw  $v0,28($fp)
     move    $sp,$fp
     lw  $ra,40($sp)
     lw  $fp,36($sp)
@@ -758,78 +673,6 @@ $L28:
     j   $ra
     .end    seekPalindromes
     .size   seekPalindromes, .-seekPalindromes
-    .rdata
-    .align  2
-$LC4:
-    .ascii  "Las palabras pal\303\255ndromas detectadas son: \n\000"
-    .align  2
-$LC5:
-    .ascii  "%s\000"
-    .text
-    .align  2
-    .globl  printPalindromes
-    .ent    printPalindromes
-printPalindromes:
-    .frame  $fp,304,$ra     # vars= 264, regs= 3/0, args= 16, extra= 8
-    .mask   0xd0000000,-8
-    .fmask  0x00000000,0
-    .set    noreorder
-    .cpload $t9
-    .set    reorder
-    subu    $sp,$sp,304
-    .cprestore 16
-    sw  $ra,296($sp)
-    sw  $fp,292($sp)
-    sw  $gp,288($sp)
-    move    $fp,$sp
-    sw  $a0,304($fp)
-    addu    $a0,$fp,24
-    move    $a1,$zero
-    li  $a2,260         # 0x104
-    la  $t9,memset
-    jal $ra,$t9
-    lw  $a0,304($fp)
-    la  $t9,rewind
-    jal $ra,$t9
-    addu    $a0,$fp,24
-    li  $a1,260         # 0x104
-    lw  $a2,304($fp)
-    la  $t9,fgets
-    jal $ra,$t9
-    la  $a0,$LC4
-    la  $t9,printf
-    jal $ra,$t9
-$L34:
-    lw  $v0,304($fp)
-    lhu $v0,12($v0)
-    srl $v0,$v0,5
-    andi    $v0,$v0,0x1
-    beq $v0,$zero,$L36
-    b   $L33
-$L36:
-    la  $a0,$LC5
-    addu    $a1,$fp,24
-    la  $t9,printf
-    jal $ra,$t9
-    addu    $a0,$fp,24
-    move    $a1,$zero
-    li  $a2,260         # 0x104
-    la  $t9,memset
-    jal $ra,$t9
-    addu    $a0,$fp,24
-    li  $a1,260         # 0x104
-    lw  $a2,304($fp)
-    la  $t9,fgets
-    jal $ra,$t9
-    b   $L34
-$L33:
-    move    $sp,$fp
-    lw  $ra,296($sp)
-    lw  $fp,292($sp)
-    addu    $sp,$sp,304
-    j   $ra
-    .end    printPalindromes
-    .size   printPalindromes, .-printPalindromes
     .align  2
     .globl  validCharacter
     .ent    validCharacter
@@ -851,50 +694,50 @@ validCharacter:
     sw  $v0,12($fp)
     lw  $v0,12($fp)
     slt $v0,$v0,58
-    beq $v0,$zero,$L38
+    beq $v0,$zero,$L31
     lw  $v0,12($fp)
     slt $v0,$v0,48
-    bne $v0,$zero,$L38
+    bne $v0,$zero,$L31
     li  $v0,1           # 0x1
     sw  $v0,16($fp)
-    b   $L37
-$L38:
+    b   $L30
+$L31:
     lw  $v0,12($fp)
     slt $v0,$v0,91
-    beq $v0,$zero,$L39
+    beq $v0,$zero,$L32
     lw  $v0,12($fp)
     slt $v0,$v0,65
-    bne $v0,$zero,$L39
+    bne $v0,$zero,$L32
     li  $v0,1           # 0x1
     sw  $v0,16($fp)
-    b   $L37
-$L39:
+    b   $L30
+$L32:
     lw  $v0,12($fp)
     slt $v0,$v0,123
-    beq $v0,$zero,$L40
+    beq $v0,$zero,$L33
     lw  $v0,12($fp)
     slt $v0,$v0,97
-    bne $v0,$zero,$L40
+    bne $v0,$zero,$L33
     li  $v0,1           # 0x1
     sw  $v0,16($fp)
-    b   $L37
-$L40:
+    b   $L30
+$L33:
     lw  $v1,12($fp)
     li  $v0,45          # 0x2d
-    bne $v1,$v0,$L41
+    bne $v1,$v0,$L34
     li  $v0,1           # 0x1
     sw  $v0,16($fp)
-    b   $L37
-$L41:
+    b   $L30
+$L34:
     lw  $v1,12($fp)
     li  $v0,95          # 0x5f
-    bne $v1,$v0,$L42
+    bne $v1,$v0,$L35
     li  $v0,1           # 0x1
     sw  $v0,16($fp)
-    b   $L37
-$L42:
+    b   $L30
+$L35:
     sw  $zero,16($fp)
-$L37:
+$L30:
     lw  $v0,16($fp)
     move    $sp,$fp
     lw  $fp,28($sp)
@@ -903,9 +746,119 @@ $L37:
     .end    validCharacter
     .size   validCharacter, .-validCharacter
     .align  2
-    .globl  parseLine
-    .ent    parseLine
-parseLine:
+    .globl  agregarCaracterAVector
+    .ent    agregarCaracterAVector
+agregarCaracterAVector:
+    .frame  $fp,48,$ra      # vars= 8, regs= 3/0, args= 16, extra= 8
+    .mask   0xd0000000,-8
+    .fmask  0x00000000,0
+    .set    noreorder
+    .cpload $t9
+    .set    reorder
+    subu    $sp,$sp,48
+    .cprestore 16
+    sw  $ra,40($sp)
+    sw  $fp,36($sp)
+    sw  $gp,32($sp)
+    move    $fp,$sp
+    move    $v0,$a0
+    sw  $a1,52($fp)
+    sw  $a2,56($fp)
+    sb  $v0,24($fp)
+    sw  $zero,28($fp)
+    lw  $v1,56($fp)
+    li  $v0,1           # 0x1
+    bne $v1,$v0,$L37
+    lw  $a0,56($fp)
+    la  $t9,malloc
+    jal $ra,$t9
+    sw  $v0,28($fp)
+    lw  $v1,28($fp)
+    lbu $v0,24($fp)
+    sb  $v0,0($v1)
+    b   $L38
+$L37:
+    lw  $a0,52($fp)
+    lw  $a1,56($fp)
+    la  $t9,realloc
+    jal $ra,$t9
+    sw  $v0,28($fp)
+    lw  $v1,28($fp)
+    lw  $v0,56($fp)
+    addu    $v0,$v1,$v0
+    addu    $v1,$v0,-1
+    lbu $v0,24($fp)
+    sb  $v0,0($v1)
+$L38:
+    lw  $v0,28($fp)
+    move    $sp,$fp
+    lw  $ra,40($sp)
+    lw  $fp,36($sp)
+    addu    $sp,$sp,48
+    j   $ra
+    .end    agregarCaracterAVector
+    .size   agregarCaracterAVector, .-agregarCaracterAVector
+    .align  2
+    .globl  agregarPalabraAVector
+    .ent    agregarPalabraAVector
+agregarPalabraAVector:
+    .frame  $fp,48,$ra      # vars= 8, regs= 3/0, args= 16, extra= 8
+    .mask   0xd0000000,-8
+    .fmask  0x00000000,0
+    .set    noreorder
+    .cpload $t9
+    .set    reorder
+    subu    $sp,$sp,48
+    .cprestore 16
+    sw  $ra,40($sp)
+    sw  $fp,36($sp)
+    sw  $gp,32($sp)
+    move    $fp,$sp
+    sw  $a0,48($fp)
+    sw  $a1,52($fp)
+    sw  $a2,56($fp)
+    sw  $zero,24($fp)
+    lw  $v1,56($fp)
+    li  $v0,1           # 0x1
+    bne $v1,$v0,$L40
+    lw  $v0,56($fp)
+    sll $v0,$v0,2
+    move    $a0,$v0
+    la  $t9,malloc
+    jal $ra,$t9
+    sw  $v0,24($fp)
+    lw  $v1,24($fp)
+    lw  $v0,48($fp)
+    sw  $v0,0($v1)
+    b   $L41
+$L40:
+    lw  $v0,56($fp)
+    sll $v0,$v0,2
+    lw  $a0,52($fp)
+    move    $a1,$v0
+    la  $t9,realloc
+    jal $ra,$t9
+    sw  $v0,24($fp)
+    lw  $v0,56($fp)
+    sll $v1,$v0,2
+    lw  $v0,24($fp)
+    addu    $v0,$v1,$v0
+    addu    $v1,$v0,-4
+    lw  $v0,48($fp)
+    sw  $v0,0($v1)
+$L41:
+    lw  $v0,24($fp)
+    move    $sp,$fp
+    lw  $ra,40($sp)
+    lw  $fp,36($sp)
+    addu    $sp,$sp,48
+    j   $ra
+    .end    agregarPalabraAVector
+    .size   agregarPalabraAVector, .-agregarPalabraAVector
+    .align  2
+    .globl  getLinea
+    .ent    getLinea
+getLinea:
     .frame  $fp,56,$ra      # vars= 16, regs= 3/0, args= 16, extra= 8
     .mask   0xd0000000,-8
     .fmask  0x00000000,0
@@ -920,213 +873,320 @@ parseLine:
     move    $fp,$sp
     sw  $a0,56($fp)
     sw  $a1,60($fp)
-    sb  $zero,24($fp)
-    sw  $zero,28($fp)
-    sw  $zero,32($fp)
-    sw  $zero,36($fp)
-$L44:
-    lbu $v0,24($fp)
-    beq $v0,$zero,$L46
-    b   $L45
-$L46:
-    lw  $v1,56($fp)
-    lw  $v0,28($fp)
-    addu    $v0,$v1,$v0
-    lb  $v0,0($v0)
-    move    $a0,$v0
-    la  $t9,validCharacter
-    jal $ra,$t9
-    beq $v0,$zero,$L47
-    lw  $v1,32($fp)
-    move    $v0,$v1
-    sll $v0,$v0,6
-    addu    $v0,$v0,$v1
-    sll $v1,$v0,2
-    lw  $v0,60($fp)
-    addu    $v1,$v1,$v0
-    lw  $v0,36($fp)
-    addu    $a0,$v1,$v0
-    lw  $v1,56($fp)
-    lw  $v0,28($fp)
-    addu    $v0,$v1,$v0
-    lbu $v0,0($v0)
-    sb  $v0,0($a0)
-    lw  $v0,36($fp)
-    addu    $v0,$v0,1
-    sw  $v0,36($fp)
-    b   $L48
-$L47:
-    lw  $v0,36($fp)
-    beq $v0,$zero,$L48
-    lw  $v1,32($fp)
-    move    $v0,$v1
-    sll $v0,$v0,6
-    addu    $v0,$v0,$v1
-    sll $v1,$v0,2
-    lw  $v0,60($fp)
-    addu    $v1,$v1,$v0
-    lw  $v0,36($fp)
-    addu    $v0,$v1,$v0
-    sb  $zero,0($v0)
-    sw  $zero,36($fp)
-    lw  $v0,32($fp)
-    addu    $v0,$v0,1
-    sw  $v0,32($fp)
-$L48:
-    lw  $v1,56($fp)
-    lw  $v0,28($fp)
-    addu    $v0,$v1,$v0
-    lb  $v1,0($v0)
     li  $v0,10          # 0xa
-    beq $v1,$v0,$L51
-    lw  $v1,56($fp)
-    lw  $v0,28($fp)
-    addu    $v0,$v1,$v0
-    lb  $v0,0($v0)
-    bne $v0,$zero,$L50
-$L51:
-    li  $v0,1           # 0x1
-    sb  $v0,24($fp)
-$L50:
-    lw  $v0,28($fp)
-    addu    $v0,$v0,1
     sw  $v0,28($fp)
+    sw  $zero,32($fp)
+    lw  $a0,60($fp)
+    la  $t9,fgetc
+    jal $ra,$t9
+    sw  $v0,24($fp)
+$L43:
+    lw  $v0,60($fp)
+    lhu $v0,12($v0)
+    srl $v0,$v0,5
+    andi    $v0,$v0,0x1
+    bne $v0,$zero,$L44
+    lw  $v1,24($fp)
+    lw  $v0,28($fp)
+    bne $v1,$v0,$L45
     b   $L44
 $L45:
+    lw  $v1,56($fp)
+    lw  $v0,56($fp)
+    lw  $v0,0($v0)
+    addu    $v0,$v0,1
+    sw  $v0,0($v1)
+    lw  $v0,56($fp)
+    lw  $a0,32($fp)
+    lw  $a1,0($v0)
+    la  $t9,realloc
+    jal $ra,$t9
+    sw  $v0,32($fp)
+    lw  $v0,56($fp)
     lw  $v1,32($fp)
-    move    $v0,$v1
-    sll $v0,$v0,6
-    addu    $v0,$v0,$v1
-    sll $v1,$v0,2
-    lw  $v0,60($fp)
-    addu    $v1,$v1,$v0
-    li  $v0,36          # 0x24
+    lw  $v0,0($v0)
+    addu    $v0,$v1,$v0
+    addu    $v1,$v0,-1
+    lbu $v0,24($fp)
     sb  $v0,0($v1)
+    lw  $a0,60($fp)
+    la  $t9,fgetc
+    jal $ra,$t9
+    sw  $v0,24($fp)
+    b   $L43
+$L44:
+    lw  $v1,56($fp)
+    lw  $v0,56($fp)
+    lw  $v0,0($v0)
+    addu    $v0,$v0,1
+    sw  $v0,0($v1)
+    lw  $v0,56($fp)
+    lw  $a0,32($fp)
+    lw  $a1,0($v0)
+    la  $t9,realloc
+    jal $ra,$t9
+    sw  $v0,32($fp)
+    lw  $v0,56($fp)
+    lw  $v1,32($fp)
+    lw  $v0,0($v0)
+    addu    $v0,$v1,$v0
+    addu    $v0,$v0,-1
+    sb  $zero,0($v0)
+    lw  $v0,32($fp)
     move    $sp,$fp
     lw  $ra,48($sp)
     lw  $fp,44($sp)
     addu    $sp,$sp,56
     j   $ra
-    .end    parseLine
-    .size   parseLine, .-parseLine
-    .rdata
+    .end    getLinea
+    .size   getLinea, .-getLinea
     .align  2
-$LC6:
-    .ascii  "Se proces\303\263 el archivo de entrada \n\000"
-    .text
-    .align  2
-    .globl  processInput
-    .ent    processInput
-processInput:
-    .frame  $fp,67912,$ra       # vars= 67872, regs= 3/0, args= 16, extra= 8
+    .globl  parseLine
+    .ent    parseLine
+parseLine:
+    .frame  $fp,64,$ra      # vars= 24, regs= 3/0, args= 16, extra= 8
     .mask   0xd0000000,-8
     .fmask  0x00000000,0
     .set    noreorder
     .cpload $t9
     .set    reorder
-    subu    $sp,$sp,67912
+    subu    $sp,$sp,64
     .cprestore 16
-    li  $t5,65536           # 0x10000
-    ori $t5,$t5,0x940
-    addu    $t5,$t5,$sp
-    sw  $ra,0($t5)
-    sw  $fp,-4($t5)
-    sw  $gp,-8($t5)
+    sw  $ra,56($sp)
+    sw  $fp,52($sp)
+    sw  $gp,48($sp)
     move    $fp,$sp
-    sw  $a0,67912($fp)
-    sw  $a1,67916($fp)
-    move    $v0,$a2
-    sb  $v0,24($fp)
-    lw  $a0,67912($fp)
-    la  $t9,rewind
-    jal $ra,$t9
-    addu    $v0,$fp,32
+    sw  $a0,64($fp)
+    sw  $a1,68($fp)
+    sw  $a2,72($fp)
+    sw  $zero,24($fp)
+    sw  $zero,28($fp)
+    sw  $zero,32($fp)
+    sw  $zero,36($fp)
+    sw  $zero,40($fp)
+$L48:
+    lw  $v0,32($fp)
+    lw  $v1,68($fp)
+    slt $v0,$v0,$v1
+    bne $v0,$zero,$L50
+    b   $L49
+$L50:
+    lw  $v1,64($fp)
+    lw  $v0,32($fp)
+    addu    $v0,$v1,$v0
+    lb  $v0,0($v0)
     move    $a0,$v0
-    li  $a1,260         # 0x104
-    lw  $a2,67912($fp)
-    la  $t9,fgets
+    la  $t9,validCharacter
     jal $ra,$t9
-$L53:
-    lw  $v0,67912($fp)
+    beq $v0,$zero,$L51
+    lw  $v0,40($fp)
+    addu    $v0,$v0,1
+    sw  $v0,40($fp)
+    lw  $v1,64($fp)
+    lw  $v0,32($fp)
+    addu    $v0,$v1,$v0
+    lb  $v0,0($v0)
+    move    $a0,$v0
+    lw  $a1,28($fp)
+    lw  $a2,40($fp)
+    la  $t9,agregarCaracterAVector
+    jal $ra,$t9
+    sw  $v0,28($fp)
+    b   $L52
+$L51:
+    lw  $v0,40($fp)
+    beq $v0,$zero,$L52
+    lw  $v0,40($fp)
+    addu    $v0,$v0,1
+    sw  $v0,40($fp)
+    lw  $v0,36($fp)
+    addu    $v0,$v0,1
+    sw  $v0,36($fp)
+    move    $a0,$zero
+    lw  $a1,28($fp)
+    lw  $a2,40($fp)
+    la  $t9,agregarCaracterAVector
+    jal $ra,$t9
+    sw  $v0,28($fp)
+    lw  $a0,28($fp)
+    lw  $a1,24($fp)
+    lw  $a2,36($fp)
+    la  $t9,agregarPalabraAVector
+    jal $ra,$t9
+    sw  $v0,24($fp)
+    sw  $zero,40($fp)
+$L52:
+    lw  $v0,32($fp)
+    addu    $v0,$v0,1
+    sw  $v0,32($fp)
+    b   $L48
+$L49:
+    lw  $v1,72($fp)
+    lw  $v0,36($fp)
+    sw  $v0,0($v1)
+    lw  $v0,24($fp)
+    move    $sp,$fp
+    lw  $ra,56($sp)
+    lw  $fp,52($sp)
+    addu    $sp,$sp,64
+    j   $ra
+    .end    parseLine
+    .size   parseLine, .-parseLine
+    .rdata
+    .align  2
+$LC2:
+    .ascii  "Error fclose: %s\n\000"
+    .text
+    .align  2
+    .globl  processInput
+    .ent    processInput
+processInput:
+    .frame  $fp,64,$ra      # vars= 24, regs= 3/0, args= 16, extra= 8
+    .mask   0xd0000000,-8
+    .fmask  0x00000000,0
+    .set    noreorder
+    .cpload $t9
+    .set    reorder
+    subu    $sp,$sp,64
+    .cprestore 16
+    sw  $ra,56($sp)
+    sw  $fp,52($sp)
+    sw  $gp,48($sp)
+    move    $fp,$sp
+    sw  $a0,64($fp)
+    sw  $a1,68($fp)
+    sw  $zero,24($fp)
+    sw  $zero,28($fp)
+    sw  $zero,32($fp)
+    sw  $zero,36($fp)
+    addu    $v0,$fp,28
+    move    $a0,$v0
+    lw  $a1,64($fp)
+    la  $t9,getLinea
+    jal $ra,$t9
+    sw  $v0,24($fp)
+$L55:
+    lw  $v0,64($fp)
     lhu $v0,12($v0)
     srl $v0,$v0,5
     andi    $v0,$v0,0x1
-    beq $v0,$zero,$L55
-    b   $L54
-$L55:
-    addu    $v0,$fp,32
-    addu    $v1,$fp,296
-    move    $a0,$v0
-    move    $a1,$v1
+    beq $v0,$zero,$L57
+    b   $L56
+$L57:
+    addu    $v0,$fp,36
+    lw  $a0,24($fp)
+    lw  $a1,28($fp)
+    move    $a2,$v0
     la  $t9,parseLine
     jal $ra,$t9
-    addu    $v0,$fp,296
-    move    $a0,$v0
-    lw  $a1,67916($fp)
+    sw  $v0,32($fp)
+    lw  $a0,24($fp)
+    la  $t9,free
+    jal $ra,$t9
+    sw  $zero,24($fp)
+    sw  $zero,28($fp)
+    lw  $a0,32($fp)
+    lw  $a1,68($fp)
+    lw  $a2,36($fp)
     la  $t9,seekPalindromes
     jal $ra,$t9
-    addu    $v0,$fp,32
+    move    $v1,$v0
+    li  $v0,-1          # 0xffffffffffffffff
+    bne $v1,$v0,$L58
+    li  $v0,-1          # 0xffffffffffffffff
+    sw  $v0,40($fp)
+    b   $L54
+$L58:
+    addu    $v0,$fp,28
     move    $a0,$v0
-    li  $a1,260         # 0x104
-    lw  $a2,67912($fp)
-    la  $t9,fgets
+    lw  $a1,64($fp)
+    la  $t9,getLinea
     jal $ra,$t9
-    b   $L53
-$L54:
-    lw  $a0,67912($fp)
-    la  $t9,fclose
-    jal $ra,$t9
-    la  $a0,$LC6
-    la  $t9,printf
-    jal $ra,$t9
-    lbu $v0,24($fp)
-    beq $v0,$zero,$L56
-    lw  $a0,67916($fp)
-    la  $t9,printPalindromes
-    jal $ra,$t9
+    sw  $v0,24($fp)
+    b   $L55
 $L56:
-    lw  $a0,67916($fp)
+    lw  $a0,64($fp)
     la  $t9,fclose
     jal $ra,$t9
-    li  $t4,65536           # 0x10000
-    ori $t4,$t4,0x948
+    move    $v1,$v0
+    li  $v0,-1          # 0xffffffffffffffff
+    bne $v1,$v0,$L59
+    la  $t9,__errno
+    jal $ra,$t9
+    lw  $a0,0($v0)
+    la  $t9,strerror
+    jal $ra,$t9
+    la  $a0,__sF+176
+    la  $a1,$LC2
+    move    $a2,$v0
+    la  $t9,fprintf
+    jal $ra,$t9
+    li  $v0,-1          # 0xffffffffffffffff
+    sw  $v0,40($fp)
+    b   $L54
+$L59:
+    lw  $v1,68($fp)
+    la  $v0,__sF+88
+    beq $v1,$v0,$L60
+    lw  $a0,68($fp)
+    la  $t9,fclose
+    jal $ra,$t9
+    move    $v1,$v0
+    li  $v0,-1          # 0xffffffffffffffff
+    bne $v1,$v0,$L60
+    la  $t9,__errno
+    jal $ra,$t9
+    lw  $a0,0($v0)
+    la  $t9,strerror
+    jal $ra,$t9
+    la  $a0,__sF+176
+    la  $a1,$LC2
+    move    $a2,$v0
+    la  $t9,fprintf
+    jal $ra,$t9
+    li  $v0,-1          # 0xffffffffffffffff
+    sw  $v0,40($fp)
+    b   $L54
+$L60:
+    sw  $zero,40($fp)
+$L54:
+    lw  $v0,40($fp)
     move    $sp,$fp
-    addu    $t5,$t4,$sp
-    lw  $ra,-8($t5)
-    lw  $fp,-12($t5)
-    addu    $sp,$sp,$t4
+    lw  $ra,56($sp)
+    lw  $fp,52($sp)
+    addu    $sp,$sp,64
     j   $ra
     .end    processInput
     .size   processInput, .-processInput
     .rdata
     .align  2
-$LC8:
+$LC4:
     .ascii  "version\000"
     .align  2
-$LC9:
+$LC5:
     .ascii  "help\000"
     .align  2
-$LC10:
+$LC6:
     .ascii  "input\000"
     .align  2
-$LC11:
+$LC7:
     .ascii  "output\000"
     .data
     .align  2
-$LC12:
-    .word   $LC8
+$LC8:
+    .word   $LC4
     .word   0
     .word   0
     .word   86
-    .word   $LC9
+    .word   $LC5
     .word   0
     .word   0
     .word   104
-    .word   $LC10
+    .word   $LC6
     .word   1
     .word   0
     .word   105
-    .word   $LC11
+    .word   $LC7
     .word   1
     .word   0
     .word   111
@@ -1137,101 +1197,83 @@ $LC12:
     .globl  memcpy
     .rdata
     .align  2
-$LC7:
+$LC3:
     .ascii  "i:o:hV\000"
     .align  2
-$LC13:
-    .ascii  "inputFileAux.txt\000"
-    .align  2
-$LC14:
-    .ascii  "outputFileAux.txt\000"
-    .align  2
-$LC15:
-    .ascii  "Debe ingresar alg\303\272n argumento, para mas informaci"
-    .ascii  "\303\263n ingrese -h \n\000"
-    .align  2
-$LC16:
+$LC9:
     .ascii  "TP #0 de la materia Organizaci\303\263n de Computadoras "
     .ascii  "\n\000"
     .align  2
-$LC17:
+$LC10:
     .ascii  "Alumnos: \n\000"
     .align  2
-$LC18:
+$LC11:
     .ascii  "\tFl\303\263rez Del Carpio Christian\n"
     .ascii  "\tMontenegro Josefina \n"
     .ascii  "\tQuino Lopez Julian \n\000"
     .align  2
-$LC19:
+$LC12:
     .ascii  "Usage: \n\000"
     .align  2
-$LC20:
+$LC13:
     .ascii  "\t%s -h \n\000"
     .align  2
-$LC21:
+$LC14:
     .ascii  "\t%s -V \n\000"
     .align  2
-$LC22:
+$LC15:
     .ascii  "\t%s [options] \n\000"
     .align  2
-$LC23:
+$LC16:
     .ascii  "Options: \n\000"
     .align  2
-$LC24:
+$LC17:
     .ascii  "\t-V, --version  Print version and quit. \n\000"
     .align  2
-$LC25:
+$LC18:
     .ascii  "\t-h, --help     Print this information. \n\000"
     .align  2
-$LC26:
+$LC19:
     .ascii  "\t-o, --output   Location of the output file. \n\000"
     .align  2
-$LC27:
+$LC20:
     .ascii  "\t-i, --input    Location of the input file. \n\000"
     .align  2
-$LC28:
+$LC21:
     .ascii  "r\000"
     .align  2
-$LC29:
-    .ascii  "w\000"
+$LC22:
+    .ascii  "Error archivo entrada: %s\n\000"
     .align  2
-$LC30:
-    .ascii  "Opci\303\263n inv\303\241lida. Para ver m\303\241s infor"
-    .ascii  "maci\303\263n ingrese -h. \n\000"
-    .align  2
-$LC31:
-    .ascii  "Ingrese el stream a procesar (m\303\241ximo 300 caracter"
-    .ascii  "es): \n\000"
-    .align  2
-$LC32:
+$LC23:
     .ascii  "w+\000"
     .align  2
-$LC33:
-    .ascii  "Se mostrar\303\241 el resultado en pantalla. \n\000"
+$LC24:
+    .ascii  "Error archivo salida: %s\n\000"
     .text
     .align  2
     .globl  main
     .ent    main
 main:
-    .frame  $fp,472,$ra     # vars= 424, regs= 3/0, args= 24, extra= 8
+    .frame  $fp,152,$ra     # vars= 104, regs= 3/0, args= 24, extra= 8
     .mask   0xd0000000,-8
     .fmask  0x00000000,0
     .set    noreorder
     .cpload $t9
     .set    reorder
-    subu    $sp,$sp,472
+    subu    $sp,$sp,152
     .cprestore 24
-    sw  $ra,464($sp)
-    sw  $fp,460($sp)
-    sw  $gp,456($sp)
+    sw  $ra,144($sp)
+    sw  $fp,140($sp)
+    sw  $gp,136($sp)
     move    $fp,$sp
-    sw  $a0,472($fp)
-    sw  $a1,476($fp)
+    sw  $a0,152($fp)
+    sw  $a1,156($fp)
     sw  $zero,32($fp)
-    la  $v0,$LC7
+    la  $v0,$LC3
     sw  $v0,36($fp)
     addu    $v0,$fp,40
-    la  $v1,$LC12
+    la  $v1,$LC8
     move    $a0,$v0
     move    $a1,$v1
     li  $a2,80          # 0x50
@@ -1239,29 +1281,11 @@ main:
     jal $ra,$t9
     sw  $zero,120($fp)
     sw  $zero,124($fp)
-    sb  $zero,128($fp)
-    sb  $zero,129($fp)
-    la  $v0,$LC13
-    sw  $v0,440($fp)
-    la  $v0,$LC14
-    sw  $v0,444($fp)
-    lw  $v1,472($fp)
-    li  $v0,1           # 0x1
-    bne $v1,$v0,$L58
-    la  $a0,$LC15
-    la  $t9,printf
-    jal $ra,$t9
-    sw  $zero,448($fp)
-    b   $L57
-$L58:
-    .set    noreorder
-    nop
-    .set    reorder
-$L59:
+$L63:
     addu    $v0,$fp,40
     sw  $zero,16($sp)
-    lw  $a0,472($fp)
-    lw  $a1,476($fp)
+    lw  $a0,152($fp)
+    lw  $a1,156($fp)
     lw  $a2,36($fp)
     move    $a3,$v0
     la  $t9,getopt_long
@@ -1269,30 +1293,60 @@ $L59:
     sw  $v0,32($fp)
     lw  $v1,32($fp)
     li  $v0,-1          # 0xffffffffffffffff
-    bne $v1,$v0,$L61
-    b   $L60
-$L61:
+    bne $v1,$v0,$L65
+    b   $L64
+$L65:
     lw  $v0,32($fp)
-    sw  $v0,452($fp)
+    sw  $v0,132($fp)
     li  $v0,104         # 0x68
-    lw  $v1,452($fp)
-    beq $v1,$v0,$L64
-    lw  $v1,452($fp)
+    lw  $v1,132($fp)
+    beq $v1,$v0,$L68
+    lw  $v1,132($fp)
     slt $v0,$v1,105
-    beq $v0,$zero,$L71
+    beq $v0,$zero,$L76
     li  $v0,86          # 0x56
-    lw  $v1,452($fp)
-    beq $v1,$v0,$L63
-    b   $L69
-$L71:
-    li  $v0,105         # 0x69
-    lw  $v1,452($fp)
-    beq $v1,$v0,$L65
-    li  $v0,111         # 0x6f
-    lw  $v1,452($fp)
+    lw  $v1,132($fp)
     beq $v1,$v0,$L67
-    b   $L69
-$L63:
+    b   $L74
+$L76:
+    li  $v0,105         # 0x69
+    lw  $v1,132($fp)
+    beq $v1,$v0,$L69
+    li  $v0,111         # 0x6f
+    lw  $v1,132($fp)
+    beq $v1,$v0,$L71
+    b   $L74
+$L67:
+    la  $a0,$LC9
+    la  $t9,printf
+    jal $ra,$t9
+    la  $a0,$LC10
+    la  $t9,printf
+    jal $ra,$t9
+    la  $a0,$LC11
+    la  $t9,printf
+    jal $ra,$t9
+    sw  $zero,128($fp)
+    b   $L62
+$L68:
+    la  $a0,$LC12
+    la  $t9,printf
+    jal $ra,$t9
+    lw  $v0,156($fp)
+    la  $a0,$LC13
+    lw  $a1,0($v0)
+    la  $t9,printf
+    jal $ra,$t9
+    lw  $v0,156($fp)
+    la  $a0,$LC14
+    lw  $a1,0($v0)
+    la  $t9,printf
+    jal $ra,$t9
+    lw  $v0,156($fp)
+    la  $a0,$LC15
+    lw  $a1,0($v0)
+    la  $t9,printf
+    jal $ra,$t9
     la  $a0,$LC16
     la  $t9,printf
     jal $ra,$t9
@@ -1302,149 +1356,97 @@ $L63:
     la  $a0,$LC18
     la  $t9,printf
     jal $ra,$t9
-    sw  $zero,448($fp)
-    b   $L57
-$L64:
     la  $a0,$LC19
     la  $t9,printf
     jal $ra,$t9
-    lw  $v0,476($fp)
     la  $a0,$LC20
-    lw  $a1,0($v0)
     la  $t9,printf
     jal $ra,$t9
-    lw  $v0,476($fp)
-    la  $a0,$LC21
-    lw  $a1,0($v0)
-    la  $t9,printf
-    jal $ra,$t9
-    lw  $v0,476($fp)
-    la  $a0,$LC22
-    lw  $a1,0($v0)
-    la  $t9,printf
-    jal $ra,$t9
-    la  $a0,$LC23
-    la  $t9,printf
-    jal $ra,$t9
-    la  $a0,$LC24
-    la  $t9,printf
-    jal $ra,$t9
-    la  $a0,$LC25
-    la  $t9,printf
-    jal $ra,$t9
-    la  $a0,$LC26
-    la  $t9,printf
-    jal $ra,$t9
-    la  $a0,$LC27
-    la  $t9,printf
-    jal $ra,$t9
-    sw  $zero,448($fp)
-    b   $L57
-$L65:
-    lw  $a0,optarg
-    la  $a1,$LC28
-    la  $t9,fopen
-    jal $ra,$t9
-    sw  $v0,120($fp)
-    lw  $a0,120($fp)
-    li  $a1,114         # 0x72
-    lw  $a2,optarg
-    la  $t9,validFile
-    jal $ra,$t9
-    bne $v0,$zero,$L59
-    sw  $zero,448($fp)
-    b   $L57
-$L67:
-    lw  $a0,optarg
-    la  $a1,$LC29
-    la  $t9,fopen
-    jal $ra,$t9
-    sw  $v0,124($fp)
-    lw  $a0,124($fp)
-    li  $a1,119         # 0x77
-    lw  $a2,optarg
-    la  $t9,validFile
-    jal $ra,$t9
-    bne $v0,$zero,$L59
-    sw  $zero,448($fp)
-    b   $L57
+    sw  $zero,128($fp)
+    b   $L62
 $L69:
-    la  $a0,$LC30
-    la  $t9,printf
-    jal $ra,$t9
-    b   $L59
-$L60:
-    lw  $v0,120($fp)
-    bne $v0,$zero,$L72
-    la  $a0,$LC31
-    la  $t9,printf
-    jal $ra,$t9
-    addu    $v0,$fp,136
-    move    $a0,$v0
-    li  $a1,300         # 0x12c
-    la  $a2,__sF
-    la  $t9,fgets
-    jal $ra,$t9
-    lw  $a0,440($fp)
-    la  $a1,$LC32
+    lw  $a0,optarg
+    la  $a1,$LC21
     la  $t9,fopen
     jal $ra,$t9
     sw  $v0,120($fp)
-    addu    $v0,$fp,136
-    move    $a0,$v0
-    lw  $a1,120($fp)
-    la  $t9,fputs
+    lw  $v0,120($fp)
+    bne $v0,$zero,$L63
+    la  $t9,__errno
     jal $ra,$t9
-    la  $a0,$LC3
-    lw  $a1,120($fp)
-    la  $t9,fputs
+    lw  $a0,0($v0)
+    la  $t9,strerror
     jal $ra,$t9
-    li  $v0,1           # 0x1
-    sb  $v0,128($fp)
-$L72:
-    lw  $v0,124($fp)
-    bne $v0,$zero,$L73
-    la  $a0,$LC33
-    la  $t9,printf
+    la  $a0,__sF+176
+    la  $a1,$LC22
+    move    $a2,$v0
+    la  $t9,fprintf
     jal $ra,$t9
-    lw  $a0,444($fp)
-    la  $a1,$LC32
+    b   $L63
+$L71:
+    lw  $a0,optarg
+    li  $a1,2           # 0x2
+    la  $t9,access
+    jal $ra,$t9
+    move    $v1,$v0
+    li  $v0,-1          # 0xffffffffffffffff
+    beq $v1,$v0,$L63
+    lw  $a0,optarg
+    la  $a1,$LC23
     la  $t9,fopen
     jal $ra,$t9
     sw  $v0,124($fp)
-    li  $v0,1           # 0x1
-    sb  $v0,129($fp)
-$L73:
-    lbu $v0,129($fp)
+    lw  $v0,124($fp)
+    bne $v0,$zero,$L63
+    la  $t9,__errno
+    jal $ra,$t9
+    lw  $a0,0($v0)
+    la  $t9,strerror
+    jal $ra,$t9
+    la  $a0,__sF+176
+    la  $a1,$LC24
+    move    $a2,$v0
+    la  $t9,fprintf
+    jal $ra,$t9
+    li  $v0,-1          # 0xffffffffffffffff
+    sw  $v0,128($fp)
+    b   $L62
+$L74:
+    la  $t9,abort
+    jal $ra,$t9
+$L64:
+    lw  $v0,120($fp)
+    bne $v0,$zero,$L77
+    la  $v0,__sF
+    sw  $v0,120($fp)
+$L77:
+    lw  $v0,124($fp)
+    bne $v0,$zero,$L78
+    la  $v0,__sF+88
+    sw  $v0,124($fp)
+$L78:
     lw  $a0,120($fp)
     lw  $a1,124($fp)
-    move    $a2,$v0
     la  $t9,processInput
     jal $ra,$t9
-    lbu $v0,128($fp)
-    beq $v0,$zero,$L74
-    lw  $a0,440($fp)
-    la  $t9,remove
-    jal $ra,$t9
-$L74:
-    lbu $v0,129($fp)
-    beq $v0,$zero,$L75
-    lw  $a0,444($fp)
-    la  $t9,remove
-    jal $ra,$t9
-$L75:
-    sw  $zero,448($fp)
-$L57:
-    lw  $v0,448($fp)
+    move    $v1,$v0
+    li  $v0,-1          # 0xffffffffffffffff
+    bne $v1,$v0,$L79
+    li  $v1,-1          # 0xffffffffffffffff
+    sw  $v1,128($fp)
+    b   $L62
+$L79:
+    sw  $zero,128($fp)
+$L62:
+    lw  $v0,128($fp)
     move    $sp,$fp
-    lw  $ra,464($sp)
-    lw  $fp,460($sp)
-    addu    $sp,$sp,472
+    lw  $ra,144($sp)
+    lw  $fp,140($sp)
+    addu    $sp,$sp,152
     j   $ra
     .end    main
     .size   main, .-main
     .ident  "GCC: (GNU) 3.3.3 (NetBSD nb3 20040520)"
-
 \end{lstlisting}
 
 \pagebreak
