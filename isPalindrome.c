@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 #include <getopt.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <unistd.h>
+
 #define ERROR -1
 #define SALIDA_EXITOSA 0
 
-
-extern int palindrome(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut);
+extern int palindrome(int ifd, size_t ibytes, int ofd, size_t obytes);
 
 int main(int argc, char *argv[]) {
 
@@ -85,9 +83,7 @@ int main(int argc, char *argv[]) {
 
     if (obytes == NULL) obytes = "1";
 
-    palindrome(fileno(inputFile), atoi(ibytes), fileno(outputFile), atoi(obytes));
-
-    printf("Terminó el procesamiento. \n");
+    palindrome(fileno(inputFile), (size_t)atoi(ibytes), fileno(outputFile), (size_t)atoi(obytes));
 
     return SALIDA_EXITOSA;
 }
