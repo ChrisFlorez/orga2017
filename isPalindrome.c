@@ -54,7 +54,7 @@ extern int seFormoUnaPalabra(char *cadena,int cantidadCaracteres);/*{
 	}
 	return 0;
 }*/
-int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
+extern int palindrome(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut);/*{
 	char *bufferEntrada = mymalloc(tamanioIn);
 	char *bufferSalida = mymalloc(tamanioOut);
 	int	contadorDeBufferSalida = 0;
@@ -119,7 +119,7 @@ int palindromes(int archivoIn, int tamanioIn,int archivoOut,int tamanioOut){
 	myfree(bufferSalida);
 	return 0;
 }
-
+*/
 int main(int argc, char *argv[]) {
 
     int option = 0;
@@ -195,7 +195,7 @@ int main(int argc, char *argv[]) {
     inputFile = fopen("lInt.txt", "r");
     outputFile = fopen("lOut.txt", "w");
     //fileno(inputFile)
-    palindromes(fileno(inputFile), 5, fileno(outputFile),5);
+    palindrome(fileno(inputFile), 5, fileno(outputFile),5);
     printf("Terminó el procesamiento. \n");
 
     return SALIDA_EXITOSA;

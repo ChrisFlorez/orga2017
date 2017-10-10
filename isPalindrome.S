@@ -19,102 +19,6 @@
 #define MAP_ANON 0x1000
 #endif
 
-	.text
-	.align	2
-	.globl	palindrome
-	.ent	palindrome
-palindrome:
-	.frame	$fp,40,ra
-	.set	noreorder
-	.cpload	t9
-	.set	reorder
-
-	subu	sp,sp,40
-
-	.cprestore  16
-	sw		$fp,20(sp)
-	move	$fp,sp
-	sw		ra,12($fp)
-	sw		a0, 24($fp) 		#guardo el descriptor del archivoIn
-	sw		a1,	28($fp)			#guardo el tamanio del buffer in
-	sw 		a2,	32($fp)			#archivo out
-	sw		a3,	36($fp)			#tamanio buffer out
-
-
-	#reservo memoria para el buffer de entrada
-	lw 		a0, 28($fp)
-	jal 	mymalloc
-	sw		v0,0($fp)
-
-
-	#reservo memoria para el buffer salida
-	lw 		a0, 36($fp)
-	jal 	mymalloc
-	sw		v0,4($fp)
-
-
-	move t0,zero
-	sw		t0,40($fp);
-	sw		t0,44($fp)
-	sw		t0,48($fp)
-
-
-	#uso un registro para indicar cuando salir del loop si no surgio ningun error
-	move 	t0,zero
-
-	addu	t0,t0,1				#1 para indicar q no salga del loop
-	sw		t0,8($fp)			#lo guardo
-
-
-whilePalindrome:
-	lw 		t0,40($fp)
-	bne		t0,1,salidaPalindrome
-
-
-	#lleno el buffer de entrada con llamada al systema
-	#******************
-	li		v0, SYS_read
-	lw 		a0,	24($fp)         # cargo en a0 el descriptor del archivo de entrada
-	lw		a1,	0($fp)          # cargo en a1 el resultado de mymalloc
-	lw		a2, 28($fp)         # cargo en a2 el tamanio de la unidad de transferencia
-	syscall
-	#******************
-
-	sw		v0,4($fp)
-	lw 		t1,28($fp)
-	bne 	v0,t1,cambiarValorDeSalida
-
-
-seguir:
-	#aca el almacenado de la palbras, ver si es palindrome etc
-
-
-
-	#llamada al sistema
-	#cuando el buffer de salida este lleno lo paso por el archivo de salida
-	li		v0, SYS_write
-	lw		a0,32($fp)		#se cambia despues por el de la entrada
-	lw		a1,0($fp)
-	lw 		a2,4($fp)
-	syscall
-	#***************************************
-
-
-	b whilePalindrome
-
-cambiarValorDeSalida:
-	move 	t0,zero
-	sw		t0,40($fp)
-	b		seguir
-
-salidaPalindrome:
-	lw 		ra,12($fp)
-	lw		$fp, 20(sp)
-	addu	sp, sp, 40
-	j 		ra
-	.end	palindrome
-
-
 
 	#int seFormoUnaPalabra(char *cadena,int cantidadCaracteres)
 	.text						#retorna 1 si se formo la palbra
@@ -287,47 +191,6 @@ incertarCaracter:
 	.end	agregarCaracter
 
 
-	.text
-	.align	2
-	.globl	llenarBufferEntrada
-	.ent	llenarBufferEntrada
-llenarBufferEntrada:
-	.frame	$fp,20,ra
-	.set	noreorder
-	.cpload	t9
-	.set	reorder
-
-	subu	sp,sp,20
-
-	.cprestore  16
-	sw		$fp,20(sp)
-	move	$fp,sp
-
-	sw		ra,12($fp)
-	sw		a0, 0($fp)		#descroptor de archivo
-	sw		a1, 4($fp)		#tamanio de buffer
-	sw		a2,	8($fp)		#direccion de buffer
-
-	lw		t0,	0($fp)
-	li		v0, SYS_read
-	move 	a0,	t0
-	lw		a1,	8($fp)
-	li		a2, 4
-	syscall
-
-	#aca me tengo q fijar si hay error con el a3 falta eso
-	#salir por error o por salida correcta
-
-
-	#devuelce la cantiada leida en v0
-SalirllenarBufferEntrada:
-	lw 		ra,12($fp)
-	lw		$fp, 20(sp)
-	addu	sp, sp, 20
-	j 		ra
-	.end	llenarBufferEntrada
-
-
 	#int palindromo(char *palabra)
 	.text
 	.align	2					#devulve 1 si es palindrome
@@ -490,6 +353,191 @@ salirPalabrasIguales:
 	addu	sp, sp, 40
 	j 	ra
 	.end	palabrasIguales
+
+
+	.text
+	.align	2
+	.globl	palindrome
+	.ent	palindrome
+palindrome:
+	.frame	$fp,80,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+	subu	sp,sp,80
+	.cprestore 16
+	sw	$fp,20(sp)
+	move 	$fp,sp
+	sw	ra,12($fp)
+
+	#guardo todos los registros guardables, por q otros lo pueden usar
+	sw	s0,32($fp)
+	sw	s1,36($fp)
+	sw	s2,40($fp)
+	sw	s3,44($fp)
+	sw	s4,48($fp)
+	sw	s5,52($fp)
+	sw	s6,56($fp)
+	sw	s7,60($fp)
+
+	#guardo losparametros
+	sw	a0,64($fp)
+	sw	a1,68($fp)
+	sw	a2,72($fp)
+	sw	a3,76($fp)
+
+	#reservo memoria para el buffer de entrada
+	move	a0,a1
+	jal		mymalloc
+	move	s5,v0
+
+	#reservo memoria para el buffer de salida
+	lw	a0,76($fp)
+	jal		mymalloc
+	move	s6,v0
+
+	#inicializo variables
+	move	s7,zero
+	move	s1,zero
+	move	s2,zero
+	li		v0,1
+	sw		v0,24($fp)	#variable para indicar cuando salir
+
+llenarBufferEntrada: #L23
+	lw		a0,64($fp)
+	move	a1,s5
+	lw		a2,68($fp)
+	li		v0,SYS_read
+	syscall
+	move	s3,v0
+	bne		v0,zero,recibioCaracteres		#se fija si recibio caracteres
+	sw		zero,24($fp)					#cambio el valor de salida para q salga del loop
+recibioCaracteres: #L5
+	move	s4,zero
+	blez	s3,comprobarSalidaDelLoopPrincipal
+procesamientoBuferEntrada: #L22
+	addu	s1,s1,1
+	addu	v0,s5,s4
+	lb		a1,0(v0)
+	move	a0,s2
+	move	a2,s1
+	jal 	agregarCaracter
+	move	s2,v0
+
+	move	a0,v0
+	move	a1,s1
+	jal		seFormoUnaPalabra
+	li		t0,1
+	move	s0,v0
+	bne		v0,t0,saltar
+
+	addu	v0,s2,s1
+	sb		zero,-1(v0)
+	move	a0,s2
+	jal		palindromo
+
+	move	a0,s2
+	bne		v0,s0,EliminarBufferAuxiliar
+
+	addu	v0,s1,-1
+
+	move	s0,zero
+	blez	v0,vaciarBufferDeSalida
+
+	move	s1,v0
+whileDeLLenadoDeBufferDeSalida: #L17
+	lw		v1,76($fp)
+
+	addu	v0,s6,s7
+	bne		s7,v1,agregarCaracterABufferSalida
+
+	lw		a0,72($fp)
+	move	a1,s6
+	move	a2,s7
+	la		t9,write
+	jal		ra,t9
+
+	move	s7,zero
+	b		noAgregar
+
+agregarCaracterABufferSalida: #l15
+	addu	v1,s2,s0
+	lbu		v1,0(v1)
+
+	sb		v1,0(v0)
+	addu	s7,s7,1
+	addu	s0,s0,1
+noAgregar: #L12
+	slt		v0,s0,s1
+	bne		v0,zero,whileDeLLenadoDeBufferDeSalida
+vaciarBufferDeSalida: #L28   		#vacio el buffer de salida por q esta lleno
+	lw		v0,76($fp)
+	addu	v0,s6,s7
+	bne		s7,v0,agregarSaltoLinea
+	lw		a0,72($fp)
+	move	a1,s6
+	move	a2,s7
+	li		v0,SYS_write
+	li		v1,10
+	sb		v1,0(s6)		#agrego el \n
+	li		s7,1
+	b		liberarLaMemoria
+
+agregarSaltoLinea: #L18
+	li	v1,10
+	sb	v1,0(v0)
+	addu	s7,s7,1
+	b	liberarLaMemoria
+
+
+saltar:
+	li	v0,2
+	bne	s0,v0,comprobarSalto
+liberarLaMemoria: #L29
+	move	a0,s2
+EliminarBufferAuxiliar: #l30
+	jal		myfree
+	move	s1,zero
+	move	s2,zero
+comprobarSalto: #L20
+	addu	s4,s4,1
+	slt		v0,s4,s3
+	beq		v0,zero,comprobarSalidaDelLoopPrincipal
+	bgtz	s3,procesamientoBuferEntrada
+comprobarSalidaDelLoopPrincipal: #l7
+	lw		v0,24($fp)
+	li		t0,1
+	move	a1,s6
+	beq		v0,t0,llenarBufferEntrada
+
+	lw	a0,72($fp)
+	move	a2,s7
+	la	t9,write
+	jal	ra,t9
+	move	a0,s5
+	la	t9,myfree
+	jal	ra,t9
+	move	a0,s6
+	la	t9,myfree
+	jal	ra,t9
+	move	v0,zero
+	lw	ra,12($fp)
+
+
+	lw	s0,32($fp)
+	lw	s1,36($fp)
+	lw	s2,40($fp)
+	lw	s3,44($fp)
+	lw	s4,48($fp)
+	lw	s5,52($fp)
+	lw	s6,56($fp)
+	lw	s7,60($fp)
+
+	lw	$fp,20(sp)
+	addu	sp,sp,80
+	j	ra
+
+	.end	palindrome
 
 
 	.text
