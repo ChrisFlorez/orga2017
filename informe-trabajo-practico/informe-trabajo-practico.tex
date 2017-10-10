@@ -376,6 +376,32 @@ int main(int argc, char *argv[]) {
 }
 \end{lstlisting}
 
+\subsection{Documentación detallada de las funciones presentadas en el código}
+
+\paragraph{Función isPalindrome:}
+Recibe por parámetro una palabra previamente filtrada, y analiza si la misma es palíndroma o no.
+
+\paragraph{Función seekPalindromes:}
+Recibe las palabras filtradas, el archivo donde escribir, evalúa si las palabras recibidas son palíndromos y en tal caso, las escribe en el archivo de salida.
+
+\paragraph{Función validCharacter:}
+Recibe un caracter y retorna si el mismo es válido.
+
+\paragraph{Función agregarCaracterAVector:}
+Se agregan caracteres que forman una palabra.
+
+\paragraph{Función agregarPalabraAVector:}
+Se agregan las palabras filtradas al vector de palabras.
+
+\paragraph{Función getLinea:}
+Devuelve una línea del archivo de entrada.
+
+\paragraph{Función parseLine:}
+Devuelve las palabras filtradas de una línea.
+
+\paragraph{Función processInput:}
+Procesa todas las líneas del archivo de entrada.
+
 \section{Casos de prueba}
 
 A continuación se muestran unos casos de prueba desde la consola del GXEmul, los textos utilizados se detallarán al final.
@@ -1423,6 +1449,9 @@ $L57:
 
 \end{lstlisting}
 
+\pagebreak
+\section{Reporte de problemas}
+Uno de los integrantes del grupo tuvo problemas al generar el túnel para transferir datos entre ambos sistemas, porque una de las ip estaba siendo usada por otros programas. También surgieron problemas respecto al manejo de memoria dinámica al usar la función realloc() y al querer liberar memoria con la funcipon free(), pero después de varias pruebas e investigando se pudo solucionar dicho problema.
 
 \section{Conclusiones}
 
