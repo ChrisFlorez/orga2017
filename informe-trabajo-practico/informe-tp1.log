@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.21)  10 OCT 2017 10:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.21)  10 OCT 2017 17:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -448,7 +448,26 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-No file informe-tp1.aux.
+(./informe-tp1.aux
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+
+LaTeX Warning: Label `fig001' multiply defined.
+
+)
 \openout1 = `informe-tp1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -465,7 +484,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count100
 \scratchdimen=\dimen110
@@ -582,65 +601,191 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-)
-<prueba1.png, id=24, 644.4075pt x 407.5225pt>
-File: prueba1.png Graphic file (type png)
- <use prueba1.png>
-Package pdftex.def Info: prueba1.png used on input line 94.
+) [1]
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 95--97
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (79.41278pt too wide) in paragraph at lines 114--116
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119 ...rintf("TP #0 de la materia Organización 
+                                                  de Computadoras \n");
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119 ...rintf("TP #0 de la materia Organización 
+                                                  de Computadoras \n");
+? 
+
+Overfull \hbox (73.1128pt too wide) in paragraph at lines 119--120
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (66.81279pt too wide) in paragraph at lines 121--122
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (60.5128pt too wide) in paragraph at lines 130--131
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (60.5128pt too wide) in paragraph at lines 131--132
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (92.01274pt too wide) in paragraph at lines 132--133
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (85.71275pt too wide) in paragraph at lines 133--134
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (85.71277pt too wide) in paragraph at lines 134--135
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (92.01276pt too wide) in paragraph at lines 135--136
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[2]
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164                 // así 
+                              está en el manual de getopt
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164                 // así 
+                              está en el manual de getopt
+? 
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164                 // así está 
+                                    en el manual de getopt
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164                 // así está 
+                                    en el manual de getopt
+? 
+
+Overfull \hbox (47.91284pt too wide) in paragraph at lines 177--178
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+<imagenes_casosDePrueba_tp1/prueba0.png, id=32, 644.4075pt x 407.5225pt>
+File: imagenes_casosDePrueba_tp1/prueba0.png Graphic file (type png)
+
+<use imagenes_casosDePrueba_tp1/prueba0.png>
+Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba0.png used on input l
+ine 193.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
- [1]
-<prueba1SalidaPorPantalla.png, id=31, 692.5875pt x 437.635pt>
-File: prueba1SalidaPorPantalla.png Graphic file (type png)
 
-<use prueba1SalidaPorPantalla.png>
-Package pdftex.def Info: prueba1SalidaPorPantalla.png used on input line 101.
-(pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
-
-<prueba2.png, id=32, 644.4075pt x 407.5225pt>
-File: prueba2.png Graphic file (type png)
- <use prueba2.png>
-Package pdftex.def Info: prueba2.png used on input line 108.
+<imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png, id=34, 644.4075pt x 4
+07.5225pt>
+File: imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png Graphic file (typ
+e png)
+ <use imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png>
+Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.pn
+g used on input line 200.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<prueba3.png, id=33, 692.5875pt x 437.635pt>
-File: prueba3.png Graphic file (type png)
- <use prueba3.png>
-Package pdftex.def Info: prueba3.png used on input line 115.
-(pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
+<imagenes_casosDePrueba_tp1/prueba2_entrada_4.png, id=35, 644.4075pt x 407.5225
+pt>
+File: imagenes_casosDePrueba_tp1/prueba2_entrada_4.png Graphic file (type png)
+ <use imagenes_casosDePrueba_tp1/prueba2_entrada_4.png>
+Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba2_entrada_4.png used 
+on input line 207.
+(pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<prueba3salidaPorPantalla.png, id=34, 692.5875pt x 437.635pt>
-File: prueba3salidaPorPantalla.png Graphic file (type png)
+<imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png, id=36,
+ 644.4075pt x 407.5225pt>
+File: imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png Gr
+aphic file (type png)
 
-<use prueba3salidaPorPantalla.png>
-Package pdftex.def Info: prueba3salidaPorPantalla.png used on input line 122.
-(pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
+<use imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png>
+Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_sa
+lida_default.png used on input line 214.
+(pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<pruebaPorTeclado.png, id=35, 692.5875pt x 437.635pt>
-File: pruebaPorTeclado.png Graphic file (type png)
+<imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png, id=37, 644.4
+075pt x 407.5225pt>
+File: imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png Graphic 
+file (type png)
 
-<use pruebaPorTeclado.png>
-Package pdftex.def Info: pruebaPorTeclado.png used on input line 129.
-(pdftex.def)             Requested size: 212.29312pt x 134.14291pt.
- [2 <./prueba1.png> <./prueba1SalidaPorPantalla.png> <./prueba2.png>] [3 <./pru
-eba3.png> <./prueba3salidaPorPantalla.png> <./pruebaPorTeclado.png>]
+<use imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png>
+Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_sa
+lida_4.png used on input line 221.
+(pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
+
+<imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png, id=38, 644.4075pt x 407.5
+225pt>
+File: imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png Graphic file (type pn
+g)
+ <use imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png>
+Package pdftex.def Info: imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png us
+ed on input line 228.
+(pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
+ [3] [4 <./imagenes_casosDePrueba_tp1/prueba0.png> <./imagenes_casosDePrueba_tp
+1/prueba_1archivoDeEntrada.png> <./imagenes_casosDePrueba_tp1/prueba2_entrada_4
+.png>] [5 <./imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default
+.png> <./imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png> <./i
+magenes_casosDePrueba_tp1/pruebaStdin_salida_4.png>]
 ! Misplaced alignment tab character &.
-l.149 Reconocer que 345 soladados&
+l.248 Reconocer que 345 soladados&
                                   civiles murieron por una fruta como el ana...
 
 ? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.150 
-      
-? 
-
-Overfull \hbox (81.46019pt too wide) in paragraph at lines 149--150
-\OT1/cmr/m/n/10 ta-rio que m hi-zo ana el otro dia cuan-do me pi-ca-ba el ojo, 
-[11134111$; : \OML/cmm/m/it/10 esenumeronoloentiendoserapalindromo\OT1/cmr/m/n/
-10 ?\OML/cmm/m/it/10 nolose:$ 
- []
-
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -657,7 +802,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.157 \begin{lstlisting}[language=Assembler]
+l.256 \begin{lstlisting}[language=Assembler]
                                             
 ? 
 
@@ -667,29 +812,325 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.157 \begin{lstlisting}[language=Assembler]
+l.256 \begin{lstlisting}[language=Assembler]
                                             
 ? 
+
+Overfull \hbox (129.81259pt too wide) in paragraph at lines 281--282
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (299.91226pt too wide) in paragraph at lines 282--283
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (54.2128pt too wide) in paragraph at lines 283--284
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[6]
+Overfull \hbox (66.8128pt too wide) in paragraph at lines 334--335
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[7]
+Overfull \hbox (66.8128pt too wide) in paragraph at lines 399--400
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[8]
+Overfull \hbox (98.31265pt too wide) in paragraph at lines 453--454
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (22.71283pt too wide) in paragraph at lines 454--455
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[9]
+Overfull \hbox (47.9128pt too wide) in paragraph at lines 485--486
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (47.91278pt too wide) in paragraph at lines 488--489
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (92.0127pt too wide) in paragraph at lines 491--492
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[10]
+Overfull \hbox (73.11273pt too wide) in paragraph at lines 521--522
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.11287pt too wide) in paragraph at lines 524--525
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (199.1125pt too wide) in paragraph at lines 525--526
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (117.21265pt too wide) in paragraph at lines 526--527
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (117.21265pt too wide) in paragraph at lines 527--528
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (167.61255pt too wide) in paragraph at lines 545--546
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (167.61255pt too wide) in paragraph at lines 546--547
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (123.51263pt too wide) in paragraph at lines 549--550
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (85.71272pt too wide) in paragraph at lines 551--552
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (104.61267pt too wide) in paragraph at lines 552--553
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[11]
+Overfull \hbox (73.11273pt too wide) in paragraph at lines 585--586
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (10.11287pt too wide) in paragraph at lines 588--589
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (199.1125pt too wide) in paragraph at lines 589--590
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (117.21265pt too wide) in paragraph at lines 590--591
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (98.31268pt too wide) in paragraph at lines 591--592
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (35.3128pt too wide) in paragraph at lines 592--593
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (92.01271pt too wide) in paragraph at lines 593--594
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (117.21265pt too wide) in paragraph at lines 594--596
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (79.41272pt too wide) in paragraph at lines 599--601
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (117.21266pt too wide) in paragraph at lines 601--602
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (117.21266pt too wide) in paragraph at lines 602--603
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (123.51263pt too wide) in paragraph at lines 605--606
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (85.71272pt too wide) in paragraph at lines 607--608
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (104.61267pt too wide) in paragraph at lines 608--609
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (224.31244pt too wide) in paragraph at lines 609--610
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[12]
+Overfull \hbox (205.41248pt too wide) in paragraph at lines 655--656
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (205.41248pt too wide) in paragraph at lines 656--657
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (230.61243pt too wide) in paragraph at lines 657--658
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (35.3128pt too wide) in paragraph at lines 658--659
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (73.11273pt too wide) in paragraph at lines 661--662
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (54.21278pt too wide) in paragraph at lines 664--665
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[13]
+Overfull \hbox (41.61285pt too wide) in paragraph at lines 699--700
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[14]
+Overfull \hbox (47.9128pt too wide) in paragraph at lines 730--732
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (167.61255pt too wide) in paragraph at lines 739--740
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (331.41219pt too wide) in paragraph at lines 740--741
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[15]
+Overfull \hbox (98.31271pt too wide) in paragraph at lines 799--800
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[16]
+Overfull \hbox (54.21283pt too wide) in paragraph at lines 839--840
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[17]
+Overfull \hbox (243.2124pt too wide) in paragraph at lines 922--924
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[18]
+Overfull \hbox (167.61255pt too wide) in paragraph at lines 952--955
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (41.61282pt too wide) in paragraph at lines 993--994
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (29.01285pt too wide) in paragraph at lines 994--995
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[19]
+Overfull \hbox (73.11276pt too wide) in paragraph at lines 996--997
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.41287pt too wide) in paragraph at lines 1002--1003
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.41287pt too wide) in paragraph at lines 1003--1004
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.41287pt too wide) in paragraph at lines 1004--1005
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (16.41287pt too wide) in paragraph at lines 1005--1006
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 1024--1025
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[20]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 1060--1061
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (22.71288pt too wide) in paragraph at lines 1070--1071
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[21] [22]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 ...://www.gnu.org/software/libc/manual/html_
+l.1171 ...//www.gnu.org/software/libc/manual/html_
                                                   node/Example-of-Getopt.html.
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.169 
-      
+l.1172 
+       
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.169 
-      
+l.1172 
+       
 ? 
 
-Underfull \hbox (badness 3942) in paragraph at lines 168--169
+Underfull \hbox (badness 3942) in paragraph at lines 1171--1172
 []\OT1/cmr/m/n/10 GetOpt li-brary, https://www.gnu.org/software/libc/manual/htm
 l$[]\OML/cmm/m/it/10 ode=Example \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 of \OMS/
 cmsy/m/n/10 ^^@
@@ -698,29 +1139,29 @@ cmsy/m/n/10 ^^@
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.169 
-      
+l.1172 
+       
 ? 
-[4] (./informe-tp1.aux
+[23] (./informe-tp1.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 149 ({)
+### simple group (level 1) entered at line 248 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 5124 strings out of 493029
- 66988 string characters out of 6136234
- 165263 words of memory out of 5000000
- 8588 multiletter control sequences out of 15000+600000
+ 5992 strings out of 493029
+ 78136 string characters out of 6136234
+ 197318 words of memory out of 5000000
+ 9453 multiletter control sequences out of 15000+600000
  7146 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,51p,513b,1115s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,51p,513b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
@@ -733,10 +1174,10 @@ pe1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmtt10.pfb>
-Output written on informe-tp1.pdf (6 pages, 552501 bytes).
+Output written on informe-tp1.pdf (25 pages, 555077 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 155 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
