@@ -472,7 +472,7 @@ palindrome:
 	li		v0,1
 	sw		v0,24($fp)	#variable para indicar cuando salir
 
-llenarBufferEntrada: #L23
+llenarBufferEntrada:
 	lw		a0,64($fp)
 	move	a1,s5
 	lw		a2,68($fp)
@@ -481,10 +481,10 @@ llenarBufferEntrada: #L23
 	move	s3,v0
 	bne		v0,zero,recibioCaracteres		#se fija si recibio caracteres
 	sw		zero,24($fp)					#cambio el valor de salida para q salga del loop
-recibioCaracteres: #L5
+recibioCaracteres:
 	move	s4,zero
 	blez	s3,comprobarSalidaDelLoopPrincipal
-procesamientoBuferEntrada: #L22
+procesamientoBuferEntrada:
 	addu	s1,s1,1
 	addu	v0,s5,s4
 	lb		a1,0(v0)
@@ -514,7 +514,7 @@ procesamientoBuferEntrada: #L22
 	blez	v0,vaciarBufferDeSalida
 
 	move	s1,v0
-whileDeLLenadoDeBufferDeSalida: #L17
+whileDeLLenadoDeBufferDeSalida:
 	lw		v1,76($fp)
 
 	addu	v0,s6,s7
@@ -529,17 +529,17 @@ whileDeLLenadoDeBufferDeSalida: #L17
 	move	s7,zero
 	b		noAgregar
 
-agregarCaracterABufferSalida: #l15
+agregarCaracterABufferSalida:
 	addu	v1,s2,s0
 	lbu		v1,0(v1)
 
 	sb		v1,0(v0)
 	addu	s7,s7,1
 	addu	s0,s0,1
-noAgregar: #L12
+noAgregar:
 	slt		v0,s0,s1
 	bne		v0,zero,whileDeLLenadoDeBufferDeSalida
-vaciarBufferDeSalida: #L28   		#vacio el buffer de salida por q esta lleno
+vaciarBufferDeSalida:    		#vacio el buffer de salida por q esta lleno
 	lw		v0,76($fp)
 	addu	v0,s6,s7
 	bne		s7,v0,agregarSaltoLinea
@@ -552,28 +552,26 @@ vaciarBufferDeSalida: #L28   		#vacio el buffer de salida por q esta lleno
 	li		s7,1
 	b		liberarLaMemoria
 
-agregarSaltoLinea: #L18
+agregarSaltoLinea:
 	li	v1,10
 	sb	v1,0(v0)
 	addu	s7,s7,1
 	b	liberarLaMemoria
-
-
 saltar:
 	li	v0,2
 	bne	s0,v0,comprobarSalto
-liberarLaMemoria: #L29
+liberarLaMemoria:
 	move	a0,s2
-EliminarBufferAuxiliar: #l30
+EliminarBufferAuxiliar:
 	jal		myfree
 	move	s1,zero
 	move	s2,zero
-comprobarSalto: #L20
+comprobarSalto:
 	addu	s4,s4,1
 	slt		v0,s4,s3
 	beq		v0,zero,comprobarSalidaDelLoopPrincipal
 	bgtz	s3,procesamientoBuferEntrada
-comprobarSalidaDelLoopPrincipal: #l7
+comprobarSalidaDelLoopPrincipal:
 	lw		v0,24($fp)
 	li		t0,1
 	move	a1,s6
