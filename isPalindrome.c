@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
 
     if (obytes == NULL) obytes = "1";
 
-    palindrome(fileno(inputFile), ibytes, fileno(outputFile), obytes);
+    palindrome(fileno(inputFile), atoi(ibytes), fileno(outputFile), atoi(obytes));
 
     printf("Terminó el procesamiento. \n");
 
