@@ -83,11 +83,10 @@ int main(int argc, char *argv[]) {
 
     if (ibytes == NULL) ibytes = "1";
 
-    if (obytes == NULL) ibytes = "1";
-    inputFile = fopen("lInt.txt", "r");
-    outputFile = fopen("lOut.txt", "w");
-    //fileno(inputFile)
-    palindrome(fileno(inputFile), 5,fileno(outputFile),5);
+    if (obytes == NULL) obytes = "1";
+
+    palindrome(fileno(inputFile), ibytes, fileno(outputFile), obytes);
+
     printf("Terminó el procesamiento. \n");
 
     return SALIDA_EXITOSA;
