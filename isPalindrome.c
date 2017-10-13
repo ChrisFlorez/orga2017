@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
     palindrome(archiDescriptorInt, (size_t)atoi(ibytes), archiDescriptorOut, (size_t)atoi(obytes));
 
     if(inputFile != stdin){
-    	if (fclose(outputFile) == EOF) {
+    	if (fclose(inputFile) == EOF) {
 			fprintf(stderr, "Error fclose: %s\n", strerror(errno));
 			return ERROR;
 		}
