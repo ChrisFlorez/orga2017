@@ -8,6 +8,9 @@
 #define ERROR -1
 #define SALIDA_EXITOSA 0
 
+int archiDescriptorInt;
+int archiDescriptorOut;
+
 extern int palindrome(int ifd, size_t ibytes, int ofd, size_t obytes);
 
 int main(int argc, char *argv[]) {
@@ -82,8 +85,21 @@ int main(int argc, char *argv[]) {
     if (ibytes == NULL) ibytes = "1";
 
     if (obytes == NULL) obytes = "1";
+    archiDescriptorInt = fileno(inputFile);
+    archiDescriptorOut = fileno(outputFile);
+    palindrome(archiDescriptorInt, (size_t)atoi(ibytes), archiDescriptorOut, (size_t)atoi(obytes));
 
-    palindrome(fileno(inputFile), (size_t)atoi(ibytes), fileno(outputFile), (size_t)atoi(obytes));
-
+    if(inputFile != stdin){
+    	if (fclose(outputFile) == EOF) {
+			fprintf(stderr, "Error fclose: %s\n", strerror(errno));
+			return ERROR;
+		}
+	}
+    if(outputFile != stdout) {
+        if (fclose(outputFile) == EOF) {
+    		fprintf(stderr, "Error fclose: %s\n", strerror(errno));
+    		return ERROR;
+    	}
+    }
     return SALIDA_EXITOSA;
 }

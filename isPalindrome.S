@@ -19,6 +19,323 @@
 #define MAP_ANON 0x1000
 #endif
 
+	#int llenarBufferEntrada(int archivoIn,char* bufferEntrada,int tamanioIn)
+	.text
+	.align	2
+	.globl	llenarBufferEntrada
+	.ent	llenarBufferEntrada
+llenarBufferEntrada:
+	.frame	$fp,32,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+
+	subu	sp,sp,32
+	.cprestore  16
+	sw		$fp,20(sp)
+	move	$fp,sp
+	sw		ra,12($fp)
+
+	sw		a0,24($fp)
+	sw		a1,28($fp)
+	sw		a2,32($fp)
+	li		v0,SYS_read
+	syscall
+
+	#probamos si hay errores primero
+	bne		a3, zero, ErrorllenarBufferEntra
+	bgt		zero,v0, ErrorllenarBufferEntra
+	b		salidallenarBufferEntrada
+ErrorllenarBufferEntra:
+	li		v0,-1
+	li	v0, SYS_exit
+	li	a0, 1
+	syscall
+salidallenarBufferEntrada:
+	lw		ra,12($fp)
+	lw		$fp, 20(sp)
+	addu	sp, sp, 32
+	j		ra
+	.end	llenarBufferEntrada
+
+
+	#int llenarBufferSalida(char *bufferSalida,int tamanioBufferSalida,char *cadena,int contadorDeBufferSalida)
+	.text
+	.align	2
+	.globl	llenarBufferSalida
+	.ent	llenarBufferSalida
+llenarBufferSalida:
+	.frame	$fp,48,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+
+	subu	sp,sp,48
+	.cprestore  16
+	sw		$fp,20(sp)
+	move	$fp,sp
+	sw		ra,12($fp)
+
+	sw		a0,24($fp)    	#bufferSalida
+	sw		a1,28($fp)		#tamanioBufferSalida
+	sw		a2,32($fp)		#cadena
+	sw		a3,36($fp)		#contadorDeBufferSalida
+
+	sw		s6,0($fp)
+	sw		s7,4($fp)
+
+	move	s6,a0	#buffersalida
+	move 	s7,a2	#cadena
+
+	sw		zero,40($fp)
+
+	move	a0,s7
+	jal 	mystrlen
+	sw		v0,44($fp)
+
+
+whileDeProcesamientoDeCaracter:
+
+	lw		t0,40($fp)
+	lw		t1,44($fp)
+	bge		t0,t1,salirWhileProcesamientoDeCaracter
+
+	lw		t0,36($fp)
+	lw		t1,28($fp)
+	bne		t0,t1,noEstallenoElBuffer
+
+	li		v0,SYS_write
+	lw		a0,archiDescriptorOut
+	move	a1,s6
+	lw		a2,28($fp)
+	syscall
+
+	#me fijo si hay error
+	bne		a3, zero, ErrorllenarBufferSalida
+	bgt		zero,v0, ErrorllenarBufferSalida
+	sw		zero,36($fp)
+
+	b		whileDeProcesamientoDeCaracter
+noEstallenoElBuffer:
+	lw		t0,40($fp)
+	move	t1,s7
+	addu	t0,t0,t1
+	lbu		t1,(t0)
+
+	lw		t0,36($fp)
+	move	t2,s6
+	addu	t2,t2,t0
+	sb		t1,(t2)
+
+	lw		t0,36($fp)
+	addu	t0,t0,1
+	sw		t0,36($fp)
+
+	lw		t0,40($fp)
+	addu	t0,t0,1
+	sw		t0,40($fp)
+
+	b		whileDeProcesamientoDeCaracter
+salirWhileProcesamientoDeCaracter:
+	lw		t0,36($fp)
+	lw		t1,28($fp)
+	bne		t0,t1,agregarSaltoDeLinea
+
+	li		v0,SYS_write
+	lw		a0,archiDescriptorOut
+	move	a1,s6
+	lw		a2,28($fp)
+	syscall
+
+	bne		a3, zero, ErrorllenarBufferSalida
+	bgt		zero,v0, ErrorllenarBufferSalida
+
+	sw		zero,36($fp)
+
+agregarSaltoDeLinea:
+
+	move 	t0,s6
+	lw		t1,36($fp)
+	addu	t0,t0,t1
+	li		t1,10
+	sb		t1,(t0)
+
+
+	lw		t0,36($fp)
+	addu	t0,t0,1
+
+	move 	v0,t0
+	b		salidallenarBufferSalida
+ErrorllenarBufferSalida:
+	li		v0,-1
+	li	v0, SYS_exit
+	li	a0, 1
+	syscall
+salidallenarBufferSalida:
+	lw		ra,12($fp)
+	lw		s6,0($fp)
+	lw		s7,4($fp)
+	lw		$fp, 20(sp)
+	addu	sp, sp, 48
+	j		ra
+	.end	llenarBufferSalida
+
+
+
+
+	#int palindrome(int ifd, size_t ibytes, int ofd, size_t obytes)
+	.text
+	.align	2
+	.globl	palindrome
+	.ent	palindrome
+palindrome:
+	.frame	$fp,80,ra
+	.set	noreorder
+	.cpload	t9
+	.set	reorder
+
+	subu	sp,sp,80
+	.cprestore  16
+	sw		$fp,20(sp)
+	move	$fp,sp
+
+	sw		ra,12($fp)
+	sw		a0,24($fp)
+	sw		a1,28($fp)
+	sw		a2,32($fp)
+	sw		a3,36($fp)
+
+
+
+	move 	a0,a1
+	jal		mymalloc
+	sw		v0,0($fp)
+	move 	s0,v0			#guardo en s0 el buffer de entrada
+
+	move 	a0,a3
+	jal		mymalloc
+	sw		v0,4($fp)
+	move 	s1,v0			#guardo el buffer de salida
+
+	li		t0,1
+	sw		t0,64($fp) 		#variable para indicar la salida del Procesamiento
+
+	sw		zero,48($fp)	#cantcaracteres
+	move	s2,zero			#cadenaDeCaracteres
+	sw		zero,52($fp)	#contadorDeBufferSalida
+
+whilePrincipal:
+	lw		t0,64($fp)
+	li		t1,1
+	bne 	t0,t1,salirwhilePrincipal
+
+	lw		a0,archiDescriptorInt
+	move	a1,s0
+	lw		a2,28($fp)
+	jal		llenarBufferEntrada
+	sw		v0,40($fp)
+
+	bne		v0,zero,seguir1
+	sw		zero,64($fp)
+seguir1:
+	sw		zero,44($fp)
+
+whileProcesadorBufferEntrada:
+	lw		t0,44($fp)
+	lw		t1,40($fp)
+	bge		t0,t1,whilePrincipal
+	ble		t1,zero,whilePrincipal
+
+	lw		t0,48($fp)
+	addu	t0,t0,1
+	sw		t0,48($fp)
+
+	move	t0,s0
+	lw		t1,44($fp)
+	addu	t0,t0,t1
+	lb		t0,(t0)
+
+	move	a0,s2
+	move	a1,t0
+	lw		a2,48($fp)
+	jal		agregarCaracter
+	move	s2,v0
+
+	move	a0,s2
+	lw		a1,48($fp)
+	jal		seFormoUnaPalabra
+	li		t0,1
+	bne		t0,v0,NoseFormoPalabra
+
+	lw		t0,48($fp)
+	addu	t0,s2,t0
+	sb		zero,-1(t0)
+
+	move 	a0,s2
+	jal		palindromo
+	li		t0,1
+	bne		v0,t0,inicializarValoresYbuffer
+
+	move	a0,s1
+	lw		a1,36($fp)
+	move 	a2,s2
+	lw		a3,52($fp)
+	jal		llenarBufferSalida
+	sw		v0,52($fp)
+
+	b 		inicializarValoresYbuffer
+NoseFormoPalabra:
+
+	move	a0,s2
+	lw		a1,48($fp)
+	jal		seFormoUnaPalabra
+	li		t0,2
+	bne		t0,v0,seguir2
+
+
+inicializarValoresYbuffer:
+	move 	a0,s2
+	jal		myfree
+	sw		zero,48($fp)
+	move	s2,zero
+
+seguir2:
+	lw		t0,44($fp)
+	addu	t0,t0,1
+	sw		t0,44($fp)
+
+	b		whileProcesadorBufferEntrada
+
+salirwhilePrincipal:
+	li		v0,SYS_write
+	lw		a0,archiDescriptorOut
+	move	a1,s1
+	lw		a2,52($fp)
+	syscall
+	bne		a3, zero, ErrorWrite
+	bgt		zero,v0, ErrorWrite
+
+	move 	a0,s0
+	jal 	myfree
+	b		salidaPalindrome
+ErrorWrite:
+	li		v0,-1
+	li	v0, SYS_exit
+	li	a0, 1
+	syscall
+salidaPalindrome:
+	lw		ra,12($fp)
+	lw		$fp, 20(sp)
+	addu	sp, sp, 80
+	j		ra
+	.end	palindrome
+
+
+
+
+
+
+
 
 	#int seFormoUnaPalabra(char *cadena,int cantidadCaracteres)
 	.text						#retorna 1 si se formo la palbra
@@ -94,36 +411,40 @@ validCharacter:
 	sll		a0,a0,24
 	sra		a0,a0,24
 
-	#me aca valido los numero
+	#aca valido los numero
 	li		t0,57
 	ble		a0,	t0,validesDeNumeros
+	b		verMayuscula
 validesDeNumeros:
 	li		t0,48
 	bge		a0,t0, salidaValida
 
-
+verMayuscula:
 	#valido palabras mayusculas
 	li		t0,90
 	ble		a0,	t0,validesMayusculas
+	b		verMinuscula
 validesMayusculas:
 	li		t0,65
 	bge		a0,t0, salidaValida
 
+verMinuscula:
 	#valido palabras minusculas
 	li		t0,122
 	ble		a0,	t0,validesMinusculas
+	b		verOtrosCaracteres
 validesMinusculas:
 	li		t0,97
 	bge		a0,t0, salidaValida
 
-	#guin
+verOtrosCaracteres:
+	#guion
 	li		t0,45
 	beq		a0,t0,salidaValida
 
 	#guion bajo
 	li		t0,95
 	beq		a0,t0,salidaValida
-
 salidaInvalida:
 	move 	v0,zero
 	b		SalirValidCharacter
@@ -139,7 +460,7 @@ SalirValidCharacter:
 	.end	validCharacter
 
 
-#char* agregarCaracter(char* cadena,char caracterExtradido,int cantCaracteres)
+	#char* agregarCaracter(char* cadena,char caracterExtradido,int cantCaracteres)
 	.text
 	.align	2
 	.globl	agregarCaracter
@@ -191,6 +512,7 @@ incertarCaracter:
 	.end	agregarCaracter
 
 
+
 	#int palindromo(char *palabra)
 	.text
 	.align	2					#devulve 1 si es palindrome
@@ -225,7 +547,7 @@ palindromo:
 	lw 		a1, 4($fp)
 	jal		palabrasIguales
 	addu	t0,zero,1
-	beq		v0,t0,esPalindromo	#faltaria el tema del error
+	beq		v0,t0,esPalindromo
 	b 		noEsPalindromo
 esPalindromo:
 	addu v0,zero,1				#devulve 1 si es palindromo
@@ -265,7 +587,7 @@ transformarMinuscula:
 	beq 	v0,zero,palabraVacia
 	move 	a0,v0
 	addu 	a0,a0,1 		#sumo uno para el valor de \0
-	jal 	mymalloc 		#cada ver el valor de retorno para poder salir si hay error
+	jal 	mymalloc
 	sw 		v0,28($fp) 		#guardo el puntero de la nueva palabra
 	lw 		t1,24($fp)		#cargo la primera palabra para invetir
 looptransformarMinuscula:
@@ -281,6 +603,7 @@ looptransformarMinuscula:
 verificarMayusculas:
 	li		t0,65
 	bge		t2,t0, esMayucula
+	b		cargarCaracter
 esMayucula:
 	addu	t2,t2,32
 cargarCaracter:
@@ -422,185 +745,6 @@ salirPalabrasIguales:
 	addu	sp, sp, 40
 	j 	ra
 	.end	palabrasIguales
-
-
-	.text
-	.align	2
-	.globl	palindrome
-	.ent	palindrome
-palindrome:
-	.frame	$fp,80,ra
-	.set	noreorder
-	.cpload	t9
-	.set	reorder
-	subu	sp,sp,80
-	.cprestore 16
-	sw	$fp,20(sp)
-	move 	$fp,sp
-	sw	ra,12($fp)
-
-	#guardo todos los registros guardables, por q otros lo pueden usar
-	sw	s0,32($fp)
-	sw	s1,36($fp)
-	sw	s2,40($fp)
-	sw	s3,44($fp)
-	sw	s4,48($fp)
-	sw	s5,52($fp)
-	sw	s6,56($fp)
-	sw	s7,60($fp)
-
-	#guardo losparametros
-	sw	a0,64($fp)
-	sw	a1,68($fp)
-	sw	a2,72($fp)
-	sw	a3,76($fp)
-
-	#reservo memoria para el buffer de entrada
-	move	a0,a1
-	jal		mymalloc
-	move	s5,v0
-
-	#reservo memoria para el buffer de salida
-	lw	a0,76($fp)
-	jal		mymalloc
-	move	s6,v0
-
-	#inicializo variables
-	move	s7,zero
-	move	s1,zero
-	move	s2,zero
-	li		v0,1
-	sw		v0,24($fp)	#variable para indicar cuando salir
-
-llenarBufferEntrada:
-	lw		a0,64($fp)
-	move	a1,s5
-	lw		a2,68($fp)
-	li		v0,SYS_read
-	syscall
-	move	s3,v0
-	bne		v0,zero,recibioCaracteres		#se fija si recibio caracteres
-	sw		zero,24($fp)					#cambio el valor de salida para q salga del loop
-recibioCaracteres:
-	move	s4,zero
-	blez	s3,comprobarSalidaDelLoopPrincipal
-procesamientoBuferEntrada:
-	addu	s1,s1,1
-	addu	v0,s5,s4
-	lb		a1,0(v0)
-	move	a0,s2
-	move	a2,s1
-	jal 	agregarCaracter
-	move	s2,v0
-
-	move	a0,v0
-	move	a1,s1
-	jal		seFormoUnaPalabra
-	li		t0,1
-	move	s0,v0
-	bne		v0,t0,saltar
-
-	addu	v0,s2,s1
-	sb		zero,-1(v0)
-	move	a0,s2
-	jal		palindromo
-
-	move	a0,s2
-	bne		v0,s0,EliminarBufferAuxiliar
-
-	addu	v0,s1,-1
-
-	move	s0,zero
-	blez	v0,vaciarBufferDeSalida
-
-	move	s1,v0
-whileDeLLenadoDeBufferDeSalida:
-	lw		v1,76($fp)
-
-	addu	v0,s6,s7
-	bne		s7,v1,agregarCaracterABufferSalida
-
-	lw		a0,72($fp)
-	move	a1,s6
-	move	a2,s7
-	la		t9,write
-	jal		ra,t9
-
-	move	s7,zero
-	b		noAgregar
-
-agregarCaracterABufferSalida:
-	addu	v1,s2,s0
-	lbu		v1,0(v1)
-
-	sb		v1,0(v0)
-	addu	s7,s7,1
-	addu	s0,s0,1
-noAgregar:
-	slt		v0,s0,s1
-	bne		v0,zero,whileDeLLenadoDeBufferDeSalida
-vaciarBufferDeSalida:    		#vacio el buffer de salida por q esta lleno
-	lw		v0,76($fp)
-	addu	v0,s6,s7
-	bne		s7,v0,agregarSaltoLinea
-	lw		a0,72($fp)
-	move	a1,s6
-	move	a2,s7
-	li		v0,SYS_write
-	li		v1,10
-	sb		v1,0(s6)		#agrego el \n
-	li		s7,1
-	b		liberarLaMemoria
-
-agregarSaltoLinea:
-	li	v1,10
-	sb	v1,0(v0)
-	addu	s7,s7,1
-	b	liberarLaMemoria
-saltar:
-	li	v0,2
-	bne	s0,v0,comprobarSalto
-liberarLaMemoria:
-	move	a0,s2
-EliminarBufferAuxiliar:
-	jal		myfree
-	move	s1,zero
-	move	s2,zero
-comprobarSalto:
-	addu	s4,s4,1
-	slt		v0,s4,s3
-	beq		v0,zero,comprobarSalidaDelLoopPrincipal
-	bgtz	s3,procesamientoBuferEntrada
-comprobarSalidaDelLoopPrincipal:
-	lw		v0,24($fp)
-	li		t0,1
-	move	a1,s6
-	beq		v0,t0,llenarBufferEntrada
-
-	#ultimo llamado para que puede liberar los datos q se podrian quedar
-	lw		a0,72($fp)
-	move	a2,s7
-	li		v0,SYS_write
-	syscall
-
-	move	v0,zero
-	lw	ra,12($fp)
-
-
-	lw	s0,32($fp)
-	lw	s1,36($fp)
-	lw	s2,40($fp)
-	lw	s3,44($fp)
-	lw	s4,48($fp)
-	lw	s5,52($fp)
-	lw	s6,56($fp)
-	lw	s7,60($fp)
-
-	lw	$fp,20(sp)
-	addu	sp,sp,80
-	j	ra
-
-	.end	palindrome
 
 
 	.text
@@ -899,3 +1043,8 @@ myfree_return:
 	j	ra
 	.end	myfree
 	.rdata
+
+error1:
+	.ascii	"Error : %s\n\000"
+aca:
+	.ascii	"aca\n\0"
