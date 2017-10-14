@@ -79,6 +79,7 @@ Pueden utilizarse comandos tales como help y version, de la siguiente forma:
   $ ./tp0 -V
 \end{lstlisting}
 
+\section{Código fuente}
 \subsection{Código fuente C}
 \begin{lstlisting}[language=C]
 #include <stdio.h>
@@ -1246,6 +1247,98 @@ aca:
 
 \end{lstlisting}
 
+\subsection{Documentación detallada de las funciones utilizadas en el código}
+\paragraph{Función llenarBufferEntrada}
+Llena el buffer de entrada pidiendo al sistema una cantidad de bytes igual al tamaño del buffer. Si se llegó al EOF devuelve 0. \\
+Argumentos:
+	\begin{itemize}
+	\item archivoIn:	descriptor de archivo
+	\item bufferEntrada:	buffer de los datos que se van a llenar
+	\item tamanioIn:	es el tamaño del buffer de entrada
+\end{itemize} \\
+Retorno: el número de bytes que se escribió en el buffer de entrada o 0 si es EOF. 
+
+
+\paragraph{Función llenarBufferSalida}
+Llena el buffer de salida byte por byte \\
+Argumentos de entrada:
+\begin{itemize}
+	\item bufferSalida:	buffer de salida de datos
+	\item tamanioBufferSalida: tamaño de buffer de salida
+	\item cadena: palabra enviada por el buffer de salida
+	\item contadorDeBufferSalida: posicion del byte de buffer de salida
+\end{itemize} \\
+Retorno: la posición del buffer de salida
+
+
+\paragraph{Función seFormoUnaPalabra}
+Informa cuando la cadena de caracteres forma una palabra \\
+Argumentos:
+	\begin{itemize}
+	\item cadena: cadena de caracteres
+	\item cantidadCaracteres: tamaño de la cadena
+	\end{itemize} \\
+Retorno: 1 si se formó la palabra o 0 si no se formó la palabra
+
+
+\paragraph{Función validCharacter}
+Verifica si el caracter ingresado se encuentra entre los caracteres válidos \\
+Argumentos:
+\begin{itemize}
+	\item caracter: caracter a validar
+	\end{itemize} \\
+Retorno: 1 si es válido o 0 si no lo es
+
+
+\paragraph{Función agregarCaracter}
+Agrega un caracter al último de la cadena \
+Argumentos:
+\begin{itemize}
+	\item cadena: cadena a la que se le agrega el caracter
+	\item caracterExtraido: caracter que se va a agregar a la cadena
+	\item cantCaracteres: cantidad de caracteres
+	\end{itemize} \\
+Retorno: la dirección de la nueva cadena
+
+
+\paragraph{Función palindromo}
+Verifica si la palabra ingresada es palíndroma \\
+Argumentos:
+\begin{itemize} 
+	\item palabra: palabra a procesar 
+\end{itemize} \\
+Retorno: 1 si es palíndroma o 0 si no lo es
+
+
+\paragraph{Función transformarMinuscula}
+Transforma la cadena en minúscula \\
+Argumentos:
+	\begin{itemize}
+	\item cadena: cadena a procesar
+\end{itemize} \\
+Retorno: la cadena con todas las letras en minúscula
+
+
+\paragraph{Función invertirPalabra}
+Invierte la palabra \\
+Argumentos: 
+	\begin{itemize}
+	\item palabra: palabra a procesar
+	\end{itemize} \\
+Retorno: la dirección de la palabra invertida
+
+
+\paragraph{Función palabrasIguales}
+Verifica si dos palabras son iguales \\
+Argumentos:
+\begin{itemize}
+	\item palabra1: primera palabra que se va a comparar
+	\item palabra2: segunda palabra que se va a comparar
+\end{itemize} \\
+Retorno: 1 si son iguales o 0 si no lo son
+
+
+\pagebreak
 \section{Casos de prueba}
 
 A continuación se muestran unos casos de prueba desde la consola del GXEmul, los textos utilizados se detallarán al final.
@@ -1311,14 +1404,6 @@ M
 Reconocer que 345 soladados&civiles murieron por una fruta como el anana en san luis me resulta extranio, ya que aca en neuquen sobran de a montones,..., pero bueno es solo un comentario que m hizo ana el otro dia cuando me picaba el ojo, [{11134111\$;: ese numero no lo entiendo sera palindromo? no lo se.
 
 salas es un jugador chileno? creo que sis :[11]22.
-
-
-\section{Código MIPS generado} 
-
-\subsection{Código fuente Assembly}
-\begin{lstlisting}[language=Assembler]
-    
-\end{lstlisting}
 
 
 \section{Conclusiones}
