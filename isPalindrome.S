@@ -104,7 +104,7 @@ whileDeProcesamientoDeCaracter:
 	bne		t0,t1,noEstallenoElBuffer
 
 	li		v0,SYS_write
-	lw		a0,archiDescriptorOut
+	lw		a0,outputFileno
 	move	a1,s6
 	lw		a2,28($fp)
 	syscall
@@ -200,7 +200,7 @@ whilePrincipal:
 	li		t1,1
 	bne 	t0,t1,salirwhilePrincipal
 
-	lw		a0,archiDescriptorInt
+	lw		a0,inputFileno
 	move	a1,s0
 	lw		a2,28($fp)
 	jal		llenarBufferEntrada
@@ -306,7 +306,7 @@ seguir2:
 
 salirwhilePrincipal:		#hago la ultima lectura del buffer de salida si quedaron datos
 	li		v0,SYS_write
-	lw		a0,archiDescriptorOut
+	lw		a0,outputFileno
 	move	a1,s1
 	lw		a2,52($fp)
 	syscall

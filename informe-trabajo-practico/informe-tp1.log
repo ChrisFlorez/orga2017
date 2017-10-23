@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.21)  10 OCT 2017 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.5)  13 OCT 2017 23:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -592,23 +592,19 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-Overfull \hbox (54.21283pt too wide) in paragraph at lines 53--54
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 ) [1]
-Overfull \hbox (16.4129pt too wide) in paragraph at lines 95--97
+Overfull \hbox (16.4129pt too wide) in paragraph at lines 98--100
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (79.41278pt too wide) in paragraph at lines 114--116
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (85.71277pt too wide) in paragraph at lines 117--118
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
@@ -619,7 +615,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.119 ...rintf("TP #0 de la materia Organización 
+l.120 ...rintf("TP #0 de la materia Organización 
                                                   de Computadoras \n");
 ? 
 
@@ -630,100 +626,143 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.119 ...rintf("TP #0 de la materia Organización 
+l.120 ...rintf("TP #0 de la materia Organización 
                                                   de Computadoras \n");
 ? 
 
-Overfull \hbox (73.1128pt too wide) in paragraph at lines 119--120
+Overfull \hbox (73.1128pt too wide) in paragraph at lines 120--121
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (66.81279pt too wide) in paragraph at lines 121--122
-[][][][][][][][][][][][][][][][][][][][][][] 
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.122                 printf("	Flórez 
+                                       Del Carpio Christian\n	Montenegro Jos...
+
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.122                 printf("	Flórez 
+                                       Del Carpio Christian\n	Montenegro Jos...
+
+? 
+
+Overfull \hbox (281.01234pt too wide) in paragraph at lines 122--123
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (60.5128pt too wide) in paragraph at lines 130--131
+Overfull \hbox (66.81279pt too wide) in paragraph at lines 130--131
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (66.81279pt too wide) in paragraph at lines 131--132
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (60.5128pt too wide) in paragraph at lines 131--132
+Overfull \hbox (98.31273pt too wide) in paragraph at lines 132--133
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (92.01274pt too wide) in paragraph at lines 133--134
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (117.2127pt too wide) in paragraph at lines 134--135
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (123.5127pt too wide) in paragraph at lines 135--136
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[2]
+Overfull \hbox (104.61273pt too wide) in paragraph at lines 140--141
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (123.5127pt too wide) in paragraph at lines 148--149
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.160                 // así 
+                              está en el manual de getopt
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.160                 // así 
+                              está en el manual de getopt
+? 
+
+! Package inputenc Error: Unicode char �\expandafter (U+4F1)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.160                 // así está 
+                                    en el manual de getopt
+? 
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.160                 // así está 
+                                    en el manual de getopt
+? 
+
+Overfull \hbox (117.2127pt too wide) in paragraph at lines 175--177
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (73.1128pt too wide) in paragraph at lines 179--180
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (92.01274pt too wide) in paragraph at lines 132--133
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (22.71289pt too wide) in paragraph at lines 186--187
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (85.71275pt too wide) in paragraph at lines 133--134
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (85.71277pt too wide) in paragraph at lines 134--135
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (92.01276pt too wide) in paragraph at lines 135--136
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[2]
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.164                 // así 
-                              está en el manual de getopt
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.164                 // así 
-                              está en el manual de getopt
-? 
-
-! Package inputenc Error: Unicode char �\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.164                 // así está 
-                                    en el manual de getopt
-? 
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.164                 // así está 
-                                    en el manual de getopt
-? 
-
-Overfull \hbox (47.91284pt too wide) in paragraph at lines 177--178
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[3] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -739,7 +778,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.187 \begin{lstlisting}[language=Assembler]
+l.196 \begin{lstlisting}[language=Assembler]
                                             
 ? 
 
@@ -749,418 +788,475 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.187 \begin{lstlisting}[language=Assembler]
+l.196 \begin{lstlisting}[language=Assembler]
                                             
 ? 
-[3]
-Overfull \hbox (129.81259pt too wide) in paragraph at lines 211--212
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
 
-
-Overfull \hbox (299.91226pt too wide) in paragraph at lines 212--213
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (54.2128pt too wide) in paragraph at lines 213--214
-[][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (85.71277pt too wide) in paragraph at lines 218--219
+[][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [4]
-Overfull \hbox (66.8128pt too wide) in paragraph at lines 264--265
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[5]
-Overfull \hbox (66.8128pt too wide) in paragraph at lines 329--330
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[6]
-Overfull \hbox (98.31265pt too wide) in paragraph at lines 383--384
-[][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (299.91235pt too wide) in paragraph at lines 258--259
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (22.71283pt too wide) in paragraph at lines 384--385
-[][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (3.81287pt too wide) in paragraph at lines 276--277
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (22.71283pt too wide) in paragraph at lines 278--280
+[][][][][][][][][][][][][][] 
+ []
+
+[5] [6]
+Overfull \hbox (22.71289pt too wide) in paragraph at lines 382--383
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [7]
-Overfull \hbox (47.9128pt too wide) in paragraph at lines 415--416
+Overfull \hbox (41.6128pt too wide) in paragraph at lines 409--411
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (192.8125pt too wide) in paragraph at lines 417--419
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[8] [9]
+Overfull \hbox (129.81259pt too wide) in paragraph at lines 537--538
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (299.91226pt too wide) in paragraph at lines 538--539
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (54.2128pt too wide) in paragraph at lines 539--540
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[10]
+Overfull \hbox (66.8128pt too wide) in paragraph at lines 590--591
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[11]
+Overfull \hbox (117.2127pt too wide) in paragraph at lines 659--660
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[12]
+Overfull \hbox (98.31265pt too wide) in paragraph at lines 714--715
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (47.91278pt too wide) in paragraph at lines 418--419
+Overfull \hbox (22.71283pt too wide) in paragraph at lines 715--716
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[13]
+Overfull \hbox (47.91278pt too wide) in paragraph at lines 749--750
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (92.0127pt too wide) in paragraph at lines 421--422
+Overfull \hbox (92.0127pt too wide) in paragraph at lines 752--753
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (73.11273pt too wide) in paragraph at lines 451--452
+Overfull \hbox (73.11273pt too wide) in paragraph at lines 782--783
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (10.11287pt too wide) in paragraph at lines 454--455
+[14]
+Overfull \hbox (10.11287pt too wide) in paragraph at lines 785--786
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (199.1125pt too wide) in paragraph at lines 455--456
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (117.21265pt too wide) in paragraph at lines 456--457
+Overfull \hbox (117.21265pt too wide) in paragraph at lines 787--788
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (117.21265pt too wide) in paragraph at lines 457--458
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[8]
-Overfull \hbox (167.61255pt too wide) in paragraph at lines 475--476
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (167.61255pt too wide) in paragraph at lines 476--477
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (123.51263pt too wide) in paragraph at lines 479--480
+Overfull \hbox (117.21265pt too wide) in paragraph at lines 788--789
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (85.71272pt too wide) in paragraph at lines 481--482
+Overfull \hbox (167.61255pt too wide) in paragraph at lines 807--808
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (167.61255pt too wide) in paragraph at lines 808--809
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (123.51263pt too wide) in paragraph at lines 811--812
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (85.71272pt too wide) in paragraph at lines 813--814
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (104.61267pt too wide) in paragraph at lines 482--483
+Overfull \hbox (104.61267pt too wide) in paragraph at lines 814--815
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (73.11273pt too wide) in paragraph at lines 515--516
+[15]
+Overfull \hbox (73.11273pt too wide) in paragraph at lines 847--848
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[9]
-Overfull \hbox (10.11287pt too wide) in paragraph at lines 518--519
+
+Overfull \hbox (10.11287pt too wide) in paragraph at lines 850--851
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (199.1125pt too wide) in paragraph at lines 519--520
+Overfull \hbox (199.1125pt too wide) in paragraph at lines 851--852
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (117.21265pt too wide) in paragraph at lines 520--521
+Overfull \hbox (117.21265pt too wide) in paragraph at lines 852--853
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (98.31268pt too wide) in paragraph at lines 521--522
+Overfull \hbox (98.31268pt too wide) in paragraph at lines 853--854
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (35.3128pt too wide) in paragraph at lines 522--523
+Overfull \hbox (35.3128pt too wide) in paragraph at lines 854--855
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (92.01271pt too wide) in paragraph at lines 523--524
+Overfull \hbox (92.01271pt too wide) in paragraph at lines 855--856
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (117.21265pt too wide) in paragraph at lines 524--526
+Overfull \hbox (117.21265pt too wide) in paragraph at lines 856--858
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (79.41272pt too wide) in paragraph at lines 529--531
+Overfull \hbox (79.41272pt too wide) in paragraph at lines 861--863
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (117.21266pt too wide) in paragraph at lines 531--532
+Overfull \hbox (117.21266pt too wide) in paragraph at lines 863--864
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (117.21266pt too wide) in paragraph at lines 532--533
+Overfull \hbox (117.21266pt too wide) in paragraph at lines 864--865
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (123.51263pt too wide) in paragraph at lines 535--536
+Overfull \hbox (123.51263pt too wide) in paragraph at lines 867--868
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (85.71272pt too wide) in paragraph at lines 537--538
+Overfull \hbox (85.71272pt too wide) in paragraph at lines 869--870
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (104.61267pt too wide) in paragraph at lines 538--539
+Overfull \hbox (104.61267pt too wide) in paragraph at lines 870--871
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (224.31244pt too wide) in paragraph at lines 539--540
+Overfull \hbox (224.31244pt too wide) in paragraph at lines 871--872
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[10]
-Overfull \hbox (205.41248pt too wide) in paragraph at lines 585--586
+[16]
+Overfull \hbox (205.41248pt too wide) in paragraph at lines 917--918
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (205.41248pt too wide) in paragraph at lines 586--587
+Overfull \hbox (205.41248pt too wide) in paragraph at lines 918--919
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (230.61243pt too wide) in paragraph at lines 587--588
+Overfull \hbox (230.61243pt too wide) in paragraph at lines 919--920
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (35.3128pt too wide) in paragraph at lines 588--589
+Overfull \hbox (35.3128pt too wide) in paragraph at lines 920--921
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (73.11273pt too wide) in paragraph at lines 591--592
+Overfull \hbox (73.11273pt too wide) in paragraph at lines 923--924
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (54.21278pt too wide) in paragraph at lines 594--595
+Overfull \hbox (54.21278pt too wide) in paragraph at lines 926--927
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[11]
-Overfull \hbox (41.61285pt too wide) in paragraph at lines 629--630
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (47.9128pt too wide) in paragraph at lines 660--662
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (167.61255pt too wide) in paragraph at lines 669--670
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (331.41219pt too wide) in paragraph at lines 670--671
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[12]
-Overfull \hbox (98.31271pt too wide) in paragraph at lines 729--730
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[13]
-Overfull \hbox (54.21283pt too wide) in paragraph at lines 769--770
-[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[14] [15]
-Overfull \hbox (243.2124pt too wide) in paragraph at lines 852--854
+[17] [18]
+Overfull \hbox (243.2124pt too wide) in paragraph at lines 1003--1005
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (167.61255pt too wide) in paragraph at lines 882--885
+Overfull \hbox (167.61255pt too wide) in paragraph at lines 1033--1036
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[16]
-Overfull \hbox (41.61282pt too wide) in paragraph at lines 923--924
+[19]
+Overfull \hbox (41.61282pt too wide) in paragraph at lines 1074--1075
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (29.01285pt too wide) in paragraph at lines 924--925
+Overfull \hbox (29.01285pt too wide) in paragraph at lines 1075--1076
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (73.11276pt too wide) in paragraph at lines 926--927
+Overfull \hbox (73.11276pt too wide) in paragraph at lines 1077--1078
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.41287pt too wide) in paragraph at lines 932--933
+Overfull \hbox (16.41287pt too wide) in paragraph at lines 1083--1084
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.41287pt too wide) in paragraph at lines 933--934
+Overfull \hbox (16.41287pt too wide) in paragraph at lines 1084--1085
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.41287pt too wide) in paragraph at lines 934--935
+Overfull \hbox (16.41287pt too wide) in paragraph at lines 1085--1086
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (16.41287pt too wide) in paragraph at lines 935--936
+Overfull \hbox (16.41287pt too wide) in paragraph at lines 1086--1087
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[17]
-Overfull \hbox (29.01288pt too wide) in paragraph at lines 954--955
+
+Overfull \hbox (29.01288pt too wide) in paragraph at lines 1105--1106
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (3.81293pt too wide) in paragraph at lines 990--991
+[20]
+Overfull \hbox (3.81293pt too wide) in paragraph at lines 1141--1142
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (22.71288pt too wide) in paragraph at lines 1000--1001
+Overfull \hbox (22.71288pt too wide) in paragraph at lines 1151--1152
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[18] [19]
-<imagenes_casosDePrueba_tp1/prueba0.png, id=86, 644.4075pt x 407.5225pt>
+[21] [22]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1259 R
+        etorno: el número de bytes que se escribió en el buffer de entrada...
+
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1271 R
+        etorno: la posición del buffer de salida
+? 
+[23]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1281 R
+        etorno: 1 si se formó la palabra o 0 si no se formó la palabra
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1290 R
+        etorno: 1 si es válido o 0 si no lo es
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1301 R
+        etorno: la dirección de la nueva cadena
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1310 R
+        etorno: 1 si es palíndroma o 0 si no lo es
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1319 R
+        etorno: la cadena con todas las letras en minúscula
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1328 R
+        etorno: la dirección de la palabra invertida
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1338 R
+        etorno: 1 si son iguales o 0 si no lo son
+? 
+[24] <imagenes_casosDePrueba_tp1/prueba0.png, id=103, 644.4075pt x 407.5225pt>
 File: imagenes_casosDePrueba_tp1/prueba0.png Graphic file (type png)
 
 <use imagenes_casosDePrueba_tp1/prueba0.png>
 Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba0.png used on input l
-ine 1101.
+ine 1349.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png, id=88, 644.4075pt x 4
-07.5225pt>
+<imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png, id=105, 644.4075pt x 
+407.5225pt>
 File: imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png Graphic file (typ
 e png)
  <use imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.png>
 Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba_1archivoDeEntrada.pn
-g used on input line 1108.
+g used on input line 1356.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<imagenes_casosDePrueba_tp1/prueba2_entrada_4.png, id=89, 644.4075pt x 407.5225
-pt>
+<imagenes_casosDePrueba_tp1/prueba2_entrada_4.png, id=106, 644.4075pt x 407.522
+5pt>
 File: imagenes_casosDePrueba_tp1/prueba2_entrada_4.png Graphic file (type png)
  <use imagenes_casosDePrueba_tp1/prueba2_entrada_4.png>
 Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba2_entrada_4.png used 
-on input line 1115.
+on input line 1363.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png, id=90,
- 644.4075pt x 407.5225pt>
+<imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png, id=107
+, 644.4075pt x 407.5225pt>
 File: imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png Gr
 aphic file (type png)
 
 <use imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png>
 Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_sa
-lida_default.png used on input line 1122.
+lida_default.png used on input line 1370.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png, id=91, 644.4
-075pt x 407.5225pt>
+<imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png, id=108, 644.
+4075pt x 407.5225pt>
 File: imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png Graphic 
 file (type png)
 
 <use imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png>
 Package pdftex.def Info: imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_sa
-lida_4.png used on input line 1129.
+lida_4.png used on input line 1377.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
 
-<imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png, id=92, 644.4075pt x 407.5
-225pt>
+<imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png, id=109, 644.4075pt x 407.
+5225pt>
 File: imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png Graphic file (type pn
 g)
  <use imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png>
 Package pdftex.def Info: imagenes_casosDePrueba_tp1/pruebaStdin_salida_4.png us
-ed on input line 1136.
+ed on input line 1384.
 (pdftex.def)             Requested size: 212.29312pt x 134.25276pt.
- [20] [21 <./imagenes_casosDePrueba_tp1/prueba0.png> <./imagenes_casosDePrueba_
-tp1/prueba_1archivoDeEntrada.png> <./imagenes_casosDePrueba_tp1/prueba2_entrada
-_4.png>]
-[22 <./imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.png> 
-<./imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png> <./imagene
-s_casosDePrueba_tp1/pruebaStdin_salida_4.png>]
+ [25 <./imagenes_casosDePrueba_tp1/prueba0.png> <./imagenes_casosDePrueba_tp1/p
+rueba_1archivoDeEntrada.png> <./imagenes_casosDePrueba_tp1/prueba2_entrada_4.pn
+g>] [26 <./imagenes_casosDePrueba_tp1/prueba3_archivoEntrada_4_salida_default.p
+ng> <./imagenes_casosDePrueba_tp1/prueba1_archivoEntrada_4_salida_4.png> <./ima
+genes_casosDePrueba_tp1/pruebaStdin_salida_4.png>]
 ! Misplaced alignment tab character &.
-l.1156 Reconocer que 345 soladados&
+l.1404 Reconocer que 345 soladados&
                                    civiles murieron por una fruta como el an...
 
-? 
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2015/06/04 1.6 listings language file
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2015/06/04 1.6 listings language file
-)
-
-! Package Listings Error: Couldn't load requested language.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1164 \begin{lstlisting}[language=Assembler]
-                                             
-? 
-
-! Package Listings Error: language assembler undefined.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1164 \begin{lstlisting}[language=Assembler]
-                                             
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1174 ...//www.gnu.org/software/libc/manual/html_
+l.1414 ...//www.gnu.org/software/libc/manual/html_
                                                   node/Example-of-Getopt.html.
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1175 
+l.1415 
        
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.1175 
+l.1415 
        
 ? 
 
-Underfull \hbox (badness 3942) in paragraph at lines 1174--1175
+Underfull \hbox (badness 3942) in paragraph at lines 1414--1415
 []\OT1/cmr/m/n/10 GetOpt li-brary, https://www.gnu.org/software/libc/manual/htm
 l$[]\OML/cmm/m/it/10 ode=Example \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 of \OMS/
 cmsy/m/n/10 ^^@
@@ -1169,10 +1265,10 @@ cmsy/m/n/10 ^^@
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.1175 
+l.1415 
        
 ? 
-[23] (./informe-tp1.aux
+[27] (./informe-tp1.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -1182,13 +1278,13 @@ LaTeX Warning: There were multiply-defined labels.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1156 ({)
+### simple group (level 1) entered at line 1404 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 6001 strings out of 493029
- 78523 string characters out of 6136234
- 197342 words of memory out of 5000000
- 9456 multiletter control sequences out of 15000+600000
+ 5963 strings out of 493029
+ 78270 string characters out of 6136235
+ 197396 words of memory out of 5000000
+ 9424 multiletter control sequences out of 15000+600000
  7146 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,51p,513b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1204,10 +1300,10 @@ pe1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmtt10.pfb>
-Output written on informe-tp1.pdf (25 pages, 554487 bytes).
+Output written on informe-tp1.pdf (29 pages, 564123 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
+ 168 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
