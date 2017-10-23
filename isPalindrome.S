@@ -42,7 +42,7 @@ llenarBufferEntrada:
 	li		v0,SYS_read
 	syscall
 
-	#probamos si hay errores primero
+	#vemos si hay errores primero
 	bne		a3, zero, ErrorllenarBufferEntra
 	bgt		zero,v0, ErrorllenarBufferEntra
 	b		salidallenarBufferEntrada
@@ -95,10 +95,9 @@ llenarBufferSalida:
 
 
 whileDeProcesamientoDeCaracter:
-
 	lw		t0,40($fp)
 	lw		t1,44($fp)
-	bge		t0,t1,salirWhileProcesamientoDeCaracter
+	bge		t0,t1,salidallenarBufferSalida
 
 	lw		t0,36($fp)
 	lw		t1,28($fp)
@@ -136,42 +135,14 @@ noEstallenoElBuffer:
 	sw		t0,40($fp)
 
 	b		whileDeProcesamientoDeCaracter
-salirWhileProcesamientoDeCaracter:
-	lw		t0,36($fp)
-	lw		t1,28($fp)
-	bne		t0,t1,agregarSaltoDeLinea
-
-	li		v0,SYS_write
-	lw		a0,archiDescriptorOut
-	move	a1,s6
-	lw		a2,28($fp)
-	syscall
-
-	bne		a3, zero, ErrorllenarBufferSalida
-	bgt		zero,v0, ErrorllenarBufferSalida
-
-	sw		zero,36($fp)
-
-agregarSaltoDeLinea:
-
-	move 	t0,s6
-	lw		t1,36($fp)
-	addu	t0,t0,t1
-	li		t1,10
-	sb		t1,(t0)
-
-
-	lw		t0,36($fp)
-	addu	t0,t0,1
-
-	move 	v0,t0
-	b		salidallenarBufferSalida
 ErrorllenarBufferSalida:
 	li		v0,-1
 	li	v0, SYS_exit
 	li	a0, 1
 	syscall
 salidallenarBufferSalida:
+
+	lw		v0,36($fp)
 	lw		ra,12($fp)
 	lw		s6,0($fp)
 	lw		s7,4($fp)
@@ -215,7 +186,7 @@ palindrome:
 	move 	a0,a3
 	jal		mymalloc
 	sw		v0,4($fp)
-	move 	s1,v0			#guardo el buffer de salida
+	move 	s1,v0			#guardo el buffer de salida en s1
 
 	li		t0,1
 	sw		t0,64($fp) 		#variable para indicar la salida del Procesamiento
@@ -259,7 +230,14 @@ whileProcesadorBufferEntrada:
 	move	a1,t0
 	lw		a2,48($fp)
 	jal		agregarCaracter
-	move	s2,v0
+	move 	s3,v0
+
+	#libero la memoria q ya no se usa
+	beq		s2,zero,noliberarMemoriaTemporal
+	move 	a0,s2
+	jal 	myfree
+noliberarMemoriaTemporal:
+	move	s2,s3
 
 	move	a0,s2
 	lw		a1,48($fp)
@@ -279,6 +257,26 @@ whileProcesadorBufferEntrada:
 	move	a0,s1
 	lw		a1,36($fp)
 	move 	a2,s2
+	lw		a3,52($fp)
+	jal		llenarBufferSalida
+	sw		v0,52($fp)
+
+	move	t0,zero
+	lw		t1,24($fp)
+	beq		t0,t1,agregarSaltoDeLinea
+
+	#agrego retorno de carro
+	move	a0,s1
+	lw		a1,36($fp)
+	la 		a2,reTornoDeCarro
+	lw		a3,52($fp)
+	jal		llenarBufferSalida
+	sw		v0,52($fp)
+
+agregarSaltoDeLinea:
+	move	a0,s1
+	lw		a1,36($fp)
+	la 		a2,saltoDeLinea
 	lw		a3,52($fp)
 	jal		llenarBufferSalida
 	sw		v0,52($fp)
@@ -306,7 +304,7 @@ seguir2:
 
 	b		whileProcesadorBufferEntrada
 
-salirwhilePrincipal:
+salirwhilePrincipal:		#hago la ultima lectura del buffer de salida si quedaron datos
 	li		v0,SYS_write
 	lw		a0,archiDescriptorOut
 	move	a1,s1
@@ -315,9 +313,6 @@ salirwhilePrincipal:
 	bne		a3, zero, ErrorWrite
 	bgt		zero,v0, ErrorWrite
 
-	move 	a0,s0
-	jal 	myfree
-	b		salidaPalindrome
 ErrorWrite:
 	li		v0,-1
 	li	v0, SYS_exit
@@ -339,7 +334,7 @@ salidaPalindrome:
 
 	#int seFormoUnaPalabra(char *cadena,int cantidadCaracteres)
 	.text						#retorna 1 si se formo la palbra
-	.align	2					#retirna 2 se lleno el buffer con un solo caracter invalido
+	.align	2					#retorna 2 si se lleno el buffer con un solo caracter invalido
 	.globl	seFormoUnaPalabra	#retorna 0 si no se formo la palabra
 	.ent	seFormoUnaPalabra
 seFormoUnaPalabra:
@@ -411,7 +406,7 @@ validCharacter:
 	sll		a0,a0,24
 	sra		a0,a0,24
 
-	#aca valido los numero
+	#valido los numero
 	li		t0,57
 	ble		a0,	t0,validesDeNumeros
 	b		verMayuscula
@@ -534,15 +529,18 @@ palindromo:
 
 	jal		mystrlen
 	addu	t0,zero,1
-	beq		t0,v0,esPalindromo
+	beq		t0,v0,esPalindromoUnaPalabra
 
 	lw		a0,0($fp)
 	jal		transformarMinuscula
 	sw		v0,24($fp)
+	move	s4,v0
 
 	lw 		a0,24($fp)
 	jal 	invertirPalabra
 	sw		v0,4($fp)
+	move 	s5,v0
+
 	lw 		a0, 24($fp)
 	lw 		a1, 4($fp)
 	jal		palabrasIguales
@@ -550,11 +548,27 @@ palindromo:
 	beq		v0,t0,esPalindromo
 	b 		noEsPalindromo
 esPalindromo:
-	addu v0,zero,1				#devulve 1 si es palindromo
+	move 	a0,s4
+	jal 	myfree
+
+	lw		t0,24($fp)
+	move 	a0,s5
+
+	jal		myfree
+	addu 	v0,zero,1
+	b 		salirPalindromo			#devulve 1 si es palindromo
+esPalindromoUnaPalabra:
+	addu v0,zero,1
 	b 		salirPalindromo
 noEsPalindromo:
+	move 	a0,s4
+	jal 	myfree
+
+	move 	a0,s5
+	jal		myfree
 	move v0,zero				#devuelve cero si no es palindromo
 salirPalindromo:
+
 	lw 		ra,12($fp)
 	lw		$fp, 20(sp)
 	addu	sp, sp, 24
@@ -627,7 +641,7 @@ salirtransformarMinuscula:
 	j 		ra
 	.end	transformarMinuscula
 
-
+#char* invertirPalabra(char *palabra)
 	.text
 	.align	2
 	.globl	invertirPalabra
@@ -652,11 +666,11 @@ invertirPalabra:
 	beq 	v0,zero,vacio
 	move 	a0,v0
 	addu 	a0,a0,1 		#sumo uno para el valor de \0
-	jal 	mymalloc 		#cada ver el valor de retorno para poder salir si hay error
+	jal 	mymalloc
 	sw 		v0,28($fp) 		#guardo el puntero de la nueva palabra
 	lw 		t0, 0($fp) 		# t0 tiene el tamanio de la palabra
 	subu 	t0,t0,1			#resto uno para q sea la posicion
-	addu 	v0,v0,t0 		#este es la posicion del caracter a cipiar
+	addu 	v0,v0,t0 		#este es la posicion del caracter a copiar
 	lw 		t1,24($fp)		#cargo la primera palabra para invetir
 
 loopInvertirPalabra:
@@ -683,7 +697,7 @@ salirInvertirPalabra:
 	j 		ra
 	.end	invertirPalabra
 
-
+#int palabrasIguales(char* palabra1,char* palabra2)
 	.text
 	.align	2
 	.globl	palabrasIguales
@@ -1046,5 +1060,7 @@ myfree_return:
 
 error1:
 	.ascii	"Error : %s\n\000"
-aca:
-	.ascii	"aca\n\0"
+reTornoDeCarro:
+	.ascii	"\r\0"
+saltoDeLinea:
+	.ascii	"\n\0"

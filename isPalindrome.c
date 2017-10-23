@@ -54,16 +54,15 @@ int main(int argc, char *argv[]) {
                 inputFile = fopen(optarg, "r");
                 if (inputFile == NULL) {
                     fprintf(stderr, "Error archivo entrada: %s\n", strerror(errno));
+                    return ERROR;
                 }
                 break;
             case 'o':
-                // verifico si existe el archivo
-                if (access(optarg, W_OK) != -1) {
-                    outputFile = fopen(optarg, "w+");
-                    if (outputFile == NULL) {
-                        fprintf(stderr, "Error archivo salida: %s\n", strerror(errno));
-                        return ERROR;
-                    }
+
+                outputFile = fopen(optarg, "w+");
+                if (outputFile == NULL) {
+				    fprintf(stderr, "Error archivo salida: %s\n", strerror(errno));
+				    return ERROR;
                 }
                 break;
             case 'I':
@@ -85,9 +84,20 @@ int main(int argc, char *argv[]) {
     if (ibytes == NULL) ibytes = "1";
 
     if (obytes == NULL) obytes = "1";
+
+    //valido el tamanio del buffer de entrada y salida
+    int numIbytes = atoi(ibytes);
+    if(numIbytes <= 0){
+    	numIbytes = 1;
+    }
+    int numObytes = atoi(obytes);
+    if(numObytes <=0){
+    	numObytes = 1;
+    }
+
     archiDescriptorInt = fileno(inputFile);
     archiDescriptorOut = fileno(outputFile);
-    palindrome(archiDescriptorInt, (size_t)atoi(ibytes), archiDescriptorOut, (size_t)atoi(obytes));
+    palindrome(archiDescriptorInt, (size_t)numIbytes, archiDescriptorOut, (size_t)numObytes);
 
     if(inputFile != stdin){
     	if (fclose(inputFile) == EOF) {
